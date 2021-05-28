@@ -14,14 +14,25 @@
 .column {
   float: left;
   width: 30%;
-  margin-right:10px;
+  margin:10px;
+}
+
+.column-left {
+  float: left;
+  width: 45%;
+  margin:10px;
+}
+
+.column-right {
+  float: left;
+  width: 45%;
+  margin:10px;
 }
 
 @media only screen and (max-width: 600px) {
-  .column {
+  .column, .column-left, .column-right {
     width: 90%;
     float: center;
-    margin: 10px;
   }
 }
 
@@ -178,7 +189,6 @@ button {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   text-align: center;
-  background-color: pink;
 }
 
 .session-type {

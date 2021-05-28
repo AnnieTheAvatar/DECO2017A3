@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div class="header">
-      <h1>StudBud</h1>
-      <h3>Your study assistant</h3>
-    </div>
-    <div class="row">
-      <div class="column">
-        <div class="card" id="taskcard">
-          <h1>Task List</h1>
-          <h2>To Do</h2>
-          <ul id="tasklist">
-          </ul>
-          <button class="open-button" onclick="openForm()">+</button>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
+</head>
+
+<body>
+	<div class="header">
+		<h1>StudBud</h1>
+		<h3>Your study assistant</h3>
+	</div>
+	<div class="row">
+		<div class="column">
+			<div class="card" id="taskcard">
+				<h1>Task List</h1>
+				<h2>To Do</h2>
+				<ul id="tasklist">
+				</ul>
+				<button class="open-button" onclick="openForm()">+</button>
           
           <div class="form-popup" id="taskform">
             <form action="/action_page.php" class="form-containter">
@@ -61,6 +60,7 @@
       </div>
       <div class="column">
         <div class="card">
+          <h1>Stopwatch</h1>
           <div id="stopwatch">
             00:00:00
           </div>
@@ -73,25 +73,40 @@
       </div>
       
       <div class="column">
+        <div class="card">
+          <h1>Pomodoro Timer</h1>
         <div class="pomodoro-container">
           <div class="timer-display"></div>
-          <ul class="button-group">
-            <li class="start button">
-              <i class="fa fa-play start" aria-hidden="true"></i>
-            </li>
-            <li class="pause button">
-              <i class="fa fa-pause pause" aria-hidden="true"></i>
-            </li>
-            <li class="stop button">
-              <i class="fa fa-stop stop" aria-hidden="true"></i>
-            </li>
-          </ul>
-          <div class="session-type"></div>
-          <div class="task-section">
-            <h4>Total Sessions</h4>
-            <p class="task-list">Work : <span class="work-sessions"></span></p>
-            <p class="task-list">Break : <span class="break-sessions"></span></p>
+            <ul class="button-group">
+              <li class="start button">
+                <i class="fa fa-play start" aria-hidden="true"></i>
+              </li>
+              <li class="pause button">
+                <i class="fa fa-pause pause" aria-hidden="true"></i>
+              </li>
+              <li class="stop button">
+                <i class="fa fa-stop stop" aria-hidden="true"></i>
+              </li>
+            </ul>
+            <div class="session-type"></div>
+            <div class="task-section">
+              <h4>Total Sessions</h4>
+              <p class="task-list">Work : <span class="work-sessions"></span></p>
+              <p class="task-list">Break : <span class="break-sessions"></span></p>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column-left">
+        <div class="card">
+          <h1>Covey Quadrants</h1>
+        </div>
+      </div>
+      <div class="column-right">
+        <div class="card">
+          <h1>Acronym Maker</h1>
         </div>
       </div>
     </div>
