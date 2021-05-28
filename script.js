@@ -81,9 +81,12 @@ function renderTask(task) {
   doneButton.appendChild(doneButtonText);
   item.appendChild(doneButton); // Adds a delete button to every task
 
-  doneButton.addEventListener("click", function(ev){
-    ev.target.item.toggle('checked');
-  })
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.tasklist.toggle('checked');
+    }
+  }, false);
   
   // Clear the value of the input once the task has been added to the page
   form.reset();
