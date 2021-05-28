@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <div class="header">
@@ -66,8 +71,32 @@
           </ul>
         </div>
       </div>
+      
+      <div class="column">
+        <div class="pomodoro-container">
+          <div class="timer-display"></div>
+          <ul class="button-group">
+            <li class="start button">
+              <i class="fa fa-play start" aria-hidden="true"></i>
+            </li>
+            <li class="pause button">
+              <i class="fa fa-pause pause" aria-hidden="true"></i>
+            </li>
+            <li class="stop button">
+              <i class="fa fa-stop stop" aria-hidden="true"></i>
+            </li>
+          </ul>
+          <div class="session-type"></div>
+          <div class="task-section">
+            <h4>Total Sessions</h4>
+            <p class="task-list">Work : <span class="work-sessions"></span></p>
+            <p class="task-list">Break : <span class="break-sessions"></span></p>
+          </div>
+        </div>
+      </div>
     </div>
-    
+    <iframe src="https://open.spotify.com/embed/playlist/2Fnfw3f8C3RpQ0JmGNvx58" width="80%" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media" ></iframe>
+    <script src="progressbar.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

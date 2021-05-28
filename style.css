@@ -13,8 +13,8 @@
 
 .column {
   float: left;
-  width: 33.33%;
-  margin-right:5%;
+  width: 30%;
+  margin-right:10px;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
@@ -66,7 +66,7 @@
   outline: none;
 }
 
-/* Set a style for the submit/login button */
+/* Set a style for the button */
 .form-container .btn {
   background-color: #04AA6D;
   color: white;
@@ -153,4 +153,72 @@ button {
     display: inline;
     padding-left: 10px;
     text-align: center;
+}
+
+
+//pomodoro
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pomodoro-container {
+  //max-width: 500px;
+  //margin: 100px auto 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  background-color: pink;
+}
+
+.session-type {
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding-bottom: 1.25rem;
+}
+
+.timer-display {
+  font-size: 3rem;
+}
+
+.button-group {
+  list-style: none;
+  padding: 0;
+  //margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  //margin-top: 0.8rem;
+}
+
+.button {
+  background: #f3f3f3;
+  color: pink;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+}
+
+.button i {
+  margin-top: 0.7rem;
+}
+
+li.stop {
+  margin-left: 0.5rem;
+}
+
+/* Media Queries */
+@media (max-width: 40rem) {
+  .timer-display {
+    font-size: 2rem;
+  }
+}
+
+
+iframe {
+  display:block;
+  margin: auto;
 }
