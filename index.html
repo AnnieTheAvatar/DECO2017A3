@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="card" id="taskcard">
+      <h1>Task List</h1>
+      <h2>To Do</h2>
+      <ul id="tasklist">
+      </ul>
+      <button class="open-button" onclick="openForm()">+</button>
+      
+      <div class="form-popup" id="taskform">
+        <form action="/action_page.php" class="form-containter">
+          <table class="table-form">
+            <tr>
+              <td> <label for="task">Task Name:</label></td>
+              <td><input type="text" name="task" id="taskInput" required></td>
+            </tr>
+          <!-- Date input -->
+            <tr>
+              <td><label for="dueDate">Due Date: </label></td>
+              <td><input type="date" name="dueDate" id="dueDateInput" required></td>
+            </tr>
+            <tr>
+              <td><label for="estimatedTime">Estimated completion time (mins):</label></td>
+              <td><input type="number" name="estimatedTime" id="estimatedTimeInput"></td>
+            <!-- Priority -->
+            </tr>
+            <tr>
+              <td><label for="priority">Task Priority:</label></td>
+              <td><input type="range" min="1" max="100" value="50" class="slider" id="priorityInput">
+              <p><span id="demo"></span> %</p></td>
+            <!-- Notes -->
+            </tr>
+            <tr>
+              <td><label for="notes">Notes:</label></td>
+              <td><input type="text" name="notes" id="notesInput"></td>
+            </tr>
+          </table>
+          <button type="submit">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
