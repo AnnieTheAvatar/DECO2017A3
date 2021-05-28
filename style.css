@@ -42,7 +42,7 @@
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  position: fixed;
+  //position: fixed;
   left: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
@@ -76,7 +76,6 @@
 
 /* Set a style for the button */
 .form-container .btn {
-  background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
   border: none;
