@@ -72,7 +72,17 @@ function renderTask(task) {
   delButton.addEventListener("click", function(event){
     item.remove(); // Remove the task item from the page when button clicked
     // Because we used 'let' to define the item, this will always delete the right element
-    
+  })
+
+  // Setup completed button DOM elements
+  let doneButton = document.createElement("button");
+  doneButton.className = "done-button";
+  let doneButtonText = document.createTextNode("Completed!");
+  doneButton.appendChild(doneButtonText);
+  item.appendChild(doneButton); // Adds a delete button to every task
+
+  doneButton.addEventListener("click", function(ev){
+    ev.target.item.toggle('checked');
   })
   
   // Clear the value of the input once the task has been added to the page
