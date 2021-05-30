@@ -30,7 +30,6 @@ form.addEventListener("submit", function(event) {
   addTask(task, date, dD, prio, time, note, false);
 
   // Log out the newly populated taskList everytime the button has been pressed
-  console.log(taskList);
 })
 
 // Create an empty array to store our tasks
@@ -49,7 +48,6 @@ function addTask(taskDescription, createdDate, dueDate, priorityRating, estimate
 
   // Add the task to our array of tasks
   taskList.push(task);
-  console.log(taskList)
   // Separate the DOM manipulation from the object creation logic
   renderTask(task);
 }
@@ -89,7 +87,7 @@ function renderTask(task) {
   }, false);
   
   // Clear the value of the input once the task has been added to the page
-  form.reset();
+  //form.reset();
 }
 
 //converting minutes to hours:mins
@@ -365,7 +363,7 @@ function openReading() {
   document.getElementById("readingform").style.display = "block";
 }
 
-function closeForm() {
+function closeReadForm() {
   document.getElementById("readingform").style.display = "none";
 }
 
@@ -377,7 +375,7 @@ const refInput = document.getElementById("refInput");
 
 // Event listener for Button click
 
-form.addEventListener("submit", function(event) {
+function submitList(){
   event.preventDefault(); 
 
   let ref = refInput.value;
@@ -388,32 +386,42 @@ form.addEventListener("submit", function(event) {
   addRef(ref, link, notes);
 
   // Log out the newly populated taskList everytime the button has been pressed
-  console.log(readingList);
-})
+}
 
 // Create an empty array to store our tasks
 var readingList = [];
 
 function addRef(refName, link, notes) {
-  let rlist = {
+  let ref = {
     refName,
     link,
     notes
   };
 
   // Add the task to our array of tasks
-  readingList.push(rlist);
-  console.log(readinglist)
+  readingList.push(ref);
+  
   // Separate the DOM manipulation from the object creation logic
-  renderTask(rlist);
+  renderList(ref);
 }
 
 // Function to display the item on the page
-function renderTask(task) {
+function renderList(ref) {
   let item = document.createElement("li");
-  item.innerHTML = "<p>" + rlist.refName + "</p>";
+  item.innerHTML = "<p>" + ref.refName + "</p>";
+  readinglist.appendChild(item);
 
-  tasklist.appendChild(item);
+  let openButton = document.createElement("button");
+  openButton.className = "openbutton";
+  let openButtonText = document.createTextNode("Open");
+  openButton.appendChild(openButtonText);
+  item.appendChild(openButton); // Adds a delete button to every task
+
+    // Listen for when the delete button is pressed
+  openButton.addEventListener("click", function(event){
+    window.open(ref.link);
+    
+    })
 
   // Setup delete button DOM elements
   let delButton = document.createElement("button");
@@ -422,12 +430,24 @@ function renderTask(task) {
   delButton.appendChild(delButtonText);
   item.appendChild(delButton); // Adds a delete button to every task
 
-  // Listen for when the 
+    // Listen for when the delete button is pressed
   delButton.addEventListener("click", function(event){
-    item.remove(); // Remove the task item from the page when button clicked
+    item.remove(); }) // Remove the task item from the page when button clicked
     // Because we used 'let' to define the item, this will always delete the right element
-  })
+
+  //edit button
+  let edButton = document.createElement("button");
+  edButton.className = "edit-button";
+  let edButtonText = document.createTextNode("Edit");
+  edButton.appendChild(edButtonText);
+  item.appendChild(edButton);
+
+    // Listen for when the edit button is pressed
+  edButton.addEventListener("click", function(event){
+    }// edit the task 
+    // Because we used 'let' to define the item, this will always delete the right element
+    )
   
   // Clear the value of the input once the task has been added to the page
-  form.reset();
-}
+  //form.reset();
+  }

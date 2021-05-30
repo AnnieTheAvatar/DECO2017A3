@@ -129,6 +129,8 @@
       <div class="column-right">
         <div class="card">
           <h1>Reading List</h1>
+          <ul id="readinglist">
+          </ul>
           <button class="open-button" onclick="openReading()">+</button>
           
           <div class="reading-popup" id="readingform">
@@ -149,8 +151,8 @@
                   <td><input type="text" name="readingnotes" id="readnotesInput"></td>
                 </tr>
               </table>
-              <button type="submit">Submit</button>
-              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              <button type="button" onclick="submitList()">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeReadForm()">Close</button>
             </form>
           </div>
         </div>

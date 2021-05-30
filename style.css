@@ -139,6 +139,15 @@ td {
   color:aliceblue;
 }
 
+.edit-button {
+  background-color: yellowgreen;
+}
+
+.openbutton {
+  background-color: thistle;
+
+}
+
 .card {
   padding: 10px;
   padding-bottom: 50px;
