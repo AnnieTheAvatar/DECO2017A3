@@ -58,7 +58,7 @@ h1 {
 }
 
 /* The popup form - hidden by default */
-.form-popup {
+.form-popup, .reading-popup {
   display: none;
   //position: fixed;
   left: 15px;
@@ -246,4 +246,27 @@ li.stop {
 iframe {
   display:block;
   margin: auto;
+}
+
+.UI {
+  background-color: lightcoral;
+}
+
+.NI {
+  background-color: mistyrose;
+}
+
+.UN {
+  background-color: mintcream;
+}
+
+.NN {
+  background-color: snow;
+}
+
+.blank th {
+  width:20%;
+}
+urgent th {
+  width:40%
 }

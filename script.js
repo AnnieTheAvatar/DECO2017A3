@@ -360,3 +360,74 @@ initializeButtons();
 
 
 //READING LIST
+//openning and closing the form
+function openReading() {
+  document.getElementById("readingform").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("readingform").style.display = "none";
+}
+
+// Setting up variables for our HTML elements using DOM selection
+const readform = document.getElementById("readingform");
+const readbutton = document.querySelector("#readingform > button"); // Complex CSS query
+const readinglist = document.getElementById("readinglist");
+const refInput = document.getElementById("refInput");
+
+// Event listener for Button click
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); 
+
+  let ref = refInput.value;
+  let link = linkInput.value;
+  let notes = readnotesInput.value;
+  
+  // Call the addRef() function using
+  addRef(ref, link, notes);
+
+  // Log out the newly populated taskList everytime the button has been pressed
+  console.log(readingList);
+})
+
+// Create an empty array to store our tasks
+var readingList = [];
+
+function addRef(refName, link, notes) {
+  let rlist = {
+    refName,
+    link,
+    notes
+  };
+
+  // Add the task to our array of tasks
+  readingList.push(rlist);
+  console.log(readinglist)
+  // Separate the DOM manipulation from the object creation logic
+  renderTask(rlist);
+}
+
+// Function to display the item on the page
+function renderTask(task) {
+  let item = document.createElement("li");
+  item.innerHTML = "<p>" + rlist.refName + "</p>";
+
+  tasklist.appendChild(item);
+
+  // Setup delete button DOM elements
+  let delButton = document.createElement("button");
+  delButton.className = "delete-button";
+  let delButtonText = document.createTextNode("Delete");
+  delButton.appendChild(delButtonText);
+  item.appendChild(delButton); // Adds a delete button to every task
+
+  // Listen for when the 
+  delButton.addEventListener("click", function(event){
+    item.remove(); // Remove the task item from the page when button clicked
+    // Because we used 'let' to define the item, this will always delete the right element
+  })
+  
+  // Clear the value of the input once the task has been added to the page
+  form.reset();
+}

@@ -107,11 +107,52 @@
       <div class="column-left">
         <div class="card">
           <h1>Covey Quadrants</h1>
+          <table class="covey">
+            <tr>
+              <th class="blank"></th>
+              <th class="urgent">Urgent</th>
+              <th class="urgent">Not Urgent</th>
+            </tr>
+            <tr>
+              <th>Important</th>
+              <td class="UI"></td>
+              <td class="NI"></td>
+            </tr>
+            <tr>
+              <th>Not Important</th>
+              <td class="UN"></td>
+              <td class="NN"></td>
+            </tr>
+          </table>
         </div>
       </div>
       <div class="column-right">
         <div class="card">
           <h1>Reading List</h1>
+          <button class="open-button" onclick="openReading()">+</button>
+          
+          <div class="reading-popup" id="readingform">
+            <form action="/action_page.php" class="form-containter">
+              <table class="reading-form">
+                <tr>
+                  <td> <label for="ref">Reference Name:</label></td>
+                  <td><input type="text" name="ref" id="refInput" required></td>
+                </tr>
+              <!-- link input -->
+                <tr>
+                  <td><label for="link">Link: </label></td>
+                  <td><input type="text" name="link" id="linkInput" required></td>
+                </tr>
+                <!-- Notes -->
+                <tr>
+                  <td><label for="readingnotes">Notes:</label></td>
+                  <td><input type="text" name="readingnotes" id="readnotesInput"></td>
+                </tr>
+              </table>
+              <button type="submit">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
