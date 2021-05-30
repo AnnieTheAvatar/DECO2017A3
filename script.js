@@ -112,7 +112,7 @@ function closeForm() {
 }
 
 
-
+//STOPWATCH
 const timer = document.getElementById('stopwatch');
 
 var hr = 0;
@@ -175,7 +175,7 @@ function resetTimer() {
 }
 
 
-//pomodoro
+//POMODORO TIMER
 
 // Select Pomodoro display to edit timer content
 const pomodoroDisplay = document.querySelector(".timer-display");
@@ -354,3 +354,9 @@ document.addEventListener("click", function(event) {
 
 // display buttons at the start of timer
 initializeButtons();
+
+
+//COVEY QUADRANTS
+
+
+//READING LIST
