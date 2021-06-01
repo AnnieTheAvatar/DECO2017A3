@@ -56,7 +56,7 @@ function addTask(taskDescription, createdDate, dueDate, priorityRating, estimate
 // Function to display the item on the page
 function renderTask(task) {
   let item = document.createElement("li");
-  item.innerHTML = "<p>" + task.taskDescription + "</p>";
+  item.innerHTML = "<p>" + task.taskDescription + "</br>Due: " + task.dueDate + "</br>Weight: " + task.priorityRating + "</br>Notes: " +task.notes + "</p>" ;
 
   tasklist.appendChild(item);
 
@@ -80,15 +80,13 @@ function renderTask(task) {
   doneButton.appendChild(doneButtonText);
   item.appendChild(doneButton); // Adds a delete button to every task
 
-  var list = document.querySelector('ul');
-  list.addEventListener('click', function(ev) {
-    if (ev.target.tagName === 'LI') {
-      ev.target.tasklist.toggle('checked');
-    }
-  }, false);
+  doneButton.addEventListener("click", function(event){
+    item.innerHTML = "<p>" + task.taskDescription + "</p";
+    item.appendChild(delButton);
+    item.setAttribute('class','checked'); // strike through the completed task
+    // Because we used 'let' to define the item, this will always delete the right element
+  })
   
-  // Clear the value of the input once the task has been added to the page
-  //form.reset();
 }
 
 //converting minutes to hours:mins
@@ -140,8 +138,6 @@ function renderCovey(taskDescription, dueDate, priorityRating){
     item.innerHTML = "<p>" + taskDescription + "</p>";
     notnot.appendChild(item);
   }
-
-
 }
 
 //STOPWATCH
