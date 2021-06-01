@@ -50,6 +50,7 @@ function addTask(taskDescription, createdDate, dueDate, priorityRating, estimate
   taskList.push(task);
   // Separate the DOM manipulation from the object creation logic
   renderTask(task);
+  renderCovey(taskDescription, dueDate, priorityInput.value);
 }
 
 // Function to display the item on the page
@@ -109,6 +110,39 @@ function closeForm() {
   document.getElementById("taskform").style.display = "none";
 }
 
+//COVEY QUADRANTS
+
+function renderCovey(taskDescription, dueDate, priorityRating){
+  var today = new Date();
+  let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
+  let date2 = new Date(dueDate);
+  var Difference_In_Time = date2.getTime() - date1.getTime();
+  var timeRemaining = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
+
+
+  if (timeRemaining <= 14 && priorityRating >= 30) {
+    let item = document.createElement("li");
+    item.innerHTML = "<p>" + taskDescription + "</p>";
+    urgimp.appendChild(item);
+  }
+  else if (timeRemaining <= 14 && priorityRating < 30) {
+    let item = document.createElement("li");
+    item.innerHTML = "<p>" + taskDescription + "</p>";
+    urgnot.appendChild(item);
+  }
+  else if (timeRemaining > 14 && priorityRating >= 30) {
+    let item = document.createElement("li");
+    item.innerHTML = "<p>" + taskDescription + "</p>";
+    notimp.appendChild(item);
+  }
+  else if (timeRemaining > 14 && priorityRating < 30) {
+    let item = document.createElement("li");
+    item.innerHTML = "<p>" + taskDescription + "</p>";
+    notnot.appendChild(item);
+  }
+
+
+}
 
 //STOPWATCH
 const timer = document.getElementById('stopwatch');
@@ -352,10 +386,6 @@ document.addEventListener("click", function(event) {
 
 // display buttons at the start of timer
 initializeButtons();
-
-
-//COVEY QUADRANTS
-
 
 //READING LIST
 //openning and closing the form
