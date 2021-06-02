@@ -147,12 +147,14 @@ todoItemsList.addEventListener('click', function(event) {
   // check if the event is on checkbox
   if (event.target.type === 'checkbox') {
     // toggle the state
+    console.log("toggle");
     toggle(event.target.parentElement.getAttribute('data-key'));
   }
 
   // check if that is a delete-button
   if (event.target.classList.contains('delete-button')) {
     // get id from data-key attribute's value of parent <li> where the delete-button is present
+    console.log("del");
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
   }
 });
