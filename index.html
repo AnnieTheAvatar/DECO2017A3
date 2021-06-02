@@ -20,21 +20,21 @@
 		<h1>StudBud</h1>
 		<h3>Your study assistant</h3>
 	</div>
-	<div class="row">
+	  <div class="row">
 		<div class="column-left">
 			<div class="card" id="taskcard">
 				<h1>Task List</h1>
 				<h2>To Do</h2>
-				<ul id="tasklist">
+				<ul class="todo-items">
 				</ul>
 				<button class="open-button" onclick="openForm()">+</button>
           
-          <div class="form-popup" id="taskform">
+          <div class="todo-form" id="taskform">
             <form action="/action_page.php" class="form-containter">
               <table class="table-form">
                 <tr>
                   <td> <label for="task">Task Name:</label></td>
-                  <td><input type="text" name="task" id="taskInput" required></td>
+                  <td><input type="text" class="todo-input" placeholder="Add a Task..."></td>
                 </tr>
               <!-- Date input -->
                 <tr>
@@ -57,7 +57,7 @@
                   <td><input type="text" name="notes" id="notesInput"></td>
                 </tr>
               </table>
-              <button type="submit">Submit</button>
+              <button type="submit" class="add-button">Add</button>
               <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
           </div>
