@@ -156,11 +156,26 @@ td {
   width: 50%;
 }
 
-.delete-button {
-  background-color: red;
-  color:aliceblue;
+.checkbox {
+  margin-right: 10px;
+  display: inline;
+}
+.items {
+  display: inline;
 }
 
+.delete-button {
+  float: right;
+  background-color: #dc143c;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 2px 5px;
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 550;
+  display: inline;
+}
 .edit-button {
   background-color: yellowgreen;
 }
@@ -183,6 +198,9 @@ td {
 
 ul li.checked {
   text-decoration: line-through;
+}
+ul {
+  list-style-type: none; /* get rid of bullet points on side of list items */
 }
 
 //stopwatch

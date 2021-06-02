@@ -88,7 +88,7 @@ function renderTodos(todos) {
       li.classList.add('checked');
     }
 
-    li.innerHTML = "<p><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>" ;
+    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><p class='items'><strong>" + item.name + "</strong><button class='delete-button'>X</button></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
   });
@@ -256,6 +256,7 @@ function renderTask(task) {
   
 }
 */
+
 //converting minutes to hours:mins
 function timeConvert(n) {
 var num = n;
@@ -277,35 +278,36 @@ function closeForm() {
 
 //COVEY QUADRANTS
 
-function renderCovey(taskDescription, dueDate, priorityRating){
-  var today = new Date();
-  let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
-  let date2 = new Date(dueDate);
-  var Difference_In_Time = date2.getTime() - date1.getTime();
-  var timeRemaining = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
+function renderCovey(){
+  todos.forEach(function(item) {
+    var today = new Date();
+    let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
+    let date2 = new Date(item.due);
+    var Difference_In_Time = date2.getTime() - date1.getTime();
+    var timeRemaining = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
+    var weight = (item.weight).slice(0, -1);
 
-
-  if (timeRemaining <= 14 && priorityRating >= 30) {
-    let item = document.createElement("li");
-    item.innerHTML = "<p>" + taskDescription + "</p>";
-    urgimp.appendChild(item);
-  }
-  else if (timeRemaining <= 14 && priorityRating < 30) {
-    let item = document.createElement("li");
-    item.innerHTML = "<p>" + taskDescription + "</p>";
-    urgnot.appendChild(item);
-  }
-  else if (timeRemaining > 14 && priorityRating >= 30) {
-    let item = document.createElement("li");
-    item.innerHTML = "<p>" + taskDescription + "</p>";
-    notimp.appendChild(item);
-  }
-  else if (timeRemaining > 14 && priorityRating < 30) {
-    let item = document.createElement("li");
-    item.innerHTML = "<p>" + taskDescription + "</p>";
-    notnot.appendChild(item);
-  }
-}
+    if (timeRemaining <= 14 && weight >= 30) {
+      let cov = document.createElement("li");
+      cov.innerHTML = "<p>" + item.name + "</p>";
+      urgimp.appendChild(cov);
+    }
+    else if (timeRemaining <= 14 && weight < 30) {
+      let cov = document.createElement("li");
+      cov.innerHTML = "<p>" + item.name + "</p>";
+      urgnot.appendChild(cov);
+    }
+    else if (timeRemaining > 14 && weight >= 30) {
+      let cov = document.createElement("li");
+      cov.innerHTML = "<p>" + item.name + "</p>";
+      notimp.appendChild(cov);
+    }
+    else if (timeRemaining > 14 && weight < 30) {
+      let cov = document.createElement("li");
+      cov.innerHTML = "<p>" + item.name + "</p>";
+      notnot.appendChild(cov);
+  }})
+};
 
 //STOPWATCH
 const timer = document.getElementById('stopwatch');
