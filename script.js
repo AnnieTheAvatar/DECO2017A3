@@ -88,7 +88,7 @@ function renderTodos(todos) {
       li.classList.add('checked');
     }
 
-    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><p class='items'><strong>" + item.name + "</strong><button class='delete-button'>X</button></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
+    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
   });
@@ -117,7 +117,7 @@ function getFromLocalStorage() {
 // toggle the value to completed and not completed
 function toggle(id) {
   todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
+    // use == not ===, because here types are different. One is number and other is string;
     if (item.id == id) {
       // toggle the value
       item.completed = !item.completed;
@@ -130,11 +130,12 @@ function toggle(id) {
 // deletes a todo from todos array, then updates localstorage and renders updated list to screen
 function deleteTodo(id) {
   // filters out the <li> with the id and updates the todos array
+  //console.log(id);
   todos = todos.filter(function(item) {
     // use != not !==, because here types are different. One is number and other is string
     return item.id != id;
   });
-
+  
   // update the localStorage
   addToLocalStorage(todos);
 }
@@ -147,15 +148,15 @@ todoItemsList.addEventListener('click', function(event) {
   // check if the event is on checkbox
   if (event.target.type === 'checkbox') {
     // toggle the state
-    console.log("toggle");
-    toggle(event.target.parentElement.getAttribute('data-key'));
+    toggle(event.target.parentElement.getAttribute('data-key'))
+    //console.log(event.target.parentElement.nodeName);
   }
 
   // check if that is a delete-button
   if (event.target.classList.contains('delete-button')) {
     // get id from data-key attribute's value of parent <li> where the delete-button is present
-    console.log("del");
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
+    //console.log(event.target.parentElement.nodeName)
   }
 });
 
