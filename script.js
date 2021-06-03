@@ -564,7 +564,7 @@ function openReading() {
 function closeReadForm() {
   document.getElementById("readingform").style.display = "none";
 }
-
+/*
 // Setting up variables for our HTML elements using DOM selection
 const readform = document.getElementById("readingform");
 const readbutton = document.querySelector("#readingform > button"); // Complex CSS query
@@ -649,3 +649,154 @@ function renderList(ref) {
   // Clear the value of the input once the task has been added to the page
   //form.reset();
   }
+
+*/
+//READING LIST 2
+const readForm = document.querySelector('.read-form');
+// select the input box
+const readInput = document.querySelector('.read-input');
+// select the <ul> with class="todo-items"
+const readItemsList = document.querySelector('.read-items');
+
+
+// array which stores every todos
+let readingList = [];
+
+// add an eventListener on form, and listen for submit event
+readForm.addEventListener('submit', function(event) {
+  // prevent the page from reloading when submitting the form
+  event.preventDefault(); 
+
+  let ref = refInput.value;
+  let link = linkInput.value;
+  let notes = readnotesInput.value;
+  let tag = groupInput.value;
+  
+  // Call the addTask() function using
+  addRef(ref, link, notes, tag);
+  
+  //addTodo(todoInput.value); // call addTodo function with input box current value
+});
+
+// function to add todo
+function addRef(refName, link, notes, tag) {
+  
+  // if item is not empty
+  if (refName !== '') {
+    // make a todo object, which has id, name, and completed properties
+    const ref = {
+      id: Date.now(),
+      name: refName,
+      links: link,
+      note: notes,
+      group: tag
+    };
+
+    // then add it to todos array
+    readingList.push(ref);
+    addToLocalStorage(readingList); // then store it in localStorage
+
+    // finally clear the input box value
+    refInput.value = '';
+  }
+}
+
+// function to render given todos to screen
+function renderRefs(readingList) {
+  // clear everything inside <ul> with class=todo-items
+  readItemsList.innerHTML = '';
+
+  // run through each item inside todos
+  readingList.forEach(function(item) {
+    // check if the item is completed
+    //const checked = item.completed ? 'checked': null;
+
+    // make a <li> element and fill it
+    // <li> </li>
+    const li = document.createElement('li');
+    // <li class="item"> </li>
+    li.setAttribute('class', 'item');
+    // <li class="item" data-key="20200708"> </li>
+    li.setAttribute('data-key', item.id);
+    /* <li class="item" data-key="20200708"> 
+          <input type="checkbox" class="checkbox">
+          Go to Gym
+          <button class="delete-button">X</button>
+        </li> */
+    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
+    //if (item.completed === true) {
+      //li.classList.add('checked');
+    //}
+
+    li.innerHTML = "<button class='open-button'>Open</button><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Notes: " + item.note + "</br>Group: " + item.tag + "</p>";
+    // finally add the <li> to the <ul>
+    readItemsList.append(li);
+  });
+
+}
+
+// function to add todos to local storage
+function addToLocalStorage(readingList) {
+  // conver the array to string then store it.
+  localStorage.setItem('readingList', JSON.stringify(readingList));
+  // render them to screen
+  renderRefs(readingList);
+}
+
+// function helps to get everything from local storage
+function getFromLocalStorage() {
+  const reference = localStorage.getItem('readingList');
+  // if reference exists
+  if (reference) {
+    // converts back to array and store it in todos array
+    readingList = JSON.parse(reference);
+    renderRefs(readingList);
+  }
+}
+
+// toggle the value to completed and not completed
+function open(id) {
+  readingList.forEach(function(item) {
+    // use == not ===, because here types are different. One is number and other is string;
+    if (item.id == id) {
+      // toggle the value
+      window.open(item.link);
+      console.log(item.id)
+    }
+  });
+
+  addToLocalStorage(readingList);
+}
+
+// deletes a todo from todos array, then updates localstorage and renders updated list to screen
+function deleteRef(id) {
+  // filters out the <li> with the id and updates the todos array
+  //console.log(id);
+  readingList = readingList.filter(function(item) {
+    // use != not !==, because here types are different. One is number and other is string
+    return item.id != id;
+  });
+  
+  // update the localStorage
+  addToLocalStorage(readingList);
+}
+
+// initially get everything from localStorage
+getFromLocalStorage();
+
+// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
+readItemsList.addEventListener('click', function(event) {
+  // check if the event is on checkbox
+  if (event.target.classList.contains('open-button')) {
+    // toggle the state
+    open(event.target.parentElement.getAttribute('data-key'))
+    //console.log(event.target.parentElement.nodeName);
+  }
+
+  // check if that is a delete-button
+  if (event.target.classList.contains('delete-button')) {
+    // get id from data-key attribute's value of parent <li> where the delete-button is present
+    deleteRef(event.target.parentElement.getAttribute('data-key'));
+    //console.log(event.target.parentElement.nodeName)
+  }
+});
