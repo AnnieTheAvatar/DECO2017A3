@@ -1,4 +1,5 @@
 
+
 // select everything
 // select the todo-form
 const todoForm = document.querySelector('.todo-form');
@@ -282,6 +283,13 @@ function closeForm() {
 //COVEY QUADRANTS
 
 function renderCovey(){
+  //remove current covey
+  //document.getElementById('urgimp').removeChild(document.getElementById('urgimp').lastElementChild);
+  //document.getElementById('notimp').removeChild(document.getElementById('notimp').lastElementChild);
+  //document.getElementById('urgnot').removeChild(document.getElementById('urgnot').lastElementChild);
+  //document.getElementById('notnot').removeChild(document.getElementById('notnot').lastElementChild);
+
+  //cycle through the array to decide where to put the tasks
   todos.forEach(function(item) {
     var today = new Date();
     let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
