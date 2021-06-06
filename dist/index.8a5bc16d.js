@@ -1,0 +1,1042 @@
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+
+(function(modules, entry, mainEntry, parcelRequireName, globalName) {
+  /* eslint-disable no-undef */
+  var globalObject =
+    typeof globalThis !== 'undefined'
+      ? globalThis
+      : typeof self !== 'undefined'
+      ? self
+      : typeof window !== 'undefined'
+      ? window
+      : typeof global !== 'undefined'
+      ? global
+      : {};
+  /* eslint-enable no-undef */
+
+  // Save the require from previous bundle to this closure if any
+  var previousRequire =
+    typeof globalObject[parcelRequireName] === 'function' &&
+    globalObject[parcelRequireName];
+
+  var cache = previousRequire.cache || {};
+  // Do not use `require` to prevent Webpack from trying to bundle this call
+  var nodeRequire =
+    typeof module !== 'undefined' &&
+    typeof module.require === 'function' &&
+    module.require.bind(module);
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire =
+          typeof globalObject[parcelRequireName] === 'function' &&
+          globalObject[parcelRequireName];
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+      localRequire.cache = {};
+
+      var module = (cache[name] = new newRequire.Module(name));
+
+      modules[name][0].call(
+        module.exports,
+        localRequire,
+        module,
+        module.exports,
+        this,
+      );
+    }
+
+    return cache[name].exports;
+
+    function localRequire(x) {
+      return newRequire(localRequire.resolve(x));
+    }
+
+    function resolve(x) {
+      return modules[name][1][x] || x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function(id, exports) {
+    modules[id] = [
+      function(require, module) {
+        module.exports = exports;
+      },
+      {},
+    ];
+  };
+
+  Object.defineProperty(newRequire, 'root', {
+    get: function() {
+      return globalObject[parcelRequireName];
+    },
+  });
+
+  globalObject[parcelRequireName] = newRequire;
+
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
+
+  if (mainEntry) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(mainEntry);
+
+    // CommonJS
+    if (typeof exports === 'object' && typeof module !== 'undefined') {
+      module.exports = mainExports;
+
+      // RequireJS
+    } else if (typeof define === 'function' && define.amd) {
+      define(function() {
+        return mainExports;
+      });
+
+      // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+})({"7GifH":[function(require,module,exports) {
+var HMR_HOST = null;
+var HMR_PORT = null;
+var HMR_SECURE = false;
+var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
+module.bundle.HMR_BUNDLE_ID = "97912cc17f1f5bdf37964fbc8a5bc16d"; // @flow
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+import type {
+  HMRAsset,
+  HMRMessage,
+} from '@parcel/reporter-dev-server/src/HMRServer.js';
+interface ParcelRequire {
+  (string): mixed;
+  cache: {|[string]: ParcelModule|};
+  hotData: mixed;
+  Module: any;
+  parent: ?ParcelRequire;
+  isParcelRequire: true;
+  modules: {|[string]: [Function, {|[string]: string|}]|};
+  HMR_BUNDLE_ID: string;
+  root: ParcelRequire;
+}
+interface ParcelModule {
+  hot: {|
+    data: mixed,
+    accept(cb: (Function) => void): void,
+    dispose(cb: (mixed) => void): void,
+    // accept(deps: Array<string> | string, cb: (Function) => void): void,
+    // decline(): void,
+    _acceptCallbacks: Array<(Function) => void>,
+    _disposeCallbacks: Array<(mixed) => void>,
+  |};
+}
+declare var module: {bundle: ParcelRequire, ...};
+declare var HMR_HOST: string;
+declare var HMR_PORT: string;
+declare var HMR_ENV_HASH: string;
+declare var HMR_SECURE: boolean;
+*/ var OVERLAY_ID = '__parcel__error__overlay__';
+var OldModule = module.bundle.Module;
+function Module(moduleName) {
+    OldModule.call(this, moduleName);
+    this.hot = {
+        data: module.bundle.hotData,
+        _acceptCallbacks: [],
+        _disposeCallbacks: [],
+        accept: function(fn) {
+            this._acceptCallbacks.push(fn || function() {
+            });
+        },
+        dispose: function(fn) {
+            this._disposeCallbacks.push(fn);
+        }
+    };
+    module.bundle.hotData = undefined;
+}
+module.bundle.Module = Module;
+var checkedAssets/*: {|[string]: boolean|} */ , acceptedAssets/*: {|[string]: boolean|} */ , assetsToAccept/*: Array<[ParcelRequire, string]> */ ;
+function getHostname() {
+    return HMR_HOST || (location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
+}
+function getPort() {
+    return HMR_PORT || location.port;
+}
+// eslint-disable-next-line no-redeclare
+var parent = module.bundle.parent;
+if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
+    var hostname = getHostname();
+    var port = getPort();
+    var protocol = HMR_SECURE || location.protocol == 'https:' && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? 'wss' : 'ws';
+    var ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/');
+    // $FlowFixMe
+    ws.onmessage = function(event/*: {data: string, ...} */ ) {
+        checkedAssets = {
+        };
+        acceptedAssets = {
+        };
+        assetsToAccept = [];
+        var data = JSON.parse(event.data);
+        if (data.type === 'update') {
+            // Remove error overlay if there is one
+            removeErrorOverlay();
+            let assets = data.assets.filter((asset)=>asset.envHash === HMR_ENV_HASH
+            );
+            // Handle HMR Update
+            var handled = false;
+            assets.forEach((asset)=>{
+                var didAccept = asset.type === 'css' || asset.type === 'js' && hmrAcceptCheck(module.bundle.root, asset.id, asset.depsByBundle);
+                if (didAccept) handled = true;
+            });
+            if (handled) {
+                console.clear();
+                assets.forEach(function(asset) {
+                    hmrApply(module.bundle.root, asset);
+                });
+                for(var i = 0; i < assetsToAccept.length; i++){
+                    var id = assetsToAccept[i][1];
+                    if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
+                }
+            } else window.location.reload();
+        }
+        if (data.type === 'error') {
+            // Log parcel errors to console
+            for (let ansiDiagnostic of data.diagnostics.ansi){
+                let stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
+                console.error('🚨 [parcel]: ' + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
+            }
+            // Render the fancy html overlay
+            removeErrorOverlay();
+            var overlay = createErrorOverlay(data.diagnostics.html);
+            // $FlowFixMe
+            document.body.appendChild(overlay);
+        }
+    };
+    ws.onerror = function(e) {
+        console.error(e.message);
+    };
+    ws.onclose = function(e) {
+        console.warn('[parcel] 🚨 Connection to the HMR server was lost');
+    };
+}
+function removeErrorOverlay() {
+    var overlay = document.getElementById(OVERLAY_ID);
+    if (overlay) {
+        overlay.remove();
+        console.log('[parcel] ✨ Error resolved');
+    }
+}
+function createErrorOverlay(diagnostics) {
+    var overlay = document.createElement('div');
+    overlay.id = OVERLAY_ID;
+    let errorHTML = '<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">';
+    for (let diagnostic of diagnostics){
+        let stack = diagnostic.codeframe ? diagnostic.codeframe : diagnostic.stack;
+        errorHTML += `\n      <div>\n        <div style="font-size: 18px; font-weight: bold; margin-top: 20px;">\n          🚨 ${diagnostic.message}\n        </div>\n        <pre>\n          ${stack}\n        </pre>\n        <div>\n          ${diagnostic.hints.map((hint)=>'<div>' + hint + '</div>'
+        ).join('')}\n        </div>\n      </div>\n    `;
+    }
+    errorHTML += '</div>';
+    overlay.innerHTML = errorHTML;
+    return overlay;
+}
+function getParents(bundle, id) /*: Array<[ParcelRequire, string]> */ {
+    var modules = bundle.modules;
+    if (!modules) return [];
+    var parents = [];
+    var k, d, dep;
+    for(k in modules)for(d in modules[k][1]){
+        dep = modules[k][1][d];
+        if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) parents.push([
+            bundle,
+            k
+        ]);
+    }
+    if (bundle.parent) parents = parents.concat(getParents(bundle.parent, id));
+    return parents;
+}
+function updateLink(link) {
+    var newLink = link.cloneNode();
+    newLink.onload = function() {
+        if (link.parentNode !== null) // $FlowFixMe
+        link.parentNode.removeChild(link);
+    };
+    newLink.setAttribute('href', // $FlowFixMe
+    link.getAttribute('href').split('?')[0] + '?' + Date.now());
+    // $FlowFixMe
+    link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+    if (cssTimeout) return;
+    cssTimeout = setTimeout(function() {
+        var links = document.querySelectorAll('link[rel="stylesheet"]');
+        for(var i = 0; i < links.length; i++){
+            // $FlowFixMe[incompatible-type]
+            var href = links[i].getAttribute('href');
+            var hostname = getHostname();
+            var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            if (!absolute) updateLink(links[i]);
+        }
+        cssTimeout = null;
+    }, 50);
+}
+function hmrApply(bundle/*: ParcelRequire */ , asset/*:  HMRAsset */ ) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (asset.type === 'css') {
+        reloadCSS();
+        return;
+    }
+    let deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
+    if (deps) {
+        var fn = new Function('require', 'module', 'exports', asset.output);
+        modules[asset.id] = [
+            fn,
+            deps
+        ];
+    } else if (bundle.parent) hmrApply(bundle.parent, asset);
+}
+function hmrAcceptCheck(bundle/*: ParcelRequire */ , id/*: string */ , depsByBundle/*: ?{ [string]: { [string]: string } }*/ ) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
+        // If we reached the root bundle without finding where the asset should go,
+        // there's nothing to do. Mark as "accepted" so we don't reload the page.
+        if (!bundle.parent) return true;
+        return hmrAcceptCheck(bundle.parent, id, depsByBundle);
+    }
+    if (checkedAssets[id]) return;
+    checkedAssets[id] = true;
+    var cached = bundle.cache[id];
+    assetsToAccept.push([
+        bundle,
+        id
+    ]);
+    if (cached && cached.hot && cached.hot._acceptCallbacks.length) return true;
+    return getParents(module.bundle.root, id).some(function(v) {
+        return hmrAcceptCheck(v[0], v[1], null);
+    });
+}
+function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
+    var cached = bundle.cache[id];
+    bundle.hotData = {
+    };
+    if (cached && cached.hot) cached.hot.data = bundle.hotData;
+    if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
+        cb(bundle.hotData);
+    });
+    delete bundle.cache[id];
+    bundle(id);
+    cached = bundle.cache[id];
+    if (cached && cached.hot && cached.hot._acceptCallbacks.length) cached.hot._acceptCallbacks.forEach(function(cb) {
+        var assetsToAlsoAccept = cb(function() {
+            return getParents(module.bundle.root, id);
+        });
+        if (assetsToAlsoAccept && assetsToAccept.length) assetsToAccept.push.apply(assetsToAccept, assetsToAlsoAccept);
+    });
+    acceptedAssets[id] = true;
+}
+
+},{}],"4OAbU":[function(require,module,exports) {
+// select everything
+// select the todo-form
+const todoForm = document.querySelector('.todo-form');
+// select the input box
+const todoInput = document.querySelector('.todo-input');
+// select the <ul> with class="todo-items"
+const todoItemsList = document.querySelector('.todo-items');
+var slider = document.getElementById("priorityInput");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.innerHTML = this.value;
+};
+// array which stores every todos
+let todos = [];
+// add an eventListener on form, and listen for submit event
+todoForm.addEventListener('submit', function(event) {
+    // prevent the page from reloading when submitting the form
+    event.preventDefault();
+    let task = todoInput.value;
+    let date = new Date().toLocaleDateString('en-US')//Convert to short date format
+    ;
+    let dD = dueDateInput.value;
+    let prio = priorityInput.value + "%";
+    let time = timeConvert(estimatedTimeInput.value);
+    let note = notesInput.value;
+    // Call the addTask() function using
+    addTodo(task, date, dD, prio, time, note, false);
+//addTodo(todoInput.value); // call addTodo function with input box current value
+});
+// function to add todo
+function addTodo(item, createdDate, dueDate, priorityRating, estimatedTime, notes, completionStatus) {
+    // if item is not empty
+    if (item !== '') {
+        // make a todo object, which has id, name, and completed properties
+        const todo = {
+            id: Date.now(),
+            name: item,
+            due: dueDate,
+            weight: priorityRating,
+            time: estimatedTime,
+            note: notes,
+            completed: false
+        };
+        // then add it to todos array
+        todos.push(todo);
+        addToLocalStorage(todos); // then store it in localStorage
+        // finally clear the input box value
+        todoInput.value = '';
+    }
+}
+// function to render given todos to screen
+function renderTodos(todos1) {
+    // clear everything inside <ul> with class=todo-items
+    todoItemsList.innerHTML = '';
+    // run through each item inside todos
+    todos1.forEach(function(item) {
+        // check if the item is completed
+        const checked = item.completed ? 'checked' : null;
+        // make a <li> element and fill it
+        const li = document.createElement('li');
+        li.setAttribute('class', 'item');
+        li.setAttribute('data-key', item.id);
+        // if item is completed, then add a class to <li> called 'checked', which will add line-through style
+        if (item.completed === true) li.classList.add('checked');
+        li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
+        // finally add the <li> to the <ul>
+        todoItemsList.append(li);
+    });
+}
+// function to add todos to local storage
+function addToLocalStorage(todos1) {
+    // conver the array to string then store it.
+    localStorage.setItem('todos', JSON.stringify(todos1));
+    // render them to screen
+    renderTodos(todos1);
+}
+// function helps to get everything from local storage
+function getFromLocalStorage() {
+    const reference = localStorage.getItem('todos');
+    // if reference exists
+    if (reference) {
+        // converts back to array and store it in todos array
+        todos = JSON.parse(reference);
+        renderTodos(todos);
+    }
+}
+// toggle the value to completed and not completed
+function toggle(id) {
+    todos.forEach(function(item) {
+        // use == not ===, because here types are different. One is number and other is string;
+        if (item.id == id) // toggle the value
+        item.completed = !item.completed;
+    });
+    addToLocalStorage(todos);
+}
+// deletes a todo from todos array, then updates localstorage and renders updated list to screen
+function deleteTodo(id) {
+    // filters out the <li> with the id and updates the todos array
+    //console.log(id);
+    todos = todos.filter(function(item) {
+        // use != not !==, because here types are different. One is number and other is string
+        return item.id != id;
+    });
+    // update the localStorage
+    addToLocalStorage(todos);
+}
+// initially get everything from localStorage
+getFromLocalStorage();
+// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
+todoItemsList.addEventListener('click', function(event) {
+    // check if the event is on checkbox
+    if (event.target.type === 'checkbox') // toggle the state
+    toggle(event.target.parentElement.getAttribute('data-key'));
+    // check if that is a delete-button
+    if (event.target.classList.contains('delete-button')) // get id from data-key attribute's value of parent <li> where the delete-button is present
+    deleteTodo(event.target.parentElement.getAttribute('data-key'));
+});
+/*
+//TASK LIST
+// Setting up variables for our HTML elements using DOM selection
+const form = document.getElementById("taskform");
+const button = document.querySelector("#taskform > button"); // Complex CSS query
+const tasklist = document.getElementById("tasklist");
+const taskInput = document.getElementById("taskInput");
+
+var slider = document.getElementById("priorityInput");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+// Event listener for Button click
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); 
+
+  let task = taskInput.value;
+  let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
+  let dD = dueDateInput.value;
+  let prio = priorityInput.value + "%";
+  let time = timeConvert(estimatedTimeInput.value)
+  let note = notesInput.value;
+  
+  // Call the addTask() function using
+  addTask(task, date, dD, prio, time, note, false);
+
+  // Log out the newly populated taskList everytime the button has been pressed
+})
+
+// Create an empty array to store our tasks
+var taskList = [];
+
+function addTask(taskDescription, createdDate, dueDate, priorityRating, estimatedTime, notes, completionStatus) {
+  let task = {
+    taskDescription,
+    createdDate,
+    dueDate,
+    priorityRating,
+    estimatedTime,
+    notes,
+    completionStatus
+  };
+
+  let key = (localStorage.length + 1).toString();
+  var value = taskDescription;
+  localStorage.setItem(key,value);
+  console.log(key,value);
+  // Add the task to our array of tasks
+  taskList.push(task);
+  // Separate the DOM manipulation from the object creation logic
+  renderTask(task);
+  renderCovey(taskDescription, dueDate, priorityInput.value);
+}
+
+// Function to display the item on the page
+function renderTask(task) {
+  let item = document.createElement("li");
+  item.innerHTML = "<p>" + task.taskDescription + "</br>Due: " + task.dueDate + "</br>Weight: " + task.priorityRating + "</br>Notes: " +task.notes + "</p>" ;
+
+  tasklist.appendChild(item);
+
+  // Setup delete button DOM elements
+  let delButton = document.createElement("button");
+  delButton.className = "delete-button";
+  let delButtonText = document.createTextNode("Delete");
+  delButton.appendChild(delButtonText);
+  item.appendChild(delButton); // Adds a delete button to every task
+
+  // Listen for when the 
+  delButton.addEventListener("click", function(event){
+    item.remove();
+    localStorage.removeItem();
+     // Remove the task item from the page & local storage when button clicked
+    // Because we used 'let' to define the item, this will always delete the right element
+  })
+
+  // Setup completed button DOM elements
+  let doneButton = document.createElement("button");
+  doneButton.className = "done-button";
+  let doneButtonText = document.createTextNode("Completed!");
+  doneButton.appendChild(doneButtonText);
+  item.appendChild(doneButton); // Adds a delete button to every task
+
+  doneButton.addEventListener("click", function(event){
+    item.innerHTML = "<p>" + task.taskDescription + "</p";
+    item.appendChild(delButton);
+    item.setAttribute('class','checked'); // strike through the completed task
+    // Because we used 'let' to define the item, this will always delete the right element
+  })
+  
+}
+*/ //converting minutes to hours:mins
+function timeConvert(n) {
+    var num = n;
+    var hours = num / 60;
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    return rhours + "hr : " + rminutes + "min";
+}
+//openning and closing the form
+function openForm() {
+    document.getElementById("taskform").style.display = "block";
+}
+function closeForm() {
+    document.getElementById("taskform").style.display = "none";
+}
+//COVEY QUADRANTS
+function renderCovey() {
+    //remove current covey
+    //document.getElementById('urgimp').removeChild(document.getElementById('urgimp').lastElementChild);
+    //document.getElementById('notimp').removeChild(document.getElementById('notimp').lastElementChild);
+    //document.getElementById('urgnot').removeChild(document.getElementById('urgnot').lastElementChild);
+    //document.getElementById('notnot').removeChild(document.getElementById('notnot').lastElementChild);
+    //cycle through the array to decide where to put the tasks
+    todos.forEach(function(item) {
+        var today = new Date();
+        let date1 = new Date(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate());
+        let date2 = new Date(item.due);
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+        var timeRemaining = Math.floor(Difference_In_Time / 86400000);
+        var weight = item.weight.slice(0, -1);
+        if (timeRemaining <= 14 && weight >= 30) {
+            let cov = document.createElement("li");
+            cov.innerHTML = "<p>" + item.name + "</p>";
+            urgimp.appendChild(cov);
+        } else if (timeRemaining <= 14 && weight < 30) {
+            let cov = document.createElement("li");
+            cov.innerHTML = "<p>" + item.name + "</p>";
+            urgnot.appendChild(cov);
+        } else if (timeRemaining > 14 && weight >= 30) {
+            let cov = document.createElement("li");
+            cov.innerHTML = "<p>" + item.name + "</p>";
+            notimp.appendChild(cov);
+        } else if (timeRemaining > 14 && weight < 30) {
+            let cov = document.createElement("li");
+            cov.innerHTML = "<p>" + item.name + "</p>";
+            notnot.appendChild(cov);
+        }
+    });
+}
+//STOPWATCH
+const timer = document.getElementById('stopwatch');
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stoptime = true;
+function startTimer() {
+    if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    }
+}
+function stopTimer() {
+    if (stoptime == false) stoptime = true;
+}
+function timerCycle() {
+    if (stoptime == false) {
+        sec = parseInt(sec);
+        min = parseInt(min);
+        hr = parseInt(hr);
+        sec = sec + 1;
+        if (sec == 60) {
+            min = min + 1;
+            sec = 0;
+        }
+        if (min == 60) {
+            hr = hr + 1;
+            min = 0;
+            sec = 0;
+        }
+        if (sec < 10 || sec == 0) sec = '0' + sec;
+        if (min < 10 || min == 0) min = '0' + min;
+        if (hr < 10 || hr == 0) hr = '0' + hr;
+        timer.innerHTML = hr + ':' + min + ':' + sec;
+        setTimeout("timerCycle()", 1000);
+    }
+}
+function resetTimer() {
+    timer.innerHTML = "00:00:00";
+    stoptime = true;
+    hr = 0;
+    sec = 0;
+    min = 0;
+}
+//POMODORO TIMER
+// Select Pomodoro display to edit timer content
+const pomodoroDisplay = document.querySelector(".timer-display");
+// Select start, pause & stop buttons
+const startButton = document.querySelector(".start");
+const stopButton = document.querySelector(".stop");
+const pauseButton = document.querySelector(".pause");
+// Select fields to increment total work & break sessions
+const workSession = document.querySelector(".work-sessions");
+const breakSession = document.querySelector(".break-sessions");
+// Select div to display session type
+const sessionType = document.querySelector(".session-type");
+const buttonGroup = document.querySelector(".button-group");
+// display initial timer state at the start
+const progressBar = new ProgressBar.Circle(pomodoroDisplay, {
+    strokeWidth: 2,
+    text: {
+        value: "25:00"
+    },
+    trailColor: "rgba(255, 255, 255, 0.308)",
+    color: "#f3f3f3",
+    svgStyle: {
+        // Important: make sure that your container has same
+        // aspect ratio as the SVG canvas. See SVG canvas sizes above.
+        width: "85%"
+    }
+});
+// Set a flag to check if pomodoro was paused
+let timerRunning = true;
+// Set a flag to check if timer was stopped
+let timerStopped = false;
+// set pomodoro interval time
+let timerSeconds = 1500;
+let currentSessionTime = 1500;
+// set break interval time
+let breakSeconds = 300;
+//Set a variable to calculate time spent in current session
+let timeSpent = 0;
+// Declare  variable for setInterval
+let timerInterval = null;
+// Declare a variable to define type of session
+let type = "work";
+// set variables for counting total work & break sessions
+let totalWorkSessions = 0;
+let totalBreakSessions = 0;
+// set function to initialize buttons at start of application
+function initializeButtons() {
+    startButton.style.display = "block";
+    stopButton.style.display = "none";
+    pauseButton.style.display = "none";
+}
+// set a function to toggle session type
+const toggleSession = function() {
+    if (type === "work") {
+        type = "break";
+        currentSessionTime = breakSeconds;
+    } else {
+        type = "work";
+        currentSessionTime = timerSeconds;
+    }
+};
+// Calculate session progress for progressbar
+const calculateSessionProgress = ()=>{
+    // calculate the completion rate of this session
+    let sessionTotalTime = type === "work" ? timerSeconds : breakSeconds;
+    return timeSpent / sessionTotalTime;
+};
+// set a display timer function to format time-
+const displayTimer = function(timeInput) {
+    // convert seconds into minutes
+    var minutes = Math.floor(timeInput / 60);
+    var remainingSeconds = timeInput - minutes * 60;
+    // format time for single digit prepend by 0
+    if (remainingSeconds < 10) remainingSeconds = "0" + remainingSeconds;
+    if (minutes < 10) minutes = "0" + minutes;
+    // return display time
+    progressBar.text.innerText = `${minutes}:${remainingSeconds}`;
+    workSession.textContent = totalWorkSessions;
+    breakSession.textContent = totalBreakSessions;
+    sessionType.textContent = type;
+};
+// Reset timer Seconds
+const resetTimerSeconds = function() {
+    currentSessionTime = 1500;
+};
+// Set a time function to run pomodoro intervals
+const timerStart = function() {
+    if (timerRunning) timerInterval = setInterval(function() {
+        timeSpent++;
+        currentSessionTime--;
+        displayTimer(currentSessionTime);
+        progressBar.set(calculateSessionProgress());
+        if (currentSessionTime < 0) {
+            if (type === "work") totalWorkSessions++;
+            else totalBreakSessions++;
+            timeSpent = 0;
+            timerRunning = false;
+            clearInterval(timerInterval);
+            toggleSession();
+            initializeButtons();
+            displayTimer(currentSessionTime);
+            progressBar.set(calculateSessionProgress());
+        }
+    }, 1000);
+};
+// Set a function to pause timer
+const pauseTimer = function() {
+    if (!timerRunning) clearInterval(timerInterval);
+};
+// set a function to stop timer
+const stopTimerP = function() {
+    if (timerStopped) {
+        timeSpent = 0;
+        clearInterval(timerInterval);
+        resetTimerSeconds();
+        displayTimer(currentSessionTime);
+        progressBar.set(calculateSessionProgress());
+        timerStopped = false;
+    }
+};
+// Listen for clicks on the document
+document.addEventListener("click", function(event) {
+    // Start pomodoro on click on start button
+    if (event.target.classList.contains("start")) {
+        timerRunning = true;
+        timerStart();
+        startButton.style.display = "none";
+        pauseButton.style.display = "block";
+        stopButton.style.display = "block";
+    }
+    if (event.target.classList.contains("pause")) {
+        timerRunning = false;
+        pauseTimer();
+        pauseButton.style.display = "none";
+        startButton.style.display = "block";
+    }
+    if (event.target.classList.contains("stop")) {
+        timerStopped = true;
+        stopTimerP();
+        initializeButtons();
+    }
+});
+// display buttons at the start of timer
+initializeButtons();
+//READING LIST
+//openning and closing the form
+function openReading() {
+    document.getElementById("readingform").style.display = "block";
+}
+function closeReadForm() {
+    document.getElementById("readingform").style.display = "none";
+}
+/*
+// Setting up variables for our HTML elements using DOM selection
+const readform = document.getElementById("readingform");
+const readbutton = document.querySelector("#readingform > button"); // Complex CSS query
+const readinglist = document.getElementById("readinglist");
+const refInput = document.getElementById("refInput");
+
+// Event listener for Button click
+
+function submitList(){
+  event.preventDefault(); 
+
+  let ref = refInput.value;
+  let link = linkInput.value;
+  let notes = readnotesInput.value;
+  
+  // Call the addRef() function using
+  addRef(ref, link, notes);
+
+  // Log out the newly populated taskList everytime the button has been pressed
+}
+
+// Create an empty array to store our tasks
+var readingList = [];
+
+function addRef(refName, link, notes) {
+  let ref = {
+    refName,
+    link,
+    notes
+  };
+
+  // Add the task to our array of tasks
+  readingList.push(ref);
+  
+  // Separate the DOM manipulation from the object creation logic
+  renderList(ref);
+}
+
+// Function to display the item on the page
+function renderList(ref) {
+  let item = document.createElement("li");
+  item.innerHTML = "<p>" + ref.refName + "</p>";
+  readinglist.appendChild(item);
+
+  let openButton = document.createElement("button");
+  openButton.className = "openbutton";
+  let openButtonText = document.createTextNode("Open");
+  openButton.appendChild(openButtonText);
+  item.appendChild(openButton); // Adds a delete button to every task
+
+    // Listen for when the delete button is pressed
+  openButton.addEventListener("click", function(event){
+    window.open(ref.link);
+    
+    })
+
+  // Setup delete button DOM elements
+  let delButton = document.createElement("button");
+  delButton.className = "delete-button";
+  let delButtonText = document.createTextNode("Delete");
+  delButton.appendChild(delButtonText);
+  item.appendChild(delButton); // Adds a delete button to every task
+
+    // Listen for when the delete button is pressed
+  delButton.addEventListener("click", function(event){
+    item.remove(); }) // Remove the task item from the page when button clicked
+    // Because we used 'let' to define the item, this will always delete the right element
+
+  //edit button
+  let edButton = document.createElement("button");
+  edButton.className = "edit-button";
+  let edButtonText = document.createTextNode("Edit");
+  edButton.appendChild(edButtonText);
+  item.appendChild(edButton);
+
+    // Listen for when the edit button is pressed
+  edButton.addEventListener("click", function(event){
+    }// edit the task 
+    // Because we used 'let' to define the item, this will always delete the right element
+    )
+  
+  // Clear the value of the input once the task has been added to the page
+  //form.reset();
+  }
+
+*/ //READING LIST 2
+const readForm = document.querySelector('.read-form');
+// select the input box
+const readInput = document.querySelector('.read-input');
+// select the <ul> with class="todo-items"
+const readItemsList = document.querySelector('.read-items');
+// array which stores every todos
+let readingList = [];
+// add an eventListener on form, and listen for submit event
+readForm.addEventListener('submit', function(event) {
+    // prevent the page from reloading when submitting the form
+    event.preventDefault();
+    let ref = refInput.value;
+    let link = linkInput.value;
+    let notes = readnotesInput.value;
+    let tag = groupInput.value;
+    // Call the addTask() function using
+    addRef(ref, link, notes, tag);
+//addTodo(todoInput.value); // call addTodo function with input box current value
+});
+// function to add todo
+function addRef(refName, link, notes, tag) {
+    // if item is not empty
+    if (refName !== '') {
+        // make a todo object, which has id, name, and completed properties
+        const ref = {
+            id: Date.now(),
+            name: refName,
+            links: link,
+            note: notes,
+            group: tag
+        };
+        // then add it to todos array
+        readingList.push(ref);
+        addToLocalStorage(readingList); // then store it in localStorage
+        // finally clear the input box value
+        refInput.value = '';
+    }
+}
+// function to render given todos to screen
+function renderRefs(readingList1) {
+    // clear everything inside <ul> with class=todo-items
+    readItemsList.innerHTML = '';
+    // run through each item inside todos
+    readingList1.forEach(function(item) {
+        // check if the item is completed
+        //const checked = item.completed ? 'checked': null;
+        // make a <li> element and fill it
+        const li = document.createElement('li');
+        li.setAttribute('class', 'item');
+        li.setAttribute('data-key', item.id);
+        li.innerHTML = "<button class='open-button'>Open</button><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Notes: " + item.note + "</br>Group: " + item.tag + "</p>";
+        // finally add the <li> to the <ul>
+        readItemsList.append(li);
+    });
+}
+// function to add todos to local storage
+function addToLocalStorage(readingList1) {
+    // conver the array to string then store it.
+    localStorage.setItem('readingList', JSON.stringify(readingList1));
+    // render them to screen
+    renderRefs(readingList1);
+}
+// function helps to get everything from local storage
+function getFromLocalStorage() {
+    const reference = localStorage.getItem('readingList');
+    // if reference exists
+    if (reference) {
+        // converts back to array and store it in todos array
+        readingList = JSON.parse(reference);
+        renderRefs(readingList);
+    }
+}
+// toggle the value to completed and not completed
+function open(id) {
+    readingList.forEach(function(item) {
+        // use == not ===, because here types are different. One is number and other is string;
+        if (item.id == id) {
+            // toggle the value
+            window.open(item.link);
+            console.log(item.id);
+        }
+    });
+    addToLocalStorage(readingList);
+}
+// deletes a todo from todos array, then updates localstorage and renders updated list to screen
+function deleteRef(id) {
+    // filters out the <li> with the id and updates the todos array
+    //console.log(id);
+    readingList = readingList.filter(function(item) {
+        // use != not !==, because here types are different. One is number and other is string
+        return item.id != id;
+    });
+    // update the localStorage
+    addToLocalStorage(readingList);
+}
+// initially get everything from localStorage
+getFromLocalStorage();
+// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
+readItemsList.addEventListener('click', function(event) {
+    // check if the event is on checkbox
+    if (event.target.classList.contains('open-button')) // toggle the state
+    open(event.target.parentElement.getAttribute('data-key'));
+    // check if that is a delete-button
+    if (event.target.classList.contains('delete-button')) // get id from data-key attribute's value of parent <li> where the delete-button is present
+    deleteRef(event.target.parentElement.getAttribute('data-key'));
+});
+
+},{}]},["7GifH","4OAbU"], "4OAbU", "parcelRequire3922")
+
+//# sourceMappingURL=index.8a5bc16d.js.map

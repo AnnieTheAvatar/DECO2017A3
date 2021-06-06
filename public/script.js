@@ -73,17 +73,12 @@ function renderTodos(todos) {
     const checked = item.completed ? 'checked': null;
 
     // make a <li> element and fill it
-    // <li> </li>
     const li = document.createElement('li');
-    // <li class="item"> </li>
+
     li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
+
     li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
+
     // if item is completed, then add a class to <li> called 'checked', which will add line-through style
     if (item.completed === true) {
       li.classList.add('checked');
@@ -720,21 +715,10 @@ function renderRefs(readingList) {
     //const checked = item.completed ? 'checked': null;
 
     // make a <li> element and fill it
-    // <li> </li>
     const li = document.createElement('li');
-    // <li class="item"> </li>
+
     li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
     li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
-    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
-    //if (item.completed === true) {
-      //li.classList.add('checked');
-    //}
 
     li.innerHTML = "<button class='open-button'>Open</button><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Notes: " + item.note + "</br>Group: " + item.tag + "</p>";
     // finally add the <li> to the <ul>

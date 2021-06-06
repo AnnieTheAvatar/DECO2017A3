@@ -1,4 +1,4 @@
-19354
+19367
 90C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\plugins\cleanupAttrs.js121436361000000000 0
 98C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\relateurl\lib\relate\findRelation.js130631687530000000 0
 94C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\internals\object-keys.js121436361000000000 0
@@ -58,6 +58,29 @@
 85C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\test\es6.js121436361000000000 0
 87C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2020\floor.js121436361000000000 0
 72C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\estraverse132674359265945023 1
+53C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist132674375272464966 1
+91C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\ajv\lib\dotjs\dependencies.js121436361000000000 0
+78C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\negate.js121436361000000000 0
+104C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\internals\collection-delete-all.js121436361000000000 0
+76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\uuid\README.md121436361000000000 0
+97C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\stable\instance\flat-map.js121436361000000000 0
+120C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-svgo\node_modules\postcss-value-parser\lib\unit.js121436361000000000 0
+100C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\terser\lib\utils\first_in_statement.js121436361000000000 0
+75C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\object.assign132674359258247213 1
+95C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2019\IteratorClose.js121436361000000000 0
+76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\string_decoder132674359242050938 1
+117C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\input.js121436361000000000 0
+91C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@babel\highlight\node_modules132674359150148705 1
+93C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@nodelib\fs.walk\out\index.d.ts121436361000000000 0
+76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\.svgo.yml121436361000000000 0
+92C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\csso\node_modules\mdn-data\api132674359001881541 1
+71C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lru-cache132674359235288266 1
+101C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2017\IsGenericDescriptor.js121436361000000000 0
+80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\uniqueId.js121436361000000000 0
+119C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\stylehacks\node_modules\chalk\node_modules\supports-color132674359242070732 1
+80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\hsl-regex\index.js130671323320000000 0
+126C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-string\node_modules\postcss\lib\declaration.js121436361000000000 0
+73C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\font-awesome\scss132674347476415279 1
 123C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-whitespace\node_modules\postcss\lib\root.js121436361000000000 0
 79C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\toPairs.js121436361000000000 0
 92C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\browserify-aes\streamCipher.js121436361000000000 0
@@ -115,7 +138,7 @@
 74C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\util\support132674358766011108 1
 74C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\images\notepad.png132674351287540000 0
 127C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-minify-params\node_modules\postcss-value-parser\README.md121436361000000000 0
-65C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\style.css132674363199715127 0
+65C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\style.css132674373788136996 0
 90C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\public-encrypt\withPublic.js121436361000000000 0
 87C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\tough-cookie\lib\store.js121436361000000000 0
 100C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@babel\traverse\lib\path\evaluation.js121012626000000000 0
@@ -181,7 +204,7 @@
 114C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-repeat-style\node_modules\has-flag132674359251813864 1
 90C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\source-map-resolve\readme.md121436361000000000 0
 93C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\highlight.js\lib\languages\d.js121436361000000000 0
-66C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\index.html132674351094260002 0
+66C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\index.html132674373758285494 0
 96C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\uncss\node_modules\postcss\LICENSE121436361000000000 0
 81C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\css-tree\lib\common132674358968199009 1
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\mergeWith.js121436361000000000 0
@@ -199,7 +222,7 @@
 122C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-reduce-transforms\node_modules\color-name\.npmignore130800019150000000 0
 88C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\whatwg-url\lib\URL-impl.js121436361000000000 0
 88C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\object-inspect\test\has.js121436361000000000 0
-65C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\script.js132674351015120000 0
+65C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\script.js132674375269565595 0
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\util-deprecate\node.js130614195410000000 0
 113C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@parcel\source-map\parcel_sourcemap_wasm\src\lib.rs121436361000000000 0
 85C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\es\math\sign.js121436361000000000 0
@@ -231,28 +254,6 @@
 80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\uncss\src\uncss.js121436361000000000 0
 92C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\internals\microtask.js121436361000000000 0
 73C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\font-awesome\less132674347476204770 1
-91C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\ajv\lib\dotjs\dependencies.js121436361000000000 0
-78C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\negate.js121436361000000000 0
-104C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\internals\collection-delete-all.js121436361000000000 0
-76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\uuid\README.md121436361000000000 0
-97C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\stable\instance\flat-map.js121436361000000000 0
-120C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-svgo\node_modules\postcss-value-parser\lib\unit.js121436361000000000 0
-100C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\terser\lib\utils\first_in_statement.js121436361000000000 0
-75C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\object.assign132674359258247213 1
-95C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2019\IteratorClose.js121436361000000000 0
-76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\string_decoder132674359242050938 1
-117C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\input.js121436361000000000 0
-91C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@babel\highlight\node_modules132674359150148705 1
-93C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@nodelib\fs.walk\out\index.d.ts121436361000000000 0
-76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\.svgo.yml121436361000000000 0
-92C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\csso\node_modules\mdn-data\api132674359001881541 1
-71C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lru-cache132674359235288266 1
-101C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2017\IsGenericDescriptor.js121436361000000000 0
-80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\uniqueId.js121436361000000000 0
-119C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\stylehacks\node_modules\chalk\node_modules\supports-color132674359242070732 1
-80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\hsl-regex\index.js130671323320000000 0
-126C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-string\node_modules\postcss\lib\declaration.js121436361000000000 0
-73C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\public\font-awesome\scss132674347476415279 1
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\toInteger.js121436361000000000 0
 83C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\parse-asn1\fixProc.js121436361000000000 0
 98C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\node_modules\color-name\test.js131446304190000000 0
@@ -374,6 +375,7 @@
 107C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\node_modules\supports-color\package.json132674359241711440 0
 104C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\request-promise-core\configure\request2.js121436361000000000 0
 115C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\snapdragon\node_modules\source-map\lib\source-node.js131411568470000000 0
+75C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.b5f57f94.js.map132674375271555865 0
 99C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\plugins\moveElemsAttrsToGroup.js121436361000000000 0
 126C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-unique-selectors\node_modules\postcss\lib\declaration.js121436361000000000 0
 102C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\features\string\virtual\fixed.js121436361000000000 0
@@ -4521,7 +4523,6 @@
 80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\request\lib\har.js121436361000000000 0
 93C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\caniuse-lite\data\regions\CO.js121436361000000000 0
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\tty-browserify\LICENSE131485997040000000 0
-134C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-display-values\node_modules\postcss\lib\stringifier.js121436361000000000 0
 83C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\_freeGlobal.js121436361000000000 0
 94C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\features\number\index.js121436361000000000 0
 92C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\stable\instance\map.js121436361000000000 0
@@ -4826,6 +4827,7 @@
 99C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2020\LengthOfArrayLike.js121436361000000000 0
 108C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@parcel\transformer-html\node_modules\domutils132674359266542266 1
 81C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\path-type\readme.md121436361000000000 0
+83C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\apple-touch-icon.917433d5.png132674375271056511 0
 121C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\stringify.js121436361000000000 0
 79C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\package.json132674359236778816 0
 111C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-modules-values\node_modules\color-convert132674359253241983 1
@@ -4843,8 +4845,8 @@
 101C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\plugins\cleanupEnableBackground.js121436361000000000 0
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\node-releases\data\raw132674358941120315 1
 125C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-colormin\node_modules\postcss\lib\terminal-highlight.js121436361000000000 0
-101C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\simple-swizzle\node_modules\is-arrayish132674359245192488 1
 98C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\svgo\plugins\cleanupNumericValues.js121436361000000000 0
+101C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\simple-swizzle\node_modules\is-arrayish132674359245192488 1
 116C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\root.js121436361000000000 0
 93C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\caniuse-lite\data\regions\AR.js121436361000000000 0
 115C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\object-copy\node_modules\define-property\package.json132674359258218521 0
@@ -7825,6 +7827,7 @@
 112C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-merge-rules\node_modules\has-flag\index.js131593941750000000 0
 126C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-merge-longhand\node_modules\postcss-value-parser\LICENSE121436361000000000 0
 121C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\processor.js121436361000000000 0
+74C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\notepad.787b8fb2.png132674375271036562 0
 82C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\initial.js121436361000000000 0
 118C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-url\node_modules\postcss\lib\vendor.js121436361000000000 0
 96C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\features\array\iterator.js121436361000000000 0
@@ -8383,6 +8386,7 @@
 97C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\highlight.js\styles\school-book.png121436361000000000 0
 127C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-display-values\node_modules\postcss\lib\rule.js121436361000000000 0
 107C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\internals\async-iterator-prototype.js121436361000000000 0
+134C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-display-values\node_modules\postcss\lib\stringifier.js121436361000000000 0
 141C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-normalize-display-values\node_modules\postcss\lib\terminal-highlight.js121436361000000000 0
 87C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@parcel\packager-html\lib132674358755463976 1
 110C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-merge-rules\node_modules\chalk\readme.md121436361000000000 0
@@ -10244,8 +10248,8 @@
 119C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\chalk\types\index.d.ts121436361000000000 0
 139C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\chalk\node_modules\supports-color\index.js131792129460000000 0
 81C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\fast-deep-equal\es6132674358982145766 1
-138C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\chalk\node_modules\supports-color\license131408182550000000 0
 87C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\json-schema\test\tests.js131173448000000000 0
+138C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\chalk\node_modules\supports-color\license131408182550000000 0
 140C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\chalk\node_modules\supports-color\readme.md131663821590000000 0
 82C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\nwsapi\dist\lint.log121436361000000000 0
 117C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-discard-empty\node_modules\ansi-styles\index.js131644568170000000 0
@@ -10481,6 +10485,7 @@
 80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\chalk\package.json132674359241651579 0
 126C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-convert-values\node_modules\postcss\lib\map-generator.js121436361000000000 0
 102C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\caniuse-lite\data\features\css-shapes.js121436361000000000 0
+64C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.html132674375271265954 0
 89C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\_baseIsTypedArray.js121436361000000000 0
 96C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\caniuse-lite\dist\lib\supported.js121436361000000000 0
 117C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\postcss-convert-values\node_modules\postcss\lib\node.js121436361000000000 0
@@ -11931,6 +11936,7 @@
 84C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\cloneWith.js121436361000000000 0
 85C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\collection.js121436361000000000 0
 102C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\features\array\virtual\concat.js121436361000000000 0
+71C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.8a5bc16d.js132674375271290147 0
 81C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\commit.js121436361000000000 0
 82C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\lodash\fp\compose.js121436361000000000 0
 77C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\.bin\nanoid.cmd132674359280857756 0
@@ -12611,6 +12617,7 @@
 104C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\jsdom\lib\jsdom\living\generated\Screen.js121436361000000000 0
 109C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\features\array\virtual\last-index-of.js121436361000000000 0
 112C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\jsdom\lib\jsdom\living\generated\ScrollBehavior.js121436361000000000 0
+80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\favicon-16x16.03efe18a.png132674375270976725 0
 118C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\@parcel\transformer-json\node_modules\json5\CHANGELOG.md121436361000000000 0
 119C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\jsdom\lib\jsdom\living\generated\ScrollLogicalPosition.js121436361000000000 0
 100C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\es-abstract\2017\SameValueNonNumber.js121436361000000000 0
@@ -13909,6 +13916,7 @@
 78C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-util-is\lib132674359002412893 1
 79C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\getpass\README.md131057491190000000 0
 82C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\getpass\lib\index.js131376371950000000 0
+71C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.b5f57f94.js132674375271315825 0
 80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\get-value\index.js131106727710000000 0
 79C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\get-value\LICENSE131107119160000000 0
 109C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\core-js\modules\esnext.array.find-last-index.js121436361000000000 0
@@ -19353,3 +19361,8 @@
 72C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\.bin\which132674359284770607 0
 76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\.bin\which.cmd132674359284770607 0
 76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\node_modules\.bin\which.ps1132674359284770607 0
+77C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\background.05878ea3.png132674375272405005 0
+80C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\favicon-32x32.7f126ec4.png132674375270968368 0
+75C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.8a5bc16d.js.map132674375271505992 0
+72C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.fbe23066.css132674375271268818 0
+76C:\Users\alac3583\Desktop\DECO2017 A3\DECO2017A3\dist\index.fbe23066.css.map132674375271476436 0

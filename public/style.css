@@ -31,8 +31,8 @@ body {
 }
 .header {
   text-align: center;
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  top: 10px; 
+  width: 100%; 
   z-index: 1;
 }
 
