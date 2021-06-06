@@ -1,0 +1,28 @@
+{
+  "name": "deco2017-a3",
+  "version": "1.0.0",
+  "description": "deco2017 web app",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "prestart": "parcel build ./public/index.html",
+    "dev": "parcel serve ./public/index.html"
+  },
+  "keywords": [
+    "deco2017",
+    "assignment",
+    "uni",
+    "web",
+    "app",
+    "study"
+  ],
+  "author": "Annie Lacoba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.3.1"
+  }
+}
