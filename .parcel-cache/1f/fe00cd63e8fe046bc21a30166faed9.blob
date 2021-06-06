@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>StudBud</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet"> 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+	<link href="1709979ce1a746dbac218773e80dac19" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="b91ac0ece282c177fe152f18d20d6089">
+  <link rel="preconnect" href="bfbd75b20762e759d2ff58b51df1b233">
+  <link href="ca6f47e60192895a868614805b01001d" rel="stylesheet"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="fa913fddbe3b214efbd4ff8903a1fa9a">
+  <link rel="icon" type="image/png" sizes="32x32" href="c405372ca1b74f272e9eee0f00ead300">
+  <link rel="icon" type="image/png" sizes="16x16" href="8551791757d9e4a45c486bf403297918">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
               <!-- Date input -->
                 <tr>
                   <td><label for="dueDate">Due Date: </label></td>
-                  <td><input type="date" name="dueDate" id="dueDateInput" required></td>
+                  <td><input type="date" name="dueDate" id="dueDateInput" required=""></td>
                 </tr>
                 <tr>
                   <td><label for="estimatedTime">Estimated completion time (mins):</label></td>
@@ -152,12 +152,12 @@
               <table class="reading-form">
                 <tr>
                   <td> <label for="ref">Reference Name:</label></td>
-                  <td><input type="text" name="ref" id="refInput" required></td>
+                  <td><input type="text" name="ref" id="refInput" required=""></td>
                 </tr>
               <!-- link input -->
                 <tr>
                   <td><label for="link">Link: </label></td>
-                  <td><input type="text" name="link" id="linkInput" required></td>
+                  <td><input type="text" name="link" id="linkInput" required=""></td>
                 </tr>
                 <!-- Notes -->
                 <tr>
@@ -178,9 +178,9 @@
     </div>
   </div>
   <div class="music-phone">
-      <iframe class="music" src="https://open.spotify.com/embed/playlist/2Fnfw3f8C3RpQ0JmGNvx58" allowtransparency="true" allow="encrypted-media" ></iframe>
+      <iframe class="music" src="584aa8a4c46f778c6fc067fc468af79f" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
-  <script src="progressbar.js"></script>
-  <script src="script.js"></script>
+  <script src="e22b76ecbb822ec939843e415ae1d172"></script>
+  <script src="4e6340146f7d0152c44dbd6ccf58b0e0"></script>
   </body>
 </html>

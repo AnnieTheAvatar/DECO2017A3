@@ -705,12 +705,12 @@ function addRef(refName, link, notes, tag) {
 }
 
 // function to render given todos to screen
-function renderRefs(readingList) {
+function renderRefs(readinglist) {
   // clear everything inside <ul> with class=todo-items
   readItemsList.innerHTML = '';
 
   // run through each item inside todos
-  readingList.forEach(function(item) {
+  readinglist.forEach(function(item) {
     // check if the item is completed
     //const checked = item.completed ? 'checked': null;
 
