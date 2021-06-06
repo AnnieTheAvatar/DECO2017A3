@@ -612,6 +612,7 @@ function openForm() {
 }
 function closeForm() {
     document.getElementById("taskform").style.display = "none";
+    console.log('click');
 }
 //COVEY QUADRANTS
 function renderCovey() {
@@ -731,7 +732,7 @@ const toggleClock = (reset)=>{
     togglePlayPauseIcon(reset);
     if (reset) stopClock();
     else {
-        console.log(isClockStopped);
+        //console.log(isClockStopped)
         if (isClockStopped) {
             setUpdatedTimers();
             isClockStopped = false;
