@@ -379,6 +379,12 @@ function resetTimer() {
 
 
 //POMODORO TIMER
+let updatedWorkSessionDuration
+let updatedBreakSessionDuration
+let workDurationInput = document.querySelector('#input-work-duration')
+let breakDurationInput = document.querySelector('#input-break-duration')
+workDurationInput.value = '25'
+breakDurationInput.value = '5'
 
 // Select Pomodoro display to edit timer content
 const pomodoroDisplay = document.querySelector(".timer-display");
@@ -554,6 +560,33 @@ document.addEventListener("click", function(event) {
     initializeButtons();
   }
 });
+
+// UPDATE WORK TIME
+workDurationInput.addEventListener('input', () => {
+  updatedWorkSessionDuration = minuteToSeconds(workDurationInput.value)
+})
+// UPDATE PAUSE TIME
+breakDurationInput.addEventListener('input', () => {
+  updatedBreakSessionDuration = minuteToSeconds(breakDurationInput.value)
+})
+
+const minuteToSeconds = (mins) => {
+  return mins * 60
+}
+
+const setUpdatedTimers = () => {
+  if (type === 'Work') {
+    currentTimeLeftInSession = updatedWorkSessionDuration
+      ? updatedWorkSessionDuration
+      : workSessionDuration
+    workSessionDuration = currentTimeLeftInSession
+  } else {
+    currentTimeLeftInSession = updatedBreakSessionDuration
+      ? updatedBreakSessionDuration
+      : breakSessionDuration
+    breakSessionDuration = currentTimeLeftInSession
+  }
+}
 
 // display buttons at the start of timer
 initializeButtons();
