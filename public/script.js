@@ -379,6 +379,15 @@ function resetTimer() {
 
 
 //POMODORO TIMER
+
+const startButton = document.querySelector('#pomodoro-start')
+const stopButton = document.querySelector('#pomodoro-stop')
+
+let type = 'Work'
+let timeSpentInCurrentSession = 0
+
+let currentTaskLabel = document.querySelector('#pomodoro-clock-task')
+
 let updatedWorkSessionDuration
 let updatedBreakSessionDuration
 let workDurationInput = document.querySelector('#input-work-duration')
@@ -386,180 +395,145 @@ let breakDurationInput = document.querySelector('#input-break-duration')
 workDurationInput.value = '25'
 breakDurationInput.value = '5'
 
-// Select Pomodoro display to edit timer content
-const pomodoroDisplay = document.querySelector(".timer-display");
+let isClockStopped = true
 
-// Select start, pause & stop buttons
-const startButton = document.querySelector(".start");
-const stopButton = document.querySelector(".stop");
-const pauseButton = document.querySelector(".pause");
+var ProgressBar = require('progressbar.js')
+var circle = new ProgressBar.Circle('#pomodoro-container');
 
-// Select fields to increment total work & break sessions
-const workSession = document.querySelector(".work-sessions");
-const breakSession = document.querySelector(".break-sessions");
 
-// Select div to display session type
-const sessionType = document.querySelector(".session-type");
-const buttonGroup = document.querySelector(".button-group");
-// display initial timer state at the start
-const progressBar = new ProgressBar.Circle(pomodoroDisplay, {
+const progressBar = new ProgressBar.Circle('#pomodoro-timer', {
   strokeWidth: 2,
   text: {
-    value: "25:00"
+    value: '25:00',
   },
-  trailColor: "rgba(255, 255, 255, 0.308)",
-  color: "#f3f3f3",
-  svgStyle: {
-    // Important: make sure that your container has same
-    // aspect ratio as the SVG canvas. See SVG canvas sizes above.
-    width: "85%"
+  trailColor: '#f4f4f4',
+})
+
+// START
+startButton.addEventListener('click', () => {
+  toggleClock()
+})
+// STOP
+stopButton.addEventListener('click', () => {
+  toggleClock(true)
+})
+
+let isClockRunning = false
+
+// in seconds = 25 mins
+let workSessionDuration = 1500
+let currentTimeLeftInSession = 1500
+// in seconds = 5 mins;
+let breakSessionDuration = 300
+
+const toggleClock = (reset) => {
+  togglePlayPauseIcon(reset)
+  if (reset) {
+    stopClock()
+  } else {
+    console.log(isClockStopped)
+    if (isClockStopped) {
+      setUpdatedTimers()
+      isClockStopped = false
+    }
+    if (isClockRunning === true) {
+      // pause
+      clearInterval(clockTimer)
+      // update icon to the play one
+      // set the vale of the button to start or pause
+      isClockRunning = false
+    } else {
+      // start
+      clockTimer = setInterval(() => {
+        stepDown()
+        displayCurrentTimeLeftInSession()
+        progressBar.set(calculateSessionProgress())
+      }, 1000)
+      isClockRunning = true
+    }
+    // new
+    showStopIcon()
   }
-});
-
-// Set a flag to check if pomodoro was paused
-let timerRunning = true;
-
-// Set a flag to check if timer was stopped
-let timerStopped = false;
-
-// set pomodoro interval time
-let timerSeconds = 1500;
-let currentSessionTime = 1500;
-
-// set break interval time
-let breakSeconds = 300;
-
-//Set a variable to calculate time spent in current session
-let timeSpent = 0;
-
-// Declare  variable for setInterval
-let timerInterval = null;
-
-// Declare a variable to define type of session
-let type = "work";
-
-// set variables for counting total work & break sessions
-let totalWorkSessions = 0;
-let totalBreakSessions = 0;
-
-// set function to initialize buttons at start of application
-function initializeButtons() {
-  startButton.style.display = "block";
-  stopButton.style.display = "none";
-  pauseButton.style.display = "none";
 }
 
-// set a function to toggle session type
-const toggleSession = function() {
-  if (type === "work") {
-    type = "break";
-    currentSessionTime = breakSeconds;
+const displayCurrentTimeLeftInSession = () => {
+  const secondsLeft = currentTimeLeftInSession
+  let result = ''
+  const seconds = secondsLeft % 60
+  const minutes = parseInt(secondsLeft / 60) % 60
+  let hours = parseInt(secondsLeft / 3600)
+  // add leading zeroes if it's less than 10
+  function addLeadingZeroes(time) {
+    return time < 10 ? `0${time}` : time
+  }
+  if (hours > 0) result += `${hours}:`
+  result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`
+  progressBar.text.innerText = result.toString()
+}
+
+function addLeadingZeroes(time) {
+  return time < 10 ? `0${time}` : time
+}
+
+const stopClock = () => {
+  setUpdatedTimers()
+  displaySessionLog(type)
+  clearInterval(clockTimer)
+  isClockStopped = true
+  isClockRunning = false
+  currentTimeLeftInSession = workSessionDuration
+  displayCurrentTimeLeftInSession()
+  type = 'Work'
+  timeSpentInCurrentSession = 0
+}
+
+const stepDown = () => {
+  if (currentTimeLeftInSession > 0) {
+    // decrease time left / increase time spent
+    currentTimeLeftInSession--
+    timeSpentInCurrentSession++
+  } else if (currentTimeLeftInSession === 0) {
+  timeSpentInCurrentSession = 0;
+  // Timer is over -> if work switch to break, viceversa
+  if (type === 'Work') {
+    currentTimeLeftInSession = breakSessionDuration;
+    displaySessionLog('Work');
+    type = 'Break';
+    setUpdatedTimers();
+    // new
+    currentTaskLabel.value = 'Break';
+    currentTaskLabel.disabled = true;
   } else {
-    type = "work";
-    currentSessionTime = timerSeconds;
+    currentTimeLeftInSession = workSessionDuration;
+    type = 'Work';
+    setUpdatedTimers();
+    // new
+    if (currentTaskLabel.value === 'Break') {
+      currentTaskLabel.value = workSessionLabel;
+    }
+    currentTaskLabel.disabled = false;
+    displaySessionLog('Break');
   }
-};
+}
+  displayCurrentTimeLeftInSession()
+}
 
-// Calculate session progress for progressbar
-const calculateSessionProgress = () => {
-  // calculate the completion rate of this session
-  let sessionTotalTime = type === "work" ? timerSeconds : breakSeconds;
-  return timeSpent / sessionTotalTime;
-};
-
-// set a display timer function to format time-
-const displayTimer = function(timeInput) {
-  // convert seconds into minutes
-  var minutes = Math.floor(timeInput / 60);
-  var remainingSeconds = timeInput - minutes * 60;
-  // format time for single digit prepend by 0
-  if (remainingSeconds < 10) {
-    remainingSeconds = "0" + remainingSeconds;
-  }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  // return display time
-  progressBar.text.innerText = `${minutes}:${remainingSeconds}`;
-  workSession.textContent = totalWorkSessions;
-  breakSession.textContent = totalBreakSessions;
-  sessionType.textContent = type;
-};
-
-// Reset timer Seconds
-const resetTimerSeconds = function() {
-  currentSessionTime = 1500;
-};
-
-// Set a time function to run pomodoro intervals
-const timerStart = function() {
-  if (timerRunning) {
-    timerInterval = setInterval(function() {
-      timeSpent++;
-      currentSessionTime--;
-      displayTimer(currentSessionTime);
-      progressBar.set(calculateSessionProgress());
-      if (currentSessionTime < 0) {
-        if (type === "work") {
-          totalWorkSessions++;
-        } else {
-          totalBreakSessions++;
-        }
-        timeSpent = 0;
-        timerRunning = false;
-        clearInterval(timerInterval);
-        toggleSession();
-        initializeButtons();
-        displayTimer(currentSessionTime);
-        progressBar.set(calculateSessionProgress());
-      }
-    }, 1000);
-  }
-};
-
-// Set a function to pause timer
-const pauseTimer = function() {
-  if (!timerRunning) {
-    clearInterval(timerInterval);
-  }
-};
-
-// set a function to stop timer
-const stopTimerP = function() {
-  if (timerStopped) {
-    timeSpent = 0;
-    clearInterval(timerInterval);
-    resetTimerSeconds();
-    displayTimer(currentSessionTime);
-    progressBar.set(calculateSessionProgress());
-    timerStopped = false;
-  }
-};
-
-// Listen for clicks on the document
-document.addEventListener("click", function(event) {
-  // Start pomodoro on click on start button
-  if (event.target.classList.contains("start")) {
-    timerRunning = true;
-    timerStart();
-    startButton.style.display = "none";
-    pauseButton.style.display = "block";
-    stopButton.style.display = "block";
-  }
-
-  if (event.target.classList.contains("pause")) {
-    timerRunning = false;
-    pauseTimer();
-    pauseButton.style.display = "none";
-    startButton.style.display = "block";
-  }
-
-  if (event.target.classList.contains("stop")) {
-    timerStopped = true;
-    stopTimerP();
-    initializeButtons();
-  }
-});
+const displaySessionLog = (type) => {
+  const sessionsList = document.querySelector('#pomodoro-sessions')
+  // append li to it
+  const li = document.createElement('li')
+  if (type === 'Work') {
+  sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : 'Work'
+  workSessionLabel = sessionLabel
+} else {
+  sessionLabel = 'Break'
+}
+  let elapsedTime = parseInt(timeSpentInCurrentSession / 60)
+  elapsedTime = elapsedTime > 0 ? elapsedTime : '< 1'
+  const text = document.createTextNode(`${sessionLabel} : ${elapsedTime} min`)
+  li.appendChild(text)
+  sessionsList.appendChild(li)
+}
 
 // UPDATE WORK TIME
 workDurationInput.addEventListener('input', () => {
@@ -588,8 +562,34 @@ const setUpdatedTimers = () => {
   }
 }
 
-// display buttons at the start of timer
-initializeButtons();
+const togglePlayPauseIcon = (reset) => {
+  const playIcon = document.querySelector('#play-icon')
+  const pauseIcon = document.querySelector('#pause-icon')
+  if (reset) {
+    // when resetting -> always revert to play icon
+    if (playIcon.classList.contains('hidden')) {
+      playIcon.classList.remove('hidden')
+    }
+    if (!pauseIcon.classList.contains('hidden')) {
+      pauseIcon.classList.add('hidden')
+    }
+  } else {
+    playIcon.classList.toggle('hidden')
+    pauseIcon.classList.toggle('hidden')
+  }
+}
+
+const showStopIcon = () => {
+  const stopButton = document.querySelector('#pomodoro-stop')
+  stopButton.classList.remove('hidden')
+}
+
+const calculateSessionProgress = () => {
+  // calculate the completion rate of this session
+  const sessionDuration =
+    type === 'Work' ? workSessionDuration : breakSessionDuration
+  return (timeSpentInCurrentSession / sessionDuration) * 10
+}
 
 //READING LIST
 //openning and closing the form

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>StudBud</title>
+	<link href="1709979ce1a746dbac218773e80dac19" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="b91ac0ece282c177fe152f18d20d6089">
+  <link rel="preconnect" href="bfbd75b20762e759d2ff58b51df1b233">
+  <link href="ca6f47e60192895a868614805b01001d" rel="stylesheet"> 
+  <link href="4508d2435962659fe22ff2a46b758559" rel="stylesheet">
+</head>
+
+<body>
+	<div class="header">
+	<h1>StudBud</h1>
+	<h3>Your study desk</h3>
+	</div>
+  
+  <div class="scrollable">
+	  <div class="row">
+		<div class="column-left">
+			<div class="card" id="taskcard">
+				<h1>Task List</h1>
+				<h2>To Do</h2>
+				<ul class="todo-items">
+				</ul>
+				<button class="open-button" onclick="openForm()">+</button>
+          
+          <div class="todo-form" id="taskform">
+            <form action="/action_page.php" class="form-containter">
+              <table class="table-form">
+                <tr>
+                  <td> <label for="task">Task Name:</label></td>
+                  <td><input type="text" class="todo-input" placeholder="Add a Task..."></td>
+                </tr>
+              <!-- Date input -->
+                <tr>
+                  <td><label for="dueDate">Due Date: </label></td>
+                  <td><input type="date" name="dueDate" id="dueDateInput" required=""></td>
+                </tr>
+                <tr>
+                  <td><label for="estimatedTime">Estimated completion time (mins):</label></td>
+                  <td><input type="number" name="estimatedTime" id="estimatedTimeInput"></td>
+                <!-- Priority -->
+                </tr>
+                <tr>
+                  <td><label for="priority">Task Priority:</label></td>
+                  <td><input type="range" min="1" max="100" value="50" class="slider" id="priorityInput">
+                  <p><span id="demo"></span> %</p></td>
+                <!-- Notes -->
+                </tr>
+                <tr>
+                  <td><label for="notes">Notes:</label></td>
+                  <td><input type="text" name="notes" id="notesInput"></td>
+                </tr>
+              </table>
+              <button type="submit" class="add-button">Add</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Minimise</button>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h1>Stopwatch</h1>
+          <div id="stopwatch">
+            00:00:00
+          </div>
+          <ul class="buttons">
+            <li><button onclick="startTimer()">Start</button></li>
+            <li><button onclick="stopTimer()">Stop</button></li>
+            <li><button onclick="resetTimer()">Reset</button></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h1>Pomodoro Timer</h1>
+          <div id="pomodoro-container">
+            <div id="pomodoro-clock">
+              <div id="pomodoro-timer"></div>
+              <div>
+                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task...">
+              </div>
+              <div id="pomodoro-clock-actions">
+                <button id="pomodoro-start">
+                  <i class="fas fa-play" id="play-icon"></i>
+                  <i class="fas fa-pause hidden" id="pause-icon"></i>
+                </button>
+                <button id="pomodoro-stop" class="hidden">
+                  <i class="fas fa-stop"></i>
+                </button>
+              </div>
+              <!-- new -->
+              <div id="pomodoro-clock-title">
+                <span>
+                  Changes made here will reflect at the start of the next work /
+                  break session
+                </span>
+              </div>
+              <div id="pomodoro-clock-actions">
+                <div class="pomodoro-input">
+                  <label>Work Duration:</label>
+                  <input name="input-work-duration" id="input-work-duration" type="number">
+                </div>
+                <div class="pomodoro-input">
+                  <label>Break Duration:</label>
+                  <input name="input-break-duration" id="input-break-duration" type="number">
+                </div>
+              </div>
+              <div id="pomodoro-info">
+                <h3>Your Sessions </h3>
+                <ul id="pomodoro-sessions">
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="column">
+      </div>
+      <div class="column">
+        <div class="card">
+          <h1>Covey Quadrants</h1>
+          <table class="covey">
+            <tr>
+              <th class="blank"></th>
+              <th class="urgent">Urgent</th>
+              <th class="urgent">Not Urgent</th>
+            </tr>
+            <tr>
+              <th>Important</th>
+              <td class="UI">
+                <ul id="urgimp"></ul>
+              </td>
+              <td class="NI">
+                <ul id="notimp"></ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Not Important</th>
+              <td class="UN">
+                <ul id="urgnot"></ul>
+              </td>
+              <td class="NN">
+                <ul id="notnot"></ul>
+              </td>
+            </tr>
+          </table>
+          <button onclick="renderCovey()">Refresh</button>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h1>Reading List</h1>
+          <ul class="read-items">
+          </ul>
+          <button class="open-button" onclick="openReading()">+</button>
+          
+          <div class="read-form" id="readingform">
+            <form action="/action_page.php" class="form-containter">
+              <table class="reading-form">
+                <tr>
+                  <td> <label for="ref">Reference Name:</label></td>
+                  <td><input type="text" name="ref" id="refInput" required=""></td>
+                </tr>
+              <!-- link input -->
+                <tr>
+                  <td><label for="link">Link: </label></td>
+                  <td><input type="text" name="link" id="linkInput" required=""></td>
+                </tr>
+                <!-- Notes -->
+                <tr>
+                  <td><label for="readingnotes">Notes:</label></td>
+                  <td><input type="text" name="readingnotes" id="readnotesInput"></td>
+                </tr>
+                <tr>
+                  <td><label for="group">Group:</label></td>
+                  <td><input type="text" name="group" id="groupInput"></td>
+                </tr>
+              </table>
+              <button type="submit">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeReadForm()">Minimise</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="music-phone">
+      <iframe class="music" src="584aa8a4c46f778c6fc067fc468af79f" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+  <script src="e22b76ecbb822ec939843e415ae1d172"></script>
+  <script src="4e6340146f7d0152c44dbd6ccf58b0e0"></script>
+  </body>
+</html>

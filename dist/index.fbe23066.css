@@ -379,6 +379,10 @@ li.stop {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 iframe {
   display:block;
   margin: auto;

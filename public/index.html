@@ -9,9 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet"> 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -83,38 +81,47 @@
       <div class="column">
         <div class="card">
           <h1>Pomodoro Timer</h1>
-          <div class="pomodoro-container">
-            <div class="timer-display"></div>
-              <ul class="button-group">
-                <li class="start button">
-                  <i class="fa fa-play start" aria-hidden="true"></i>
-                </li>
-                <li class="pause button">
-                  <i class="fa fa-pause pause" aria-hidden="true"></i>
-                </li>
-                <li class="stop button">
-                  <i class="fa fa-stop stop" aria-hidden="true"></i>
-                </li>
-              </ul>
-              <div class="session-type"></div>
+          <div id="pomodoro-container">
+            <div id="pomodoro-clock">
+              <div id="pomodoro-timer"></div>
+              <div>
+                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+              </div>
+              <div id="pomodoro-clock-actions">
+                <button id="pomodoro-start">
+                  <i class="fas fa-play" id="play-icon"></i>
+                  <i class="fas fa-pause hidden" id="pause-icon"></i>
+                </button>
+                <button id="pomodoro-stop" class="hidden">
+                  <i class="fas fa-stop"></i>
+                </button>
+              </div>
+              <!-- new -->
+              <div id="pomodoro-clock-title">
+                <span>
+                  Changes made here will reflect at the start of the next work /
+                  break session
+                </span>
+              </div>
               <div id="pomodoro-clock-actions">
                 <div class="pomodoro-input">
-                  <label>Work Duration</label>
+                  <label>Work Duration:</label>
                   <input name="input-work-duration" id="input-work-duration" type="number" />
                 </div>
                 <div class="pomodoro-input">
-                  <label>Break Duration</label>
+                  <label>Break Duration:</label>
                   <input name="input-break-duration" id="input-break-duration" type="number" />
                 </div>
               </div>
-              <div class="task-section">
-              <h4>Total Sessions</h4>
-              <p class="task-list">Work : <span class="work-sessions"></span></p>
-              <p class="task-list">Break : <span class="break-sessions"></span></p>
+              <div id="pomodoro-info">
+                <h3>Your Sessions </h3>
+                <ul id="pomodoro-sessions">
+                </ul>
+              </div>
             </div>
           </div>
+          </div>
         </div>
-      </div>
     </div>
     <div class="row">
       <div class="column">
