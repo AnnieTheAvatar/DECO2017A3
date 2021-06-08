@@ -101,11 +101,12 @@ h1 {
   .music-phone{
     transform: rotate(0);
     position: static;
+    padding: 5%;
   }
   .music {
     position: static;
     width: 100%;
-    height: 200px;
+    height: 300px;
     border: 0;
     border-radius: 0;
     background: 0;
@@ -387,8 +388,6 @@ li.stop {
 iframe {
   display:block;
   margin: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .UI {

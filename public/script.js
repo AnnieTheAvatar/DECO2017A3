@@ -1,4 +1,5 @@
 
+//TASK LIST
 
 // select everything
 // select the todo-form
@@ -8,6 +9,7 @@ const todoInput = document.querySelector('.todo-input');
 // select the <ul> with class="todo-items"
 const todoItemsList = document.querySelector('.todo-items');
 
+//Make the slider update when moved
 var slider = document.getElementById("priorityInput");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value; // Display the default slider value
@@ -59,6 +61,8 @@ function addTodo(item, createdDate, dueDate, priorityRating, estimatedTime, note
 
     // finally clear the input box value
     todoInput.value = '';
+    estimatedTimeInput.value = '';
+    notesInput.value = '';
   }
 }
 
@@ -137,7 +141,7 @@ function deleteTodo(id) {
 }
 
 // initially get everything from localStorage
-getFromLocalStorage();
+getFromLocalStorage(todos);
 
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 todoItemsList.addEventListener('click', function(event) {
@@ -157,105 +161,6 @@ todoItemsList.addEventListener('click', function(event) {
 });
 
 
-/*
-//TASK LIST
-// Setting up variables for our HTML elements using DOM selection
-const form = document.getElementById("taskform");
-const button = document.querySelector("#taskform > button"); // Complex CSS query
-const tasklist = document.getElementById("tasklist");
-const taskInput = document.getElementById("taskInput");
-
-var slider = document.getElementById("priorityInput");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-
-// Event listener for Button click
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault(); 
-
-  let task = taskInput.value;
-  let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
-  let dD = dueDateInput.value;
-  let prio = priorityInput.value + "%";
-  let time = timeConvert(estimatedTimeInput.value)
-  let note = notesInput.value;
-  
-  // Call the addTask() function using
-  addTask(task, date, dD, prio, time, note, false);
-
-  // Log out the newly populated taskList everytime the button has been pressed
-})
-
-// Create an empty array to store our tasks
-var taskList = [];
-
-function addTask(taskDescription, createdDate, dueDate, priorityRating, estimatedTime, notes, completionStatus) {
-  let task = {
-    taskDescription,
-    createdDate,
-    dueDate,
-    priorityRating,
-    estimatedTime,
-    notes,
-    completionStatus
-  };
-
-  let key = (localStorage.length + 1).toString();
-  var value = taskDescription;
-  localStorage.setItem(key,value);
-  console.log(key,value);
-  // Add the task to our array of tasks
-  taskList.push(task);
-  // Separate the DOM manipulation from the object creation logic
-  renderTask(task);
-  renderCovey(taskDescription, dueDate, priorityInput.value);
-}
-
-// Function to display the item on the page
-function renderTask(task) {
-  let item = document.createElement("li");
-  item.innerHTML = "<p>" + task.taskDescription + "</br>Due: " + task.dueDate + "</br>Weight: " + task.priorityRating + "</br>Notes: " +task.notes + "</p>" ;
-
-  tasklist.appendChild(item);
-
-  // Setup delete button DOM elements
-  let delButton = document.createElement("button");
-  delButton.className = "delete-button";
-  let delButtonText = document.createTextNode("Delete");
-  delButton.appendChild(delButtonText);
-  item.appendChild(delButton); // Adds a delete button to every task
-
-  // Listen for when the 
-  delButton.addEventListener("click", function(event){
-    item.remove();
-    localStorage.removeItem();
-     // Remove the task item from the page & local storage when button clicked
-    // Because we used 'let' to define the item, this will always delete the right element
-  })
-
-  // Setup completed button DOM elements
-  let doneButton = document.createElement("button");
-  doneButton.className = "done-button";
-  let doneButtonText = document.createTextNode("Completed!");
-  doneButton.appendChild(doneButtonText);
-  item.appendChild(doneButton); // Adds a delete button to every task
-
-  doneButton.addEventListener("click", function(event){
-    item.innerHTML = "<p>" + task.taskDescription + "</p";
-    item.appendChild(delButton);
-    item.setAttribute('class','checked'); // strike through the completed task
-    // Because we used 'let' to define the item, this will always delete the right element
-  })
-  
-}
-*/
-
 //converting minutes to hours:mins
 function timeConvert(n) {
 var num = n;
@@ -267,14 +172,17 @@ return rhours + "hr : " + rminutes + "min";
 }
 
 //openning and closing the form
-function openForm() {
-  document.getElementById("taskform").style.display = "block";
-}
+const minBtn = document.querySelector('#min-button')
+const opnBtn = document.querySelector('#open-button');
 
-function closeForm() {
+opnBtn.addEventListener('click', () => {
+  document.getElementById("taskform").style.display = "block";
+})
+
+
+minBtn.addEventListener('click', () => {
   document.getElementById("taskform").style.display = "none";
-  console.log('click');
-}
+})
 
 //COVEY QUADRANTS
 
@@ -323,6 +231,20 @@ var hr = 0;
 var min = 0;
 var sec = 0;
 var stoptime = true;
+
+const startTime = document.querySelector('#starttimer');
+const stopTime = document.querySelector('#stoptimer');
+const resetTime = document.querySelector('#resettimer');
+
+startTime.addEventListener('click', () => {
+  startTimer();
+})
+stopTime.addEventListener('click', () => {
+  stopTimer();
+})
+resetTime.addEventListener('click', () => {
+  resetTimer();
+})
 
 function startTimer() {
   if (stoptime == true) {
@@ -592,103 +514,22 @@ const calculateSessionProgress = () => {
   return (timeSpentInCurrentSession / sessionDuration) * 10
 }
 
+
+
 //READING LIST
-//openning and closing the form
-function openReading() {
+const opnReading = document.querySelector('#openReading')
+const closeReading = document.querySelector('#closeRead');
+
+opnReading.addEventListener('click', () => {
   document.getElementById("readingform").style.display = "block";
-}
+})
 
-function closeReadForm() {
+
+closeReading.addEventListener('click', () => {
   document.getElementById("readingform").style.display = "none";
-}
-/*
-// Setting up variables for our HTML elements using DOM selection
-const readform = document.getElementById("readingform");
-const readbutton = document.querySelector("#readingform > button"); // Complex CSS query
-const readinglist = document.getElementById("readinglist");
-const refInput = document.getElementById("refInput");
+})
 
-// Event listener for Button click
 
-function submitList(){
-  event.preventDefault(); 
-
-  let ref = refInput.value;
-  let link = linkInput.value;
-  let notes = readnotesInput.value;
-  
-  // Call the addRef() function using
-  addRef(ref, link, notes);
-
-  // Log out the newly populated taskList everytime the button has been pressed
-}
-
-// Create an empty array to store our tasks
-var readingList = [];
-
-function addRef(refName, link, notes) {
-  let ref = {
-    refName,
-    link,
-    notes
-  };
-
-  // Add the task to our array of tasks
-  readingList.push(ref);
-  
-  // Separate the DOM manipulation from the object creation logic
-  renderList(ref);
-}
-
-// Function to display the item on the page
-function renderList(ref) {
-  let item = document.createElement("li");
-  item.innerHTML = "<p>" + ref.refName + "</p>";
-  readinglist.appendChild(item);
-
-  let openButton = document.createElement("button");
-  openButton.className = "openbutton";
-  let openButtonText = document.createTextNode("Open");
-  openButton.appendChild(openButtonText);
-  item.appendChild(openButton); // Adds a delete button to every task
-
-    // Listen for when the delete button is pressed
-  openButton.addEventListener("click", function(event){
-    window.open(ref.link);
-    
-    })
-
-  // Setup delete button DOM elements
-  let delButton = document.createElement("button");
-  delButton.className = "delete-button";
-  let delButtonText = document.createTextNode("Delete");
-  delButton.appendChild(delButtonText);
-  item.appendChild(delButton); // Adds a delete button to every task
-
-    // Listen for when the delete button is pressed
-  delButton.addEventListener("click", function(event){
-    item.remove(); }) // Remove the task item from the page when button clicked
-    // Because we used 'let' to define the item, this will always delete the right element
-
-  //edit button
-  let edButton = document.createElement("button");
-  edButton.className = "edit-button";
-  let edButtonText = document.createTextNode("Edit");
-  edButton.appendChild(edButtonText);
-  item.appendChild(edButton);
-
-    // Listen for when the edit button is pressed
-  edButton.addEventListener("click", function(event){
-    }// edit the task 
-    // Because we used 'let' to define the item, this will always delete the right element
-    )
-  
-  // Clear the value of the input once the task has been added to the page
-  //form.reset();
-  }
-
-*/
-//READING LIST 2
 const readForm = document.querySelector('.read-form');
 // select the input box
 const readInput = document.querySelector('.read-input');
@@ -696,7 +537,7 @@ const readInput = document.querySelector('.read-input');
 const readItemsList = document.querySelector('.read-items');
 
 
-// array which stores every todos
+// array which stores every item in the readinglist
 let readingList = [];
 
 // add an eventListener on form, and listen for submit event
@@ -729,7 +570,7 @@ function addRef(refName, link, notes, tag) {
       group: tag
     };
 
-    // then add it to todos array
+    // then add it to readinglist array
     readingList.push(ref);
     addToLocalStorage(readingList); // then store it in localStorage
 
@@ -738,12 +579,12 @@ function addRef(refName, link, notes, tag) {
   }
 }
 
-// function to render given todos to screen
+// function to render given reading list to screen
 function renderRefs(readinglist) {
   // clear everything inside <ul> with class=todo-items
   readItemsList.innerHTML = '';
 
-  // run through each item inside todos
+  // run through each item inside reading list
   readinglist.forEach(function(item) {
     // check if the item is completed
     //const checked = item.completed ? 'checked': null;
@@ -761,7 +602,7 @@ function renderRefs(readinglist) {
 
 }
 
-// function to add todos to local storage
+// function to add reading list to local storage
 function addToLocalStorage(readingList) {
   // conver the array to string then store it.
   localStorage.setItem('readingList', JSON.stringify(readingList));
@@ -774,7 +615,7 @@ function getFromLocalStorage() {
   const reference = localStorage.getItem('readingList');
   // if reference exists
   if (reference) {
-    // converts back to array and store it in todos array
+    // converts back to array and store it in reading list array
     readingList = JSON.parse(reference);
     renderRefs(readingList);
   }
@@ -787,16 +628,16 @@ function open(id) {
     if (item.id == id) {
       // toggle the value
       window.open(item.link);
-      console.log(item.id)
+      console.log(item.link)
     }
   });
 
   addToLocalStorage(readingList);
 }
 
-// deletes a todo from todos array, then updates localstorage and renders updated list to screen
+// deletes an item from reading list array, then updates localstorage and renders updated list to screen
 function deleteRef(id) {
-  // filters out the <li> with the id and updates the todos array
+  // filters out the <li> with the id and updates the reading list array
   //console.log(id);
   readingList = readingList.filter(function(item) {
     // use != not !==, because here types are different. One is number and other is string
@@ -808,9 +649,8 @@ function deleteRef(id) {
 }
 
 // initially get everything from localStorage
-getFromLocalStorage();
+getFromLocalStorage(readingList);
 
-// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 readItemsList.addEventListener('click', function(event) {
   // check if the event is on checkbox
   if (event.target.classList.contains('open-button')) {
