@@ -524,7 +524,6 @@ opnReading.addEventListener('click', () => {
   document.getElementById("readingform").style.display = "block";
 })
 
-
 closeReading.addEventListener('click', () => {
   document.getElementById("readingform").style.display = "none";
 })
@@ -532,7 +531,7 @@ closeReading.addEventListener('click', () => {
 
 const readForm = document.querySelector('.read-form');
 // select the input box
-const readInput = document.querySelector('.read-input');
+const readInput = document.querySelector('.refinput');
 // select the <ul> with class="todo-items"
 const readItemsList = document.querySelector('.read-items');
 
@@ -545,7 +544,7 @@ readForm.addEventListener('submit', function(event) {
   // prevent the page from reloading when submitting the form
   event.preventDefault(); 
 
-  let ref = refInput.value;
+  let ref = readInput.value;
   let link = linkInput.value;
   let notes = readnotesInput.value;
   let tag = groupInput.value;
@@ -627,8 +626,8 @@ function open(id) {
     // use == not ===, because here types are different. One is number and other is string;
     if (item.id == id) {
       // toggle the value
-      window.open(item.link);
-      console.log(item.link)
+      window.open(item.links);
+      //console.log(item.links)
     }
   });
 
