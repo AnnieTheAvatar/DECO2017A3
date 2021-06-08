@@ -1,0 +1,4 @@
+function closeForm() {
+    document.getElementById("taskform").style.display = "none";
+    console.log('click');
+}

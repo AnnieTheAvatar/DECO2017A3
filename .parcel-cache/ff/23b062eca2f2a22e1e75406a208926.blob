@@ -5,12 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>StudBud</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet"> 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
-  
+	<link href="1709979ce1a746dbac218773e80dac19" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="b91ac0ece282c177fe152f18d20d6089">
+  <link rel="preconnect" href="bfbd75b20762e759d2ff58b51df1b233">
+  <link href="ca6f47e60192895a868614805b01001d" rel="stylesheet"> 
+  <link href="4508d2435962659fe22ff2a46b758559" rel="stylesheet">
+  <script data-parcel-key="e168c10cddcbb7b59ffa2b9f7b9fb0d0">
+  function closeForm() {
+    document.getElementById("taskform").style.display = "none";
+    console.log('click');
+  }
+  </script>
 </head>
 
 <body>
@@ -18,6 +23,7 @@
 	<h1>StudBud</h1>
 	<h3>Your study desk</h3>
 	</div>
+  
   <div class="scrollable">
 	  <div class="row">
 		<div class="column-left">
@@ -38,7 +44,7 @@
               <!-- Date input -->
                 <tr>
                   <td><label for="dueDate">Due Date: </label></td>
-                  <td><input type="date" name="dueDate" id="dueDateInput" required></td>
+                  <td><input type="date" name="dueDate" id="dueDateInput" required=""></td>
                 </tr>
                 <tr>
                   <td><label for="estimatedTime">Estimated completion time (mins):</label></td>
@@ -85,7 +91,7 @@
             <div id="pomodoro-clock">
               <div id="pomodoro-timer"></div>
               <div>
-                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task...">
               </div>
               <div id="pomodoro-clock-actions">
                 <button id="pomodoro-start">
@@ -106,11 +112,11 @@
               <div id="pomodoro-clock-actions">
                 <div class="pomodoro-input">
                   <label>Work Duration:</label>
-                  <input name="input-work-duration" id="input-work-duration" type="number" />
+                  <input name="input-work-duration" id="input-work-duration" type="number">
                 </div>
                 <div class="pomodoro-input">
                   <label>Break Duration:</label>
-                  <input name="input-break-duration" id="input-break-duration" type="number" />
+                  <input name="input-break-duration" id="input-break-duration" type="number">
                 </div>
               </div>
               <div id="pomodoro-info">
@@ -169,12 +175,12 @@
               <table class="reading-form">
                 <tr>
                   <td> <label for="ref">Reference Name:</label></td>
-                  <td><input type="text" name="ref" id="refInput" required></td>
+                  <td><input type="text" name="ref" id="refInput" required=""></td>
                 </tr>
               <!-- link input -->
                 <tr>
                   <td><label for="link">Link: </label></td>
-                  <td><input type="text" name="link" id="linkInput" required></td>
+                  <td><input type="text" name="link" id="linkInput" required=""></td>
                 </tr>
                 <!-- Notes -->
                 <tr>
@@ -195,9 +201,9 @@
     </div>
   </div>
   <div class="music-phone">
-      <iframe class="music" src="https://open.spotify.com/embed/playlist/2Fnfw3f8C3RpQ0JmGNvx58" allowtransparency="true" allow="encrypted-media" ></iframe>
+      <iframe class="music" src="584aa8a4c46f778c6fc067fc468af79f" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
-  <script src="progressbar.js"></script>
-  <script src="script.js"></script>
+  <script src="e22b76ecbb822ec939843e415ae1d172"></script>
+  <script src="4e6340146f7d0152c44dbd6ccf58b0e0"></script>
   </body>
 </html>
