@@ -172,19 +172,24 @@ return rhours + "hr : " + rminutes + "min";
 }
 
 //openning and closing the form
-const minBtn = document.querySelector('#min-button')
+const minBtn = document.querySelector('#min-button');
 const opnBtn = document.querySelector('#open-button');
 
 opnBtn.addEventListener('click', () => {
   document.getElementById("taskform").style.display = "block";
-})
+});
 
 
 minBtn.addEventListener('click', () => {
   document.getElementById("taskform").style.display = "none";
-})
+});
 
 //COVEY QUADRANTS
+const refreshBtn = document.querySelector('#refresh-button');
+
+refreshBtn.addEventListener('click', () => {
+  renderCovey();
+});
 
 function renderCovey(){
   //remove current covey
