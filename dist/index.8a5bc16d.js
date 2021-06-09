@@ -578,15 +578,6 @@ stopTime.addEventListener('click', ()=>{
 resetTime.addEventListener('click', ()=>{
     resetTimer();
 });
-function startTimer() {
-    if (stoptime == true) {
-        stoptime = false;
-        timerCycle();
-    }
-}
-function stopTimer() {
-    if (stoptime == false) stoptime = true;
-}
 function timerCycle() {
     if (stoptime == false) {
         sec = parseInt(sec);
@@ -609,6 +600,18 @@ function timerCycle() {
         setTimeout("timerCycle()", 1000);
     }
 }
+//when the start button is pressed, the timer will start by executing the timercycle function
+function startTimer() {
+    if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    }
+}
+//when the stop button is pressed the timer will pause
+function stopTimer() {
+    if (stoptime == false) stoptime = true;
+}
+//when the reset button is pressed the timer will go back to 0
 function resetTimer() {
     timer.innerHTML = "00:00:00";
     stoptime = true;

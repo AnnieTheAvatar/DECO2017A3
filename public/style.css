@@ -34,6 +34,7 @@ body {
   top: 10px; 
   width: 100%; 
   z-index: 1;
+  margin-bottom: 5%;
 }
 
 .header h1 {
@@ -43,6 +44,8 @@ body {
 h1 {
   text-align: center;
   font-family: 'Lobster', cursive;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .column {
@@ -326,6 +329,11 @@ button {
   text-align: center;
 }
 
+.progressbar-text {
+  font-family: "Lobster", cursive;
+  font-size: 40px;
+}
+
 .session-type {
   font-size: 1.8rem;
   font-weight: 400;
@@ -342,6 +350,11 @@ button {
   display: flex;
   justify-content: center;
   font-size: 1.25rem;
+}
+
+#pomodoro-sessions {
+
+  height: 0px;
 }
 
 .button {

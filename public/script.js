@@ -251,52 +251,56 @@ resetTime.addEventListener('click', () => {
   resetTimer();
 })
 
+function timerCycle() {
+  if (stoptime == false) {
+  sec = parseInt(sec);
+  min = parseInt(min);
+  hr = parseInt(hr);
+
+  sec = sec + 1;
+
+  if (sec == 60) {
+    min = min + 1;
+    sec = 0;
+  }
+  if (min == 60) {
+    hr = hr + 1;
+    min = 0;
+    sec = 0;
+  }
+
+  if (sec < 10 || sec == 0) {
+    sec = '0' + sec;
+  }
+  if (min < 10 || min == 0) {
+    min = '0' + min;
+  }
+  if (hr < 10 || hr == 0) {
+    hr = '0' + hr;
+  }
+
+  timer.innerHTML = hr + ':' + min + ':' + sec;
+
+  setTimeout("timerCycle()", 1000);
+  }
+}
+
+//when the start button is pressed, the timer will start by executing the timercycle function
 function startTimer() {
   if (stoptime == true) {
         stoptime = false;
         timerCycle();
     }
 }
+
+//when the stop button is pressed the timer will pause
 function stopTimer() {
   if (stoptime == false) {
     stoptime = true;
   }
 }
 
-function timerCycle() {
-    if (stoptime == false) {
-    sec = parseInt(sec);
-    min = parseInt(min);
-    hr = parseInt(hr);
-
-    sec = sec + 1;
-
-    if (sec == 60) {
-      min = min + 1;
-      sec = 0;
-    }
-    if (min == 60) {
-      hr = hr + 1;
-      min = 0;
-      sec = 0;
-    }
-
-    if (sec < 10 || sec == 0) {
-      sec = '0' + sec;
-    }
-    if (min < 10 || min == 0) {
-      min = '0' + min;
-    }
-    if (hr < 10 || hr == 0) {
-      hr = '0' + hr;
-    }
-
-    timer.innerHTML = hr + ':' + min + ':' + sec;
-
-    setTimeout("timerCycle()", 1000);
-  }
-}
-
+//when the reset button is pressed the timer will go back to 0
 function resetTimer() {
     timer.innerHTML = "00:00:00";
     stoptime = true;
