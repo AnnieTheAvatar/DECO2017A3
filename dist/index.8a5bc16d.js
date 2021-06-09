@@ -494,7 +494,7 @@ function deleteTodo(id) {
     addToLocalStorage(todos);
 }
 // initially get everything from localStorage
-getFromLocalStorage(todos);
+getFromLocalStorage();
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 todoItemsList.addEventListener('click', function(event) {
     // check if the event is on checkbox
@@ -794,117 +794,182 @@ const calculateSessionProgress = ()=>{
     const sessionDuration = type === 'Work' ? workSessionDuration : breakSessionDuration;
     return timeSpentInCurrentSession / sessionDuration * 10;
 };
+//DICTIONARY
+//DOM selection for content element
+const content = document.querySelector('.content');
+const searchButton = document.querySelector("#search-btn");
+//XML HTTP Request
+var request = new XMLHttpRequest();
+//Open connection
+request.open("GET", "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=your-api-key");
+//Handling response
+searchButton.addEventListener("click", ()=>{
+    //console.log('click');
+    //request.onload = function() {
+    let data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+        console.log(data);
+        data.forEach(function(id) {
+            if (wordInput.value == id) console.log('true');
+            else console.log('false');
+        });
+    } else alert("Oops something went wrong! Error: Unable to process your API request. Status: " + request.status + ". Please try again later");
+//}
+});
+//Send request to API server
+request.send(); //Content population
+ /*
 //READING LIST
-const opnReading = document.querySelector('#openReading');
+const opnReading = document.querySelector('#openReading')
 const closeReading = document.querySelector('#closeRead');
-opnReading.addEventListener('click', ()=>{
-    document.getElementById("readingform").style.display = "block";
-});
-closeReading.addEventListener('click', ()=>{
-    document.getElementById("readingform").style.display = "none";
-});
+
+opnReading.addEventListener('click', () => {
+  document.getElementById("readingform").style.display = "block";
+})
+
+closeReading.addEventListener('click', () => {
+  document.getElementById("readingform").style.display = "none";
+})
+
+
 const readForm = document.querySelector('.read-form');
 // select the input box
 const readInput = document.querySelector('.refinput');
 // select the <ul> with class="todo-items"
 const readItemsList = document.querySelector('.read-items');
+
+
 // array which stores every item in the readinglist
 let readingList = [];
+
 // add an eventListener on form, and listen for submit event
 readForm.addEventListener('submit', function(event) {
-    // prevent the page from reloading when submitting the form
-    event.preventDefault();
-    let ref = readInput.value;
-    let link = linkInput.value;
-    let notes = readnotesInput.value;
-    let tag = groupInput.value;
-    // Call the addTask() function using
-    addRef(ref, link, notes, tag);
-//addTodo(todoInput.value); // call addTodo function with input box current value
+  // prevent the page from reloading when submitting the form
+  event.preventDefault(); 
+
+  let ref = readInput.value;
+  let link = linkInput.value;
+  let notes = readnotesInput.value;
+  let tag = groupInput.value;
+  
+  // Call the addTask() function using
+  addRef(ref, link, notes, tag);
+  
+  //addTodo(todoInput.value); // call addTodo function with input box current value
 });
+
 // function to add todo
 function addRef(refName, link, notes, tag) {
-    // if item is not empty
-    if (refName !== '') {
-        // make a todo object, which has id, name, and completed properties
-        const ref = {
-            id: Date.now(),
-            name: refName,
-            links: link,
-            note: notes,
-            group: tag
-        };
-        // then add it to readinglist array
-        readingList.push(ref);
-        addToLocalStorage(readingList); // then store it in localStorage
-        // finally clear the input box value
-        refInput.value = '';
-    }
+  
+  // if item is not empty
+  if (refName !== '') {
+    // make a todo object, which has id, name, and completed properties
+    const ref = {
+      id: Date.now(),
+      name: refName,
+      links: link,
+      note: notes,
+      group: tag
+    };
+
+    // then add it to readinglist array
+    readingList.push(ref);
+    addToLocalStorage(readingList); // then store it in localStorage
+
+    // finally clear the input box value
+    refInput.value = '';
+  }
 }
+
 // function to render given reading list to screen
 function renderRefs(readinglist) {
-    // clear everything inside <ul> with class=todo-items
-    readItemsList.innerHTML = '';
-    // run through each item inside reading list
-    readinglist.forEach(function(item) {
-        // check if the item is completed
-        //const checked = item.completed ? 'checked': null;
-        // make a <li> element and fill it
-        const li = document.createElement('li');
-        li.setAttribute('class', 'item');
-        li.setAttribute('data-key', item.id);
-        li.innerHTML = "<button class='open-button'>Open</button><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Notes: " + item.note + "</br>Group: " + item.tag + "</p>";
-        // finally add the <li> to the <ul>
-        readItemsList.append(li);
-    });
+  // clear everything inside <ul> with class=todo-items
+  readItemsList.innerHTML = '';
+
+  // run through each item inside reading list
+  readinglist.forEach(function(item) {
+    // check if the item is completed
+    //const checked = item.completed ? 'checked': null;
+
+    // make a <li> element and fill it
+    const li = document.createElement('li');
+
+    li.setAttribute('class', 'item');
+    li.setAttribute('data-key', item.id);
+
+    li.innerHTML = "<button class='open-button'>Open</button><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Notes: " + item.note + "</br>Group: " + item.tag + "</p>";
+    // finally add the <li> to the <ul>
+    readItemsList.append(li);
+  });
+
 }
+
 // function to add reading list to local storage
-function addToLocalStorage(readingList1) {
-    // conver the array to string then store it.
-    localStorage.setItem('readingList', JSON.stringify(readingList1));
-    // render them to screen
-    renderRefs(readingList1);
+function addToLocalStorage(readingList) {
+  // conver the array to string then store it.
+  localStorage.setItem('readingList', JSON.stringify(readingList));
+  // render them to screen
+  renderRefs(readingList);
 }
+
 // function helps to get everything from local storage
 function getFromLocalStorage() {
-    const reference = localStorage.getItem('readingList');
-    // if reference exists
-    if (reference) {
-        // converts back to array and store it in reading list array
-        readingList = JSON.parse(reference);
-        renderRefs(readingList);
-    }
+  const reference = localStorage.getItem('readingList');
+  // if reference exists
+  if (reference) {
+    // converts back to array and store it in reading list array
+    readingList = JSON.parse(reference);
+    renderRefs(readingList);
+  }
 }
+
 // toggle the value to completed and not completed
 function open(id) {
-    readingList.forEach(function(item) {
-        // use == not ===, because here types are different. One is number and other is string;
-        if (item.id == id) // toggle the value
-        window.open(item.links);
-    });
-    addToLocalStorage(readingList);
+  readingList.forEach(function(item) {
+    // use == not ===, because here types are different. One is number and other is string;
+    if (item.id == id) {
+      // toggle the value
+      window.open(item.links);
+      //console.log(item.links)
+    }
+  });
+
+  addToLocalStorage(readingList);
 }
+
 // deletes an item from reading list array, then updates localstorage and renders updated list to screen
 function deleteRef(id) {
-    // filters out the <li> with the id and updates the reading list array
-    //console.log(id);
-    readingList = readingList.filter(function(item) {
-        // use != not !==, because here types are different. One is number and other is string
-        return item.id != id;
-    });
-    // update the localStorage
-    addToLocalStorage(readingList);
+  // filters out the <li> with the id and updates the reading list array
+  //console.log(id);
+  readingList = readingList.filter(function(item) {
+    // use != not !==, because here types are different. One is number and other is string
+    return item.id != id;
+  });
+  
+  // update the localStorage
+  addToLocalStorage(readingList);
 }
+
 // initially get everything from localStorage
-getFromLocalStorage(readingList);
+getFromLocalStorage();
+
 readItemsList.addEventListener('click', function(event) {
-    // check if the event is on checkbox
-    if (event.target.classList.contains('open-button')) // toggle the state
-    open(event.target.parentElement.getAttribute('data-key'));
-    // check if that is a delete-button
-    if (event.target.classList.contains('delete-button')) // get id from data-key attribute's value of parent <li> where the delete-button is present
+  // check if the event is on checkbox
+  if (event.target.classList.contains('open-button')) {
+    // toggle the state
+    open(event.target.parentElement.getAttribute('data-key'))
+    //console.log(event.target.parentElement.nodeName);
+  }
+
+  // check if that is a delete-button
+  if (event.target.classList.contains('delete-button')) {
+    // get id from data-key attribute's value of parent <li> where the delete-button is present
     deleteRef(event.target.parentElement.getAttribute('data-key'));
+    //console.log(event.target.parentElement.nodeName)
+  }
 });
+
+*/ 
 
 },{"progressbar.js":"4E32u"}],"4E32u":[function(require,module,exports) {
 module.exports = {

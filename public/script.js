@@ -141,7 +141,7 @@ function deleteTodo(id) {
 }
 
 // initially get everything from localStorage
-getFromLocalStorage(todos);
+getFromLocalStorage();
 
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 todoItemsList.addEventListener('click', function(event) {
@@ -524,7 +524,49 @@ const calculateSessionProgress = () => {
 }
 
 
+//DICTIONARY
+//DOM selection for content element
+const content = document.querySelector('.content');
+const searchButton = document.querySelector("#search-btn");
 
+//XML HTTP Request
+var request = new XMLHttpRequest();
+
+//Open connection
+request.open("GET", "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=your-api-key");
+
+//Handling response
+searchButton.addEventListener("click", () => {
+  //console.log('click');
+  //request.onload = function() {
+
+    let data = JSON.parse(this.response);
+    
+    if (request.status >= 200 && request.status < 400) {
+      console.log(data);
+      
+      data.forEach(function(id){
+        if (wordInput.value == id) {
+          console.log('true');
+        }else{
+          console.log('false');
+        }
+      });
+      
+
+    } else {
+      alert("Oops something went wrong! Error: Unable to process your API request. Status: " + request.status + ". Please try again later");
+    }
+  //}
+})
+
+//Send request to API server
+request.send();
+
+//Content population
+
+
+/*
 //READING LIST
 const opnReading = document.querySelector('#openReading')
 const closeReading = document.querySelector('#closeRead');
@@ -657,7 +699,7 @@ function deleteRef(id) {
 }
 
 // initially get everything from localStorage
-getFromLocalStorage(readingList);
+getFromLocalStorage();
 
 readItemsList.addEventListener('click', function(event) {
   // check if the event is on checkbox
@@ -674,3 +716,5 @@ readItemsList.addEventListener('click', function(event) {
     //console.log(event.target.parentElement.nodeName)
   }
 });
+
+*/
