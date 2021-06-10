@@ -81,7 +81,7 @@ h2 {
   margin-left: 20%;
   margin-right: 20%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: 1fr 1fr;
   gap: 3% 3%;
   grid-auto-flow: row;
@@ -99,7 +99,10 @@ h2 {
 
 .stopwatchMod { grid-area: stopwatchMod; }
 
-.dictionaryMod { grid-area: dictionaryMod; }
+.dictionaryMod { 
+  grid-area: dictionaryMod;
+  word-wrap: break-word;
+ }
 
 .pomodoroMod { grid-area: pomodoroMod; }
 
@@ -281,6 +284,11 @@ button, input {
 .table-form {
   word-wrap: break-word;
   width: 100%;
+}
+
+.covey td, .covey th {
+  padding: 5px;
+  margin: 5px;
 }
 
 td {

@@ -797,28 +797,32 @@ const calculateSessionProgress = ()=>{
 };
 //DICTIONARY
 //DOM selection for content element
-const content = document.querySelector('.content');
 const searchButton = document.querySelector("#search-btn");
-//XML HTTP Request
-var request = new XMLHttpRequest();
-//Open connection
-request.open("GET", "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=your-api-key");
-//Handling response
-searchButton.addEventListener("click", ()=>{
-    //console.log('click');
-    //request.onload = function() {
-    let data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-        console.log(data);
-        data.forEach(function(id) {
-            if (wordInput.value == id) console.log('true');
-            else console.log('false');
-        });
-    } else alert("Oops something went wrong! Error: Unable to process your API request. Status: " + request.status + ". Please try again later");
-//}
+searchButton.addEventListener('click', ()=>{
+    document.getElementById('searchResult').style.visibility = 'visible';
+    var nonexistent = document.getElementById('nope');
+    var word = document.getElementById('word');
+    var definition = document.getElementById('def');
+    var synonym = document.getElementById('syns');
+    var moreInfo = document.getElementById('more');
+    var wordToSearch = document.getElementById('wordInput').value;
+    var request1 = new XMLHttpRequest();
+    request1.open('GET', 'https://www.dictionaryapi.com/api/v3/references/thesaurus/json/' + wordToSearch + '?key=3ce6e0c2-e860-433c-a9ee-6bb91c895f31', true);
+    request1.onload = function() {
+        var data = JSON.parse(this.response);
+        if (request1.status >= 200 && request1.status < 400) {
+            if (data[0] == undefined || data[0].meta == undefined) nonexistent.innerHTML = "<li>Sorry, we cannot find that word in the dictionary</li>";
+            else {
+                nonexistent.innerHTML = "";
+                word.innerHTML += data[0].meta.id;
+                definition.innerHTML += data[0].shortdef;
+                synonym.innerHTML += data[0].meta.syns[0];
+                moreInfo.innerHTML = "<a href='https://www.merriam-webster.com/thesaurus/" + wordToSearch + "'target='_blank'>More Information</a>";
+            }
+        } else alert("There was an error accessing the dictionary, please try again.");
+    };
+    request1.send();
 });
-//Send request to API server
-request.send(); //Content population
 
 },{"progressbar.js":"4E32u"}],"4E32u":[function(require,module,exports) {
 module.exports = {

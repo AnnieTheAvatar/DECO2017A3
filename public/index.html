@@ -108,12 +108,15 @@
         <div class ="dictionaryMod">
           <div class="card">
             <h1>Dictionary</h1>
-            <label for="word">Word: </label>
-            <input type="text" name="word" id="wordInput">
+            <label for="wordSearch">Word: </label>
+            <input type="text" name="wordSearch" id="wordInput">
             <button type="button" id="search-btn">Search!</button>
-            <ul class="result">
-              <li class="def"></li>
-              <li class="syn"></li>
+            <ul id="searchResult" class="hiddenResults">
+              <li id="nope"></li>
+              <li id="word"><strong>Word: </strong></li>
+              <li id="def"><strong>Definition: </strong></li>
+              <li id="syns"><strong>Synonyms: </strong></li>
+              <li id="more"></li>
             </ul>
           </div>
         </div> 
