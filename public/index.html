@@ -26,9 +26,11 @@
 				<h2>To Do</h2>
 				<ul class="todo-items">
 				</ul>
-				<button class="open-button" id="open-button">+</button>
+				<button class="open-button fas fa-plus" id="open-button"></button>
+        <button class="btn cancel fas fa-window-minimize" id="min-button"></button>
           <div class="todo-form" id="taskform">
             <form action="/action_page.php" class="form-containter">
+              <h2>New Task</h2>
               <table class="table-form">
                 <tr>
                   <td> <label for="task">Task:</label></td>
@@ -56,7 +58,7 @@
                 </tr>
               </table>
               <button type="submit" class="add-button">Add</button>
-              <button type="button" class="btn cancel" id="min-button">Minimise</button>
+              
             </form>
           </div>
         </div>
@@ -89,7 +91,7 @@
               </td>
             </tr>
           </table>
-          <button id="refresh-button">Refresh</button>
+          <button id="refresh-button" class="fas fa-sync-alt"></button>
         </div>
       </div>
       <div class="stopwatchMod">
@@ -99,9 +101,9 @@
             00:00:00
           </div>
           <ul class="buttons">
-            <li><button id="starttimer">Start</button></li>
-            <li><button id="stoptimer">Stop</button></li>
-            <li><button id="resettimer">Reset</button></li>
+            <li><button class="fas fa-play" id="starttimer"></button></li>
+            <li><button class="fas fa-pause" id="stoptimer"></button></li>
+            <li><button class="fas fa-stop" id="resettimer"></button></li>
           </ul>
         </div>
       </div>
@@ -110,8 +112,8 @@
             <h1>Dictionary</h1>
             <label for="wordSearch">Word: </label>
             <input type="text" name="wordSearch" id="wordInput">
-            <button type="button" id="search-btn">Search!</button>
-            <ul id="searchResult" class="hiddenResults">
+            <button class="fas fa-search" type="button" id="search-btn"></button>
+            <ul id="searchResult">
               <li id="nope"></li>
               <li id="word"><strong>Word: </strong></li>
               <li id="def"><strong>Definition: </strong></li>

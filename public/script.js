@@ -88,7 +88,7 @@ function renderTodos(todos) {
       li.classList.add('checked');
     }
 
-    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><button class='delete-button'>X</button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
+    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><button class='delete-button fas fa-trash'></button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
   });
@@ -177,11 +177,15 @@ const opnBtn = document.querySelector('#open-button');
 
 opnBtn.addEventListener('click', () => {
   document.getElementById("taskform").style.display = "block";
+  opnBtn.style.visibility = "hidden";
+  minBtn.style.visibility = "visible";
 });
 
 
 minBtn.addEventListener('click', () => {
   document.getElementById("taskform").style.display = "none";
+  opnBtn.style.visibility = "visible";
+  minBtn.style.visibility = "hidden";
 });
 
 //COVEY QUADRANTS
@@ -202,13 +206,20 @@ function renderCovey(){
 
   //cycle through the array to decide where to put the tasks
   todos.forEach(function(item) {
+
+    //find difference between today and the due date
     var today = new Date();
     let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
     let date2 = new Date(item.due);
     var Difference_In_Time = date2.getTime() - date1.getTime();
     var timeRemaining = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
+
+    //numerical value of weight
     var weight = (item.weight).slice(0, -1);
 
+    //if the time remaining is less than 14 days it counts as urgent
+    //if the weight is higher than 30% it counts as important
+    //find the overlap between urgent and important to find which quadrant to put the task in
     if (timeRemaining <= 14 && weight >= 30) {
       let cov = document.createElement("li");
       cov.innerHTML = "<p>" + item.name + "</p>";
@@ -532,7 +543,7 @@ const calculateSessionProgress = () => {
 const searchButton = document.querySelector("#search-btn");
 
 searchButton.addEventListener('click', () => {
-  document.getElementById('searchResult').style.visibility = 'visible';
+  
 
   var nonexistent = document.getElementById('nope')
   var word = document.getElementById('word');
@@ -548,12 +559,32 @@ searchButton.addEventListener('click', () => {
       var data = JSON.parse(this.response);
       if (request1.status >= 200 && request1.status < 400) {
         if (data[0] == undefined || data[0].meta == undefined){
+          //create an error for if the search was unsuccessful
+          nonexistent.style.visibility = 'visible'
           nonexistent.innerHTML = "<li>Sorry, we cannot find that word in the dictionary</li>";
         }else{
+          //make the results visible
+          document.getElementById('searchResult').style.visibility = 'visible';
+
+          //remove the warning if the search is successful
           nonexistent.innerHTML = "";
+
+          //print the word that is being displayed
           word.innerHTML += data[0].meta.id;
-          definition.innerHTML += data[0].shortdef;
-          synonym.innerHTML += data[0].meta.syns[0];
+
+          //cycle through the definitions to display them on the page and seperate them with a space and comma
+          let definitions = data[0].shortdef;
+          for (var i = 0; i < definitions.length; i++) {
+            definition.innerHTML += definitions[i] + ", ";
+          }
+          
+          //cycle through the synonyms to display them on the page, and seperate them with a space and comma
+          let synonyms = data[0].meta.syns[0];
+          for (var i = 0; i < synonyms.length; i++) {
+            synonym.innerHTML += synonyms[i] + ", ";
+          }
+
+          //add a link for the dictionary page
           moreInfo.innerHTML = "<a href='https://www.merriam-webster.com/thesaurus/" + wordToSearch + "'target='_blank'>More Information</a>";
         }
       } else {
