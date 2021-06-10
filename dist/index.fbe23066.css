@@ -47,42 +47,61 @@ body {
   font-size: 50px;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   font-family: 'Lobster', cursive;
-  font-size: 30px;
   margin-bottom: 10px;
 }
 
-.column {
-  float: left;
-  width: 30%;
-  margin:10px;
+h1 {
+  font-size: 30px;
 }
 
-.column-left {
-  float: left;
-  width: 30%;
+h2 {
+  font-size: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.8fr 0.7fr;
+  gap: 3% 0%;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "scrollable scrollable scrollable"
+    ". . .";
+  width: 97.3%;
   height: 100%;
-  margin-top: 10px;
-  margin-left: 10px;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.row {
-  margin-left: 20%;
-  margin-right: 12%;
-}
+.header { grid-area: header; }
 
 .scrollable {
-    height: 600px;
-    overflow-y: auto;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3% 3%;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "tasklist coveyQuad stopwatchMod"
+    "tasklist dictionaryMod pomodoroMod";
+  grid-area: scrollable;
+  height: 600px;
+  overflow-y: auto;
 }
+
+.tasklist { grid-area: tasklist; }
+
+.coveyQuad { grid-area: coveyQuad; }
+
+.stopwatchMod { grid-area: stopwatchMod; }
+
+.dictionaryMod { grid-area: dictionaryMod; }
+
+.pomodoroMod { grid-area: pomodoroMod; }
 
 .music-phone {
   transform: rotate(-3deg);
@@ -118,16 +137,24 @@ h1 {
   }
 }
 
+@media only screen and (max-width: 1300px) {
+  .scrollable {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 2% 3%; 
+    grid-template-areas: 
+      "tasklist coveyQuad"
+      "tasklist stopwatchMod"
+      "tasklist dictionaryMod"
+      "tasklist pomodoroMod"; 
+    grid-area: scrollable; }
+}
+
 @media only screen and (max-width: 1000px) {
-  .column {
-    width: 53%;
-    float: right;
-  }
-  .column-left {
-    width: 40%;
-  }
-  .row {
-    margin: 5px;
+  .scrollable {
+    margin-left: 5%;
+    margin-right: 5%;
   }
   .header {
     position: static;
@@ -139,20 +166,25 @@ h1 {
   -o-background-size: cover;
   background-size: cover;
   }
-  .scrollable {
-  height: 100%;
-}
 }
 
 @media only screen and (max-width: 600px) {
-  .column, .column-left {
-    width: 95%;
-    float: left;
-  }
+  .scrollable {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+    gap: 3% 0px; 
+    grid-template-areas: 
+      "tasklist"
+      "coveyQuad"
+      "stopwatchMod"
+      "dictionaryMod"
+      "pomodoroMod"; 
+    grid-area: scrollable; }
+
   .music {
   height: 200px;
-}
-
+  }
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
@@ -255,13 +287,27 @@ td {
   width: 50%;
 }
 
+th {
+  font-weight: bold;
+  margin: 10px;
+}
+
 .checkbox {
   margin-right: 10px;
   display: inline;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: pink;
 }
 
 .items {
   display: inline;
+}
+
+strong {
+  font-weight: bold;
 }
 
 .delete-button {
@@ -305,6 +351,10 @@ ul {
   list-style-type: none; /* get rid of bullet points on side of list items */
 }
 
+.item {
+  background-color: lavenderblush;
+}
+
 /*stopwatch */
 
 button {
@@ -325,8 +375,12 @@ button {
 
 .buttons li {
     display: inline;
-    padding-left: 10px;
     text-align: center;
+    margin: auto;
+}
+
+.buttons li button {
+  margin: 0;
 }
 
 /*pomodoro*/
