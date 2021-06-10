@@ -4,7 +4,7 @@
 }
 
 body {
-  background: url('images/background.png') no-repeat center center fixed; 
+  background: url('background.HASH_REF_cd45df17f60d5a420734a39e05878ea3.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,19 +16,23 @@ body {
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
   opacity: 0;
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: lightpink;
 }
 
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
   background: lightcoral;
 }
+
 .header {
   text-align: center;
   top: 10px; 
@@ -85,7 +89,6 @@ h4 {
   transform: rotate(-5deg);
 }
 
-
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -131,7 +134,6 @@ h4 {
 
 .pomodoroMod { grid-area: pomodoroMod; }
 
-
 .music-phone {
   transform: rotate(-3deg);
   position: fixed;
@@ -139,6 +141,7 @@ h4 {
   left: 50px;
   
 }
+
 .music {
   border:2px solid black;
     position: fixed;
@@ -192,7 +195,7 @@ h4 {
     position: static;
   }
   body {
-    background: url('images/notepad.png') no-repeat top center;
+    background: url('notepad.HASH_REF_3ba94cc862dedb7f6f266566787b8fb2.png') no-repeat top center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -223,9 +226,8 @@ h4 {
   }
 }
 
-
-
 /* Button used to open the contact form - fixed at the bottom of the page */
+
 .open-button {
   background-color: #8390Fa;
   color: white;
@@ -241,6 +243,7 @@ h4 {
 }
 
 /* The popup form - hidden by default */
+
 .form-popup, .reading-popup {
   display: none;
   left: 15px;
@@ -253,6 +256,7 @@ h4 {
 }
 
 /* Add styles to the form container */
+
 .form-container {
   max-width: 100px;
   padding: 10px;
@@ -260,6 +264,7 @@ h4 {
 }
 
 /* Full-width input fields */
+
 .form-container input[type=text], .form-container input[type=date], .form-container input[type=number], .form-container input[type=range]{
   width: 50%;
   padding: 15px;
@@ -269,12 +274,14 @@ h4 {
 }
 
 /* When the inputs get focus, do something */
+
 .form-container input[type=text]:focus, .form-container input[type=date]:focus, .form-container input[type=number]:focus, .form-container input[type=range]:focus{
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the button */
+
 .form-container .btn {
   color: white;
   padding: 16px 20px;
@@ -286,11 +293,13 @@ h4 {
 }
 
 /* Add a red background color to the cancel button */
+
 .form-container .cancel {
   background-color: red;
 }
 
 /* Add some hover effects to buttons */
+
 .form-container .btn:hover, .open-button:hover, button:hover {
   opacity: 1;
 }
@@ -358,6 +367,7 @@ strong {
   font-weight: 550;
   display: inline;
 }
+
 .edit-button {
   background-color: yellowgreen;
 }
@@ -392,7 +402,6 @@ ul {
 
 /*stopwatch */
 
-
 button {
     padding: 16px 20px;
     border: none;
@@ -404,7 +413,6 @@ button {
     opacity: 0.9;
     text-align: center;
     margin: auto;
-    display: block;
 
 }
 
@@ -421,9 +429,8 @@ button {
   justify-content: center;
 }
 
-
-
 /*pomodoro*/
+
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
 
 * {
@@ -490,6 +497,7 @@ li.stop {
 }
 
 /* Media Queries */
+
 @media (max-width: 40rem) {
   .timer-display {
     font-size: 2rem;
@@ -499,7 +507,6 @@ li.stop {
 .hidden {
   display: none;
 }
-
 
 iframe {
   display:block;
@@ -525,6 +532,8 @@ iframe {
 .blank th {
   width:20%;
 }
+
 .urgent th {
   width:40%
 }
+/*# sourceMappingURL=index.HASH_REF_d57365999a99eaccc14b2e6ffbe23066.css.map */

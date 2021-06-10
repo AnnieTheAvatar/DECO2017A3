@@ -412,8 +412,9 @@ button {
     outline: none;
     opacity: 0.9;
     text-align: center;
-    display: flex;
-    justify-content: center;
+    margin: auto;
+    display: block;
+
 }
 
 #stopwatch {
@@ -471,6 +472,12 @@ button {
 #pomodoro-sessions {
 
   height: 0px;
+}
+
+.pomodoro-clock-actions {
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .button {
