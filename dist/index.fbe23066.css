@@ -61,6 +61,34 @@ h2 {
   font-size: 20px;
 }
 
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+h4 {
+  font-family: 'Indie Flower', cursive;
+  position: relative;
+  text-align: center;
+  color: midnightblue;
+}
+
+#tips {
+  font-size: 40px;
+  left: -100px;
+  bottom: 100px;
+  z-index: -1;
+  transform: rotate(10deg);
+}
+
+#tips2 {
+  font-size: 25px;
+  bottom: 400px;
+  z-index: -1;
+  transform: rotate(-5deg);
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -172,6 +200,10 @@ h2 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  }
+  #tips, #tips2 {
+    text-align: left;
+    left: 50px;
   }
 }
 
@@ -379,21 +411,22 @@ button {
     cursor: pointer;
     outline: none;
     opacity: 0.9;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 #stopwatch {
     font-size: 50px;
     text-align: center;
+    font-family: 'Lobster', cursive;
 }
 
-.buttons li {
-    display: inline;
-    text-align: center;
-    margin: auto;
-}
-
-.buttons li button {
-  margin: 0;
+.buttons {
+  text-align: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
 }
 
 /*pomodoro*/

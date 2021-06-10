@@ -545,7 +545,7 @@ const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener('click', () => {
   
 
-  var nonexistent = document.getElementById('nope')
+  var nonexistent = document.getElementById('nope');
   var word = document.getElementById('word');
   var definition = document.getElementById('def');
   var synonym = document.getElementById('syns');
@@ -593,3 +593,17 @@ searchButton.addEventListener('click', () => {
   }
   request1.send();
 });
+
+
+//Cute little tips
+
+//create an array with different phrases
+
+var tips = document.getElementById('tips');
+var tips2 = document.getElementById('tips2');
+var tipList = ['Stay Hydrated!', 'Remember to take breaks', 'You\'re smart!', 'Take your time', 'Study Hard', 'Keep it up!', 'Good work!'];
+
+window.onload = function() {
+  tips.innerHTML = tipList[Math.floor(Math.random()*tipList.length)];
+  tips2.innerHTML = tipList[Math.floor(Math.random()*tipList.length)];
+}

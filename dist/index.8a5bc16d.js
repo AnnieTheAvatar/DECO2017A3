@@ -843,6 +843,23 @@ searchButton.addEventListener('click', ()=>{
     };
     request1.send();
 });
+//Cute little tips
+//create an array with different phrases
+var tips = document.getElementById('tips');
+var tips2 = document.getElementById('tips2');
+var tipList = [
+    'Stay Hydrated!',
+    'Remember to take breaks',
+    'You\'re smart!',
+    'Take your time',
+    'Study Hard',
+    'Keep it up!',
+    'Good work!'
+];
+window.onload = function() {
+    tips.innerHTML = tipList[Math.floor(Math.random() * tipList.length)];
+    tips2.innerHTML = tipList[Math.floor(Math.random() * tipList.length)];
+};
 
 },{"progressbar.js":"4E32u"}],"4E32u":[function(require,module,exports) {
 module.exports = {

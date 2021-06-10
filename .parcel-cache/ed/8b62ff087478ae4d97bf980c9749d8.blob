@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>StudBud</title>
+  <link href="1c0a89e72c745a034ae4700b50556718" rel="stylesheet" type="text/css">
+	<link href="1709979ce1a746dbac218773e80dac19" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="b91ac0ece282c177fe152f18d20d6089">
+  <link rel="preconnect" href="bfbd75b20762e759d2ff58b51df1b233">
+  <link href="5a135be74baf2dffb95193bd4f30520e" rel="stylesheet"> 
+  <link href="4508d2435962659fe22ff2a46b758559" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="d163398dc39e6cbce0e3ecb8e2c03d5e">
+</head>
+
+<body>
+	<div class="header">
+	<h1>StudBud</h1>
+	<h3>Your personal study desk</h3>
+	</div>
+  <div class="scrollable">
+		<div class="tasklist">
+			<div class="card" id="taskcard">
+				<h1>Task List</h1>
+        <p>Keep track of what tasks you need to do!</p>
+				<h2>To Do</h2>
+				<ul class="todo-items">
+				</ul>
+				<button class="open-button fas fa-plus" id="open-button"></button>
+        <button class="btn cancel fas fa-window-minimize" id="min-button"></button>
+          <div class="todo-form" id="taskform">
+            <form action="/action_page.php" class="form-containter">
+              <h2>New Task</h2>
+              <table class="table-form">
+                <tr>
+                  <td> <label for="task">Task:</label></td>
+                  <td><input type="text" class="todo-input" placeholder="Add a Task..."></td>
+                </tr>
+              <!-- Date input -->
+                <tr>
+                  <td><label for="dueDate">Due Date: </label></td>
+                  <td><input type="date" name="dueDate" id="dueDateInput" required=""></td>
+                </tr>
+                <tr>
+                  <td><label for="estimatedTime">Estimated work time (mins):</label></td>
+                  <td><input type="number" name="estimatedTime" id="estimatedTimeInput"></td>
+                <!-- Priority -->
+                </tr>
+                <tr>
+                  <td><label for="priority">Priority:</label></td>
+                  <td><input type="range" min="1" max="100" value="50" class="slider" id="priorityInput">
+                  <p><span id="demo"></span> %</p></td>
+                <!-- Notes -->
+                </tr>
+                <tr>
+                  <td><label for="notes">Notes:</label></td>
+                  <td><input type="text" name="notes" id="notesInput"></td>
+                </tr>
+              </table>
+              <button type="submit" class="add-button">Add</button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="coveyQuad">
+        <div class="card">
+          <h1>Covey Quadrants</h1>
+          <p>See how tasks compare to each other from urgency to importance!</p>
+          <table class="covey">
+            <tr>
+              <th class="blank"></th>
+              <th class="urgent">Urgent</th>
+              <th class="urgent">Not Urgent</th>
+            </tr>
+            <tr>
+              <th>Important</th>
+              <td class="UI">
+                <ul id="urgimp"></ul>
+              </td>
+              <td class="NI">
+                <ul id="notimp"></ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Not Important</th>
+              <td class="UN">
+                <ul id="urgnot"></ul>
+              </td>
+              <td class="NN">
+                <ul id="notnot"></ul>
+              </td>
+            </tr>
+          </table>
+          <button id="refresh-button" class="fas fa-sync-alt"></button>
+        </div>
+      </div>
+      <div class="stopwatchMod">
+        <div class="card">
+          <h1>Stopwatch</h1>
+          <p>Keep track of time!</p>
+          <div id="stopwatch">
+            00:00:00
+          </div>
+          <ul class="buttons">
+            <li><button class="fas fa-play" id="starttimer"></button></li>
+            <li><button class="fas fa-pause" id="stoptimer"></button></li>
+            <li><button class="fas fa-stop" id="resettimer"></button></li>
+          </ul>
+        </div>
+      </div>
+        <div class="dictionaryMod">
+          <div class="card">
+            <h1>Dictionary</h1>
+            <p>Look up any word you want!</p>
+            <label for="wordSearch">Word: </label>
+            <input type="text" name="wordSearch" id="wordInput">
+            <button class="fas fa-search" type="button" id="search-btn"></button>
+            <ul id="searchResult">
+              <li id="nope"></li>
+              <li id="word"><strong>Word: </strong></li>
+              <li id="def"><strong>Definition: </strong></li>
+              <li id="syns"><strong>Synonyms: </strong></li>
+              <li id="more"></li>
+            </ul>
+          </div>
+        </div> 
+      <div class="pomodoroMod">
+      <div class="card">
+        <h1>Pomodoro Timer</h1>
+        <p>Keep track of your work time and your break time!</p>
+        <div id="pomodoro-container">
+          <div id="pomodoro-clock">
+            <div id="pomodoro-timer"></div>
+            <div>
+              <input type="text" id="pomodoro-clock-task" placeholder="Enter your task...">
+            </div>
+            <div id="pomodoro-clock-actions">
+              <button id="pomodoro-start">
+                <i class="fas fa-play" id="play-icon"></i>
+                <i class="fas fa-pause hidden" id="pause-icon"></i>
+              </button>
+              <button id="pomodoro-stop" class="hidden">
+                <i class="fas fa-stop"></i>
+              </button>
+            </div>
+            <!-- new -->
+            <div id="pomodoro-clock-title">
+              <p>
+                Changes made here will reflect at the start of the next work /
+                break session
+              </p>
+            </div>
+            <div id="pomodoro-clock-actions">
+              <div class="pomodoro-input">
+                <label>Work Duration:</label>
+                <input name="input-work-duration" id="input-work-duration" type="number">
+              </div>
+              <div class="pomodoro-input">
+                <label>Break Duration:</label>
+                <input name="input-break-duration" id="input-break-duration" type="number">
+              </div>
+            </div>
+            <div id="pomodoro-info">
+              <h3>Your Sessions </h3>
+              <ul id="pomodoro-sessions">
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div> 
+      </div>
+    
+    <div class="tips">
+      <h4 id="tips"> </h4>
+    </div>
+  
+  <div class="music-phone">
+      <iframe title="music player" class="music" src="584aa8a4c46f778c6fc067fc468af79f" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+  <script src="e22b76ecbb822ec939843e415ae1d172"></script>
+  <script src="4e6340146f7d0152c44dbd6ccf58b0e0"></script>
+  </body>
+</html>

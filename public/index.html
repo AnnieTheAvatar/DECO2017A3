@@ -9,7 +9,7 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&family=Indie+Flower&display=swap" rel="stylesheet"> 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
   <link rel="shortcut icon" type="image/png" href="favicon_io/favicon-32x32.png"/>
 </head>
@@ -17,12 +17,13 @@
 <body>
 	<div class="header">
 	<h1>StudBud</h1>
-	<h3>Your study desk</h3>
+	<h3>Your personal study desk</h3>
 	</div>
   <div class="scrollable">
 		<div class="tasklist">
 			<div class="card" id="taskcard">
 				<h1>Task List</h1>
+        <p>Keep track of what tasks you need to do!</p>
 				<h2>To Do</h2>
 				<ul class="todo-items">
 				</ul>
@@ -66,6 +67,7 @@
       <div class="coveyQuad">
         <div class="card">
           <h1>Covey Quadrants</h1>
+          <p>See how tasks compare to each other from urgency to importance!</p>
           <table class="covey">
             <tr>
               <th class="blank"></th>
@@ -97,6 +99,7 @@
       <div class="stopwatchMod">
         <div class="card">
           <h1>Stopwatch</h1>
+          <p>Keep track of time!</p>
           <div id="stopwatch">
             00:00:00
           </div>
@@ -110,6 +113,7 @@
         <div class ="dictionaryMod">
           <div class="card">
             <h1>Dictionary</h1>
+            <p>Look up any word you want!</p>
             <label for="wordSearch">Word: </label>
             <input type="text" name="wordSearch" id="wordInput">
             <button class="fas fa-search" type="button" id="search-btn"></button>
@@ -125,6 +129,7 @@
       <div class="pomodoroMod">
       <div class="card">
         <h1>Pomodoro Timer</h1>
+        <p>Keep track of your work time and your break time!</p>
         <div id="pomodoro-container">
           <div id="pomodoro-clock">
             <div id="pomodoro-timer"></div>
@@ -167,6 +172,10 @@
         </div>
       </div> 
       </div>
+    </div>
+    <div class="tips">
+      <h4 id="tips"> </h4>
+      <h4 id="tips2"> </h4>
     </div>
   </div>
   <div class="music-phone">
