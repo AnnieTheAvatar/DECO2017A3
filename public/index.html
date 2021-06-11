@@ -102,9 +102,6 @@
             </td>
           </tr>
         </table>
-        <!-- User can press the button to refresh the covey quadrants-->
-        <p class="refresh-info">Refresh to see your tasks up to date</p>
-        <button id="refresh-button" class="fas fa-sync-alt"></button>
       </div>
     </div>
     <!-- Stopwatch -->
@@ -128,10 +125,12 @@
       <div class="card">
         <h1>Dictionary</h1>
         <p>Look up any word you want!</p>
-        <label for="wordSearch">Word: </label>
         <!-- word to search -->
-        <input type="text" name="wordSearch" id="wordInput">
-        <button class="fas fa-search" type="button" id="search-btn"></button>
+        <form class="searchForm">
+          <label for="wordSearch">Word: </label>
+          <input type="text" name="wordSearch" id="wordInput">
+          <button class="fas fa-search" type="button" id="search-btn"></button>
+        </form>
         <!-- Results will be displayed here -->
         <ul id="searchResult">
           <!-- if the word cannot be found, send an error-->

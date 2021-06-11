@@ -412,7 +412,8 @@ todoForm.addEventListener('submit', function(event) {
     let note = notesInput.value;
     // Call the addTask() function using
     addTodo(task, date, dD, prio, time, note, false);
-//addTodo(todoInput.value); // call addTodo function with input box current value
+    //update the covey quadrant
+    renderCovey();
 });
 // function to add todo
 function addTodo(item, createdDate, dueDate, priorityRating, estimatedTime, notes, completionStatus) {
@@ -498,11 +499,21 @@ getFromLocalStorage();
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 todoItemsList.addEventListener('click', function(event) {
     // check if the event is on checkbox
-    if (event.target.classList.contains('checkbox')) // toggle the state
-    toggle(event.target.parentElement.getAttribute('data-key'));
+    if (event.target.classList.contains('checkbox')) {
+        // toggle the state
+        toggle(event.target.parentElement.getAttribute('data-key'));
+        //console.log(event.target.parentElement.nodeName);
+        //update the covey quadrant
+        renderCovey();
+    }
     // check if that is a delete-button
-    if (event.target.classList.contains('delete-button')) // get id from data-key attribute's value of parent <li> where the delete-button is present
-    deleteTodo(event.target.parentElement.getAttribute('data-key'));
+    if (event.target.classList.contains('delete-button')) {
+        // get id from data-key attribute's value of parent <li> where the delete-button is present
+        deleteTodo(event.target.parentElement.getAttribute('data-key'));
+        //console.log(event.target.parentElement.nodeName)
+        //update the covey quadrant
+        renderCovey();
+    }
 });
 //converting minutes to hours:mins
 function timeConvert(n) {
@@ -527,10 +538,8 @@ minBtn.addEventListener('click', ()=>{
     minBtn.style.visibility = "hidden";
 });
 //COVEY QUADRANTS
-const refreshBtn = document.querySelector('#refresh-button');
-refreshBtn.addEventListener('click', ()=>{
-    renderCovey();
-});
+//tasks will load as soon as window is loaded
+window.addEventListener("load", renderCovey());
 function renderCovey() {
     //define the different quadrents by id
     var ui = document.getElementById('urgimp');

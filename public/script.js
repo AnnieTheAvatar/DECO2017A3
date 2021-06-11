@@ -35,7 +35,8 @@ todoForm.addEventListener('submit', function (event) {
   // Call the addTask() function using
   addTodo(task, date, dD, prio, time, note, false);
 
-  //addTodo(todoInput.value); // call addTodo function with input box current value
+  //update the covey quadrant
+  renderCovey()
 });
 
 // function to add todo
@@ -150,6 +151,9 @@ todoItemsList.addEventListener('click', function (event) {
     // toggle the state
     toggle(event.target.parentElement.getAttribute('data-key'))
     //console.log(event.target.parentElement.nodeName);
+
+    //update the covey quadrant
+    renderCovey()
   }
 
   // check if that is a delete-button
@@ -157,6 +161,9 @@ todoItemsList.addEventListener('click', function (event) {
     // get id from data-key attribute's value of parent <li> where the delete-button is present
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
     //console.log(event.target.parentElement.nodeName)
+
+    //update the covey quadrant
+    renderCovey()
   }
 });
 
@@ -192,11 +199,8 @@ minBtn.addEventListener('click', () => {
 
 
 //COVEY QUADRANTS
-const refreshBtn = document.querySelector('#refresh-button');
-
-refreshBtn.addEventListener('click', () => {
-  renderCovey();
-});
+//tasks will load as soon as window is loaded
+window.addEventListener("load", renderCovey())
 
 function renderCovey() {
 
@@ -376,7 +380,7 @@ breakDurationInput.value = '5'
 
 let isClockStopped = true
 
-var ProgressBar = require('progressbar.js')
+var ProgressBar = require('progressbar.js');
 var circle = new ProgressBar.Circle('#pomodoro-clock');
 
 
