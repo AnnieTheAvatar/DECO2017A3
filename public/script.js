@@ -87,8 +87,8 @@ function renderTodos(todos) {
       li.classList.add('checked');
     }
 
-    li.innerHTML = "<input type='checkbox' class='checkbox' ${checked}><button class='delete-button fas fa-trash'></button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
-    // finally add the <li> to the <ul>
+    li.innerHTML = "<button class='checkbox fas fa-check' ${checked}></button><button class='delete-button fas fa-trash'></button><p class='items'><strong>" + item.name + "</strong></br>Due: " + item.due + "</br>Weight: " + item.weight + "</br>Notes: " + item.note + "</p>";
+    // add the <li> to the <ul>
     todoItemsList.append(li);
   });
 
@@ -142,10 +142,11 @@ function deleteTodo(id) {
 // initially get everything from localStorage
 getFromLocalStorage();
 
+
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
 todoItemsList.addEventListener('click', function (event) {
   // check if the event is on checkbox
-  if (event.target.type === 'checkbox') {
+  if (event.target.classList.contains('checkbox')) {
     // toggle the state
     toggle(event.target.parentElement.getAttribute('data-key'))
     //console.log(event.target.parentElement.nodeName);
@@ -238,22 +239,22 @@ function renderCovey() {
     //find the overlap between urgent and important to find which quadrant to put the task in
     if (timeRemaining <= 14 && weight >= 30 && completion == false) {
       let cov = document.createElement("li");
-      cov.innerHTML = "<p>" + item.name + "</p>";
+      cov.innerHTML = "<p><strong>" + item.name + " : </strong>" + timeRemaining + " days left! Worth " + item.weight + "</p>";
       urgimp.appendChild(cov);
     }
     else if (timeRemaining <= 14 && weight < 30 && completion == false) {
       let cov = document.createElement("li");
-      cov.innerHTML = "<p>" + item.name + "</p>";
+      cov.innerHTML = "<p><strong>" + item.name + " : </strong>" + timeRemaining + " days left! Worth " + item.weight + "</p>";
       urgnot.appendChild(cov);
     }
     else if (timeRemaining > 14 && weight >= 30 && completion == false) {
       let cov = document.createElement("li");
-      cov.innerHTML = "<p>" + item.name + "</p>";
+      cov.innerHTML = "<p><strong>" + item.name + " : </strong>" + timeRemaining + " days left! Worth " + item.weight + "</p>";
       notimp.appendChild(cov);
     }
     else if (timeRemaining > 14 && weight < 30 && completion == false) {
       let cov = document.createElement("li");
-      cov.innerHTML = "<p>" + item.name + "</p>";
+      cov.innerHTML = "<p><strong>" + item.name + " : </strong>" + timeRemaining + " days left! Worth " + item.weight + "</p>";
       notnot.appendChild(cov);
     }
   })

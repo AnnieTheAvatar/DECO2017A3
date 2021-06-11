@@ -1,0 +1,520 @@
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: url('background.HASH_REF_cd45df17f60d5a420734a39e05878ea3.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: lightpink;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: lightcoral;
+}
+
+.header {
+  text-align: center;
+  top: 10px; 
+  width: 100%; 
+  z-index: 1;
+  padding-bottom: 10px;
+  margin-bottom: 5%;
+  background: pink;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+h4 {
+  font-family: 'Indie Flower', cursive;
+  position: relative;
+  text-align: center;
+  color: midnightblue;
+}
+
+#tips {
+  font-size: 40px;
+  left: -100px;
+  bottom: 100px;
+  z-index: -1;
+  transform: rotate(10deg);
+}
+
+#tips2 {
+  font-size: 25px;
+  bottom: 400px;
+  z-index: -1;
+  transform: rotate(-5deg);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.8fr 0.7fr;
+  gap: 3% 0%;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "scrollable scrollable scrollable"
+    ". . .";
+  width: 97.3%;
+  height: 100%;
+}
+
+.header { grid-area: header; }
+
+.scrollable {
+  margin-left: 20%;
+  margin-right: 20%;
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 2% 2%;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "tasklist coveyQuad coveyQuad"
+    "tasklist stopwatchMod pomodoroMod"
+    "tasklist dictionaryMod pomodoroMod";
+  grid-area: scrollable;
+  height: 600px;
+  overflow-y: auto;
+}
+
+.tasklist { grid-area: tasklist; }
+
+.coveyQuad { grid-area: coveyQuad; }
+
+.stopwatchMod { grid-area: stopwatchMod; }
+
+.dictionaryMod { 
+  grid-area: dictionaryMod;
+  word-wrap: break-word;
+ }
+
+.pomodoroMod { grid-area: pomodoroMod; }
+
+.music-phone {
+  transform: rotate(-3deg);
+  position: fixed;
+  top: 150px;
+  left: 50px;
+  
+}
+
+.music {
+  border:2px solid black;
+    position: fixed;
+    background-color:black;
+    width:250px;
+    height:450px;
+    border-radius: 20px; 
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7)  
+}
+
+#searchResult {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 1500px) {
+  .music-phone{
+    transform: rotate(0);
+    position: static;
+    padding: 5%;
+  }
+  .music {
+    position: static;
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 0;
+    background: 0;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .scrollable {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 2% 3%; 
+    grid-template-areas: 
+      "tasklist coveyQuad"
+      "tasklist stopwatchMod"
+      "tasklist dictionaryMod"
+      "tasklist pomodoroMod"; 
+    grid-area: scrollable; }
+}
+
+@media only screen and (max-width: 1000px) {
+  .scrollable {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .header {
+    position: static;
+  }
+  body {
+    background: url('notepad.HASH_REF_3ba94cc862dedb7f6f266566787b8fb2.png') no-repeat top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  #tips, #tips2 {
+    text-align: left;
+    left: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .scrollable {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+    gap: 3% 0px; 
+    grid-template-areas: 
+      "tasklist"
+      "coveyQuad"
+      "stopwatchMod"
+      "dictionaryMod"
+      "pomodoroMod"; 
+    grid-area: scrollable; }
+
+  .music {
+  height: 200px;
+  }
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+.open-button {
+  background-color: #8390Fa;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 0.8;
+  margin: 0px;
+  width: 50;
+  font-size: 20px;
+  visibility: hidden;
+}
+
+#min-button {
+  float: right;
+}
+
+/* The popup form - hidden by default */
+
+.form-popup, .reading-popup {
+  display: none;
+  left: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  margin: 10px;
+  padding: 10px;
+  background-color: pink;
+  border-radius: 10px;
+}
+
+/* Add styles to the form container */
+
+.form-container {
+  max-width: 100px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+
+.form-container input[type=text], .form-container input[type=date], .form-container input[type=number], .form-container input[type=range]{
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+
+.form-container input[type=text]:focus, .form-container input[type=date]:focus, .form-container input[type=number]:focus, .form-container input[type=range]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the button */
+
+.form-container .btn {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+
+.form-container .btn:hover, .open-button:hover, button:hover {
+  opacity: 1;
+}
+
+p, li, table, label {
+  margin: 5px;
+  font-family: "open sans", sans-serif;
+  padding: 5px;
+}
+
+button, input {
+  margin: 10px;
+}
+
+#notesInput {
+  box-sizing: border-box;
+}
+
+.table-form {
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.covey {
+  width: 90%;
+}
+
+.covey td, .covey th {
+  padding: 3px;
+  margin: 3px;
+}
+
+.covey td {
+  width: 50%;
+  height: 150px;
+
+}
+
+th {
+  font-weight: bold;
+  margin: 10px;
+}
+
+.checkbox {
+  margin-right: 10px;
+  display: inline;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: pink;
+}
+
+.items {
+  display: inline;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.delete-button {
+  float: right;
+  background-color: #dc143c;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 550;
+  display: inline;
+}
+
+.edit-button {
+  background-color: yellowgreen;
+}
+
+.openbutton {
+  background-color: thistle;
+
+}
+
+.card {
+  padding: 10px;
+  padding-bottom: 50px;
+  background-color: #ffc;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+.done-button {
+  background-color: #8390Fa;
+}
+
+ul li.checked {
+  text-decoration: line-through;
+}
+
+ul {
+  list-style-type: none; /* get rid of bullet points on side of list items */
+}
+
+.item {
+  background-color: lavenderblush;
+}
+
+/*stopwatch */
+
+button {
+    padding: 16px 20px;
+    border: none;
+    border-radius: 50px;
+    background: #8390Fa;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    opacity: 0.9;
+    text-align: center;
+    margin: auto;
+    display: block;
+
+}
+
+#stopwatch {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+.buttons {
+  text-align: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+/*pomodoro*/
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.progressbar-text {
+  font-family: "Lobster", cursive;
+  font-size: 40px;
+}
+
+.session-type {
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding-bottom: 1.25rem;
+}
+
+.timer-display {
+  font-size: 3rem;
+}
+
+#pomodoro-sessions {
+  height: 0px;
+}
+
+li.stop {
+  margin-left: 0.5rem;
+}
+
+/* Media Queries */
+
+@media (max-width: 40rem) {
+  .timer-display {
+    font-size: 2rem;
+  }
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+iframe {
+  display:block;
+  margin: auto;
+}
+
+/* covey quadrents */
+
+.UI {
+  background-color: lightpink;
+}
+
+.NI {
+  background-color: mistyrose;
+}
+
+.UN {
+  background-color: snow;
+}
+
+.NN {
+  background-color: mintcream;
+}
+
+.blank th {
+  width:20%;
+}
+
+.urgent th {
+  width:40%
+}
+
+#refresh-button, .refresh-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*# sourceMappingURL=index.HASH_REF_d57365999a99eaccc14b2e6ffbe23066.css.map */

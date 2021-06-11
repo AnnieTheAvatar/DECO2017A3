@@ -1,15 +1,14 @@
-
 * {
   font-family: 'Open Sans', sans-serif;
 }
 
 body {
-  background: url('background.05878ea3.png') no-repeat center center fixed; 
+  background: url('background.05878ea3.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  }
+}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -35,8 +34,8 @@ body {
 
 .header {
   text-align: center;
-  top: 10px; 
-  width: 100%; 
+  top: 10px;
+  width: 100%;
   z-index: 1;
   padding-bottom: 10px;
   margin-bottom: 5%;
@@ -95,15 +94,14 @@ h4 {
   grid-template-rows: 0.5fr 1.8fr 0.7fr;
   gap: 3% 0%;
   grid-auto-flow: row;
-  grid-template-areas:
-    "header header header"
-    "scrollable scrollable scrollable"
-    ". . .";
+  grid-template-areas: "header header header" "scrollable scrollable scrollable" ". . .";
   width: 97.3%;
   height: 100%;
 }
 
-.header { grid-area: header; }
+.header {
+  grid-area: header;
+}
 
 .scrollable {
   margin-left: 20%;
@@ -113,44 +111,48 @@ h4 {
   grid-template-rows: 1fr 1fr 1fr;
   gap: 2% 2%;
   grid-auto-flow: row;
-  grid-template-areas:
-    "tasklist coveyQuad coveyQuad"
-    "tasklist stopwatchMod pomodoroMod"
-    "tasklist dictionaryMod pomodoroMod";
+  grid-template-areas: "tasklist coveyQuad coveyQuad" "tasklist stopwatchMod pomodoroMod" "tasklist dictionaryMod pomodoroMod";
   grid-area: scrollable;
   height: 600px;
   overflow-y: auto;
 }
 
-.tasklist { grid-area: tasklist; }
+.tasklist {
+  grid-area: tasklist;
+}
 
-.coveyQuad { grid-area: coveyQuad; }
+.coveyQuad {
+  grid-area: coveyQuad;
+}
 
-.stopwatchMod { grid-area: stopwatchMod; }
+.stopwatchMod {
+  grid-area: stopwatchMod;
+}
 
-.dictionaryMod { 
+.dictionaryMod {
   grid-area: dictionaryMod;
   word-wrap: break-word;
- }
+}
 
-.pomodoroMod { grid-area: pomodoroMod; }
+.pomodoroMod {
+  grid-area: pomodoroMod;
+}
 
 .music-phone {
   transform: rotate(-3deg);
   position: fixed;
   top: 150px;
   left: 50px;
-  
 }
 
 .music {
-  border:2px solid black;
-    position: fixed;
-    background-color:black;
-    width:250px;
-    height:450px;
-    border-radius: 20px; 
-    box-shadow: 5px 5px 7px rgba(33,33,33,.7)  
+  border: 2px solid black;
+  position: fixed;
+  background-color: black;
+  width: 250px;
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, .7)
 }
 
 #searchResult {
@@ -158,7 +160,7 @@ h4 {
 }
 
 @media only screen and (max-width: 1500px) {
-  .music-phone{
+  .music-phone {
     transform: rotate(0);
     position: static;
     padding: 5%;
@@ -175,16 +177,13 @@ h4 {
 
 @media only screen and (max-width: 1300px) {
   .scrollable {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr; 
-    gap: 2% 3%; 
-    grid-template-areas: 
-      "tasklist coveyQuad"
-      "tasklist stopwatchMod"
-      "tasklist dictionaryMod"
-      "tasklist pomodoroMod"; 
-    grid-area: scrollable; }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 2% 3%;
+    grid-template-areas: "tasklist coveyQuad" "tasklist stopwatchMod" "tasklist dictionaryMod" "tasklist pomodoroMod";
+    grid-area: scrollable;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -197,10 +196,10 @@ h4 {
   }
   body {
     background: url('notepad.787b8fb2.png') no-repeat top center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
   #tips, #tips2 {
     text-align: left;
@@ -210,20 +209,15 @@ h4 {
 
 @media only screen and (max-width: 600px) {
   .scrollable {
-    display: grid; 
-    grid-template-columns: 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
-    gap: 3% 0px; 
-    grid-template-areas: 
-      "tasklist"
-      "coveyQuad"
-      "stopwatchMod"
-      "dictionaryMod"
-      "pomodoroMod"; 
-    grid-area: scrollable; }
-
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 3% 0px;
+    grid-template-areas: "tasklist" "coveyQuad" "stopwatchMod" "dictionaryMod" "pomodoroMod";
+    grid-area: scrollable;
+  }
   .music {
-  height: 200px;
+    height: 200px;
   }
 }
 
@@ -270,18 +264,16 @@ h4 {
 
 /* Full-width input fields */
 
-.form-container input[type=text], .form-container input[type=date], .form-container input[type=number], .form-container input[type=range]{
-  width: 50%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
+input {
+  padding: 5px;
+  margin-bottom: 20px;
+  background: mintcream;
 }
 
 /* When the inputs get focus, do something */
 
-.form-container input[type=text]:focus, .form-container input[type=date]:focus, .form-container input[type=number]:focus, .form-container input[type=range]:focus{
-  background-color: #ddd;
+input:focus {
+  background-color: whitesmoke;
   outline: none;
 }
 
@@ -293,7 +285,7 @@ h4 {
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   opacity: 0.8;
 }
 
@@ -309,10 +301,6 @@ p, li, table, label {
   padding: 5px;
 }
 
-button, input {
-  margin: 10px;
-}
-
 #notesInput {
   box-sizing: border-box;
 }
@@ -322,13 +310,18 @@ button, input {
   width: 100%;
 }
 
+.covey {
+  width: 90%;
+}
+
 .covey td, .covey th {
   padding: 3px;
   margin: 3px;
 }
 
-td {
+.covey td {
   width: 50%;
+  height: 150px;
 }
 
 th {
@@ -337,13 +330,12 @@ th {
 }
 
 .checkbox {
-  margin-right: 10px;
+  background-color: seagreen;
+  border-radius: 7px;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 1.1rem;
   display: inline;
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-  border: none;
-  background-color: pink;
 }
 
 .items {
@@ -357,13 +349,10 @@ strong {
 .delete-button {
   float: right;
   background-color: #dc143c;
-  border: none;
-  outline: none;
   border-radius: 7px;
   padding: 5px;
   margin-left: 10px;
   font-size: 1.1rem;
-  font-weight: 550;
   display: inline;
 }
 
@@ -373,14 +362,13 @@ strong {
 
 .openbutton {
   background-color: thistle;
-
 }
 
 .card {
   padding: 10px;
   padding-bottom: 50px;
   background-color: #ffc;
-  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
 }
 
 .done-button {
@@ -392,34 +380,34 @@ ul li.checked {
 }
 
 ul {
-  list-style-type: none; /* get rid of bullet points on side of list items */
+  list-style-type: none;
+  /* get rid of bullet points on side of list items */
 }
 
 .item {
-  background-color: lavenderblush;
+  background-color: mistyrose;
 }
 
 /*stopwatch */
 
 button {
-    padding: 16px 20px;
-    border: none;
-    border-radius: 50px;
-    background: #8390Fa;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    opacity: 0.9;
-    text-align: center;
-    margin: auto;
-    display: block;
-
+  padding: 16px 20px;
+  border: none;
+  border-radius: 50px;
+  background: #8390Fa;
+  color: mistyrose;
+  cursor: pointer;
+  outline: none;
+  opacity: 0.9;
+  text-align: center;
+  margin: auto;
+  display: block;
 }
 
 #stopwatch {
-    font-size: 50px;
-    text-align: center;
-    font-family: 'Lobster', cursive;
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Lobster', cursive;
 }
 
 .buttons {
@@ -427,6 +415,7 @@ button {
   display: flex;
   margin: auto;
   justify-content: center;
+  float: center;
 }
 
 /*pomodoro*/
@@ -437,6 +426,14 @@ button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+#pomodoro-clock {
+  text-align: center;
+}
+
+#pomodoro-clock-task {
+  margin-top: 10px;
 }
 
 .progressbar-text {
@@ -476,14 +473,14 @@ li.stop {
 }
 
 iframe {
-  display:block;
+  display: block;
   margin: auto;
 }
 
 /* covey quadrents */
 
 .UI {
-  background-color: lightcoral;
+  background-color: lightpink;
 }
 
 .NI {
@@ -491,18 +488,24 @@ iframe {
 }
 
 .UN {
-  background-color: mintcream;
-}
-
-.NN {
   background-color: snow;
 }
 
+.NN {
+  background-color: mintcream;
+}
+
 .blank th {
-  width:20%;
+  width: 20%;
 }
 
 .urgent th {
-  width:40%
+  width: 40%
+}
+
+#refresh-button, .refresh-info, #search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=index.fbe23066.css.map */
