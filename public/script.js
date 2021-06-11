@@ -1,6 +1,5 @@
 
 //TASK LIST
-
 // select everything
 // select the todo-form
 const todoForm = document.querySelector('.todo-form');
@@ -15,7 +14,7 @@ var output = document.getElementById("demo");
 output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
+slider.oninput = function () {
   output.innerHTML = this.value;
 }
 
@@ -23,7 +22,7 @@ slider.oninput = function() {
 let todos = [];
 
 // add an eventListener on form, and listen for submit event
-todoForm.addEventListener('submit', function(event) {
+todoForm.addEventListener('submit', function (event) {
   // prevent the page from reloading when submitting the form
   event.preventDefault();
   let task = todoInput.value;
@@ -32,16 +31,16 @@ todoForm.addEventListener('submit', function(event) {
   let prio = priorityInput.value + "%";
   let time = timeConvert(estimatedTimeInput.value)
   let note = notesInput.value;
-  
+
   // Call the addTask() function using
   addTodo(task, date, dD, prio, time, note, false);
-  
+
   //addTodo(todoInput.value); // call addTodo function with input box current value
 });
 
 // function to add todo
 function addTodo(item, createdDate, dueDate, priorityRating, estimatedTime, notes, completionStatus) {
-  
+
   // if item is not empty
   if (item !== '') {
     // make a todo object, which has id, name, and completed properties
@@ -72,9 +71,9 @@ function renderTodos(todos) {
   todoItemsList.innerHTML = '';
 
   // run through each item inside todos
-  todos.forEach(function(item) {
+  todos.forEach(function (item) {
     // check if the item is completed
-    const checked = item.completed ? 'checked': null;
+    const checked = item.completed ? 'checked' : null;
 
     // make a <li> element and fill it
     const li = document.createElement('li');
@@ -116,7 +115,7 @@ function getFromLocalStorage() {
 
 // toggle the value to completed and not completed
 function toggle(id) {
-  todos.forEach(function(item) {
+  todos.forEach(function (item) {
     // use == not ===, because here types are different. One is number and other is string;
     if (item.id == id) {
       // toggle the value
@@ -131,11 +130,11 @@ function toggle(id) {
 function deleteTodo(id) {
   // filters out the <li> with the id and updates the todos array
   //console.log(id);
-  todos = todos.filter(function(item) {
+  todos = todos.filter(function (item) {
     // use != not !==, because here types are different. One is number and other is string
     return item.id != id;
   });
-  
+
   // update the localStorage
   addToLocalStorage(todos);
 }
@@ -144,7 +143,7 @@ function deleteTodo(id) {
 getFromLocalStorage();
 
 // after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
-todoItemsList.addEventListener('click', function(event) {
+todoItemsList.addEventListener('click', function (event) {
   // check if the event is on checkbox
   if (event.target.type === 'checkbox') {
     // toggle the state
@@ -163,12 +162,12 @@ todoItemsList.addEventListener('click', function(event) {
 
 //converting minutes to hours:mins
 function timeConvert(n) {
-var num = n;
-var hours = (num / 60);
-var rhours = Math.floor(hours);
-var minutes = (hours - rhours) * 60;
-var rminutes = Math.round(minutes);
-return rhours + "hr : " + rminutes + "min";
+  var num = n;
+  var hours = (num / 60);
+  var rhours = Math.floor(hours);
+  var minutes = (hours - rhours) * 60;
+  var rminutes = Math.round(minutes);
+  return rhours + "hr : " + rminutes + "min";
 }
 
 //openning and closing the form
@@ -188,6 +187,9 @@ minBtn.addEventListener('click', () => {
   minBtn.style.visibility = "hidden";
 });
 
+
+
+
 //COVEY QUADRANTS
 const refreshBtn = document.querySelector('#refresh-button');
 
@@ -195,21 +197,33 @@ refreshBtn.addEventListener('click', () => {
   renderCovey();
 });
 
-function renderCovey(){
+function renderCovey() {
+
+  //define the different quadrents by id
+  var ui = document.getElementById('urgimp');
+  var ni = document.getElementById('notimp');
+  var un = document.getElementById('urgnot');
+  var nn = document.getElementById('notnot');
   //remove current covey so there aren't duplicates
-  /*
-  document.getElementById('urgimp').removeChild(document.getElementById('urgimp').lastElementChild);
-  document.getElementById('notimp').removeChild(document.getElementById('notimp').lastElementChild);
-  document.getElementById('urgnot').removeChild(document.getElementById('urgnot').lastElementChild);
-  document.getElementById('notnot').removeChild(document.getElementById('notnot').lastElementChild);
-*/
+  if (ui.hasChildNodes()) {
+    ui.innerHTML = '';
+  }
+  if (ni.hasChildNodes()) {
+    ni.innerHTML = '';
+  }
+  if (un.hasChildNodes()) {
+    un.innerHTML = '';
+  }
+  if (nn.hasChildNodes()) {
+    nn.innerHTML = '';
+  }
 
   //cycle through the array to decide where to put the tasks
-  todos.forEach(function(item) {
+  todos.forEach(function (item) {
 
     //find difference between today and the due date
     var today = new Date();
-    let date1 = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
+    let date1 = new Date(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate());
     let date2 = new Date(item.due);
     var Difference_In_Time = date2.getTime() - date1.getTime();
     var timeRemaining = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
@@ -217,43 +231,51 @@ function renderCovey(){
     //numerical value of weight
     var weight = (item.weight).slice(0, -1);
 
+    var completion = item.completed;
+
     //if the time remaining is less than 14 days it counts as urgent
     //if the weight is higher than 30% it counts as important
     //find the overlap between urgent and important to find which quadrant to put the task in
-    if (timeRemaining <= 14 && weight >= 30) {
+    if (timeRemaining <= 14 && weight >= 30 && completion == false) {
       let cov = document.createElement("li");
       cov.innerHTML = "<p>" + item.name + "</p>";
       urgimp.appendChild(cov);
     }
-    else if (timeRemaining <= 14 && weight < 30) {
+    else if (timeRemaining <= 14 && weight < 30 && completion == false) {
       let cov = document.createElement("li");
       cov.innerHTML = "<p>" + item.name + "</p>";
       urgnot.appendChild(cov);
     }
-    else if (timeRemaining > 14 && weight >= 30) {
+    else if (timeRemaining > 14 && weight >= 30 && completion == false) {
       let cov = document.createElement("li");
       cov.innerHTML = "<p>" + item.name + "</p>";
       notimp.appendChild(cov);
     }
-    else if (timeRemaining > 14 && weight < 30) {
+    else if (timeRemaining > 14 && weight < 30 && completion == false) {
       let cov = document.createElement("li");
       cov.innerHTML = "<p>" + item.name + "</p>";
       notnot.appendChild(cov);
-  }})
+    }
+  })
 };
+
+
 
 //STOPWATCH
 const timer = document.getElementById('stopwatch');
 
+//create the variables for the stopwatch to display
 var hr = 0;
 var min = 0;
 var sec = 0;
 var stoptime = true;
 
+//define the buttons on the stopwatch
 const startTime = document.querySelector('#starttimer');
 const stopTime = document.querySelector('#stoptimer');
 const resetTime = document.querySelector('#resettimer');
 
+//listen for when the buttons are pressed
 startTime.addEventListener('click', () => {
   startTimer();
 })
@@ -264,46 +286,56 @@ resetTime.addEventListener('click', () => {
   resetTimer();
 })
 
+
+//how the timer workds
 function timerCycle() {
   if (stoptime == false) {
-  sec = parseInt(sec);
-  min = parseInt(min);
-  hr = parseInt(hr);
+    //ensure the seconds, minutes and hours are intigers
+    sec = parseInt(sec);
+    min = parseInt(min);
+    hr = parseInt(hr);
 
-  sec = sec + 1;
+    //add a second to the current second count
+    sec = sec + 1;
 
-  if (sec == 60) {
-    min = min + 1;
-    sec = 0;
-  }
-  if (min == 60) {
-    hr = hr + 1;
-    min = 0;
-    sec = 0;
-  }
+    //when there are 60 seconds, create a minute
+    if (sec == 60) {
+      min = min + 1;
+      sec = 0;
+    }
+    //when there are 60 minutes, create an hour
+    if (min == 60) {
+      hr = hr + 1;
+      min = 0;
+      sec = 0;
+    }
 
-  if (sec < 10 || sec == 0) {
-    sec = '0' + sec;
-  }
-  if (min < 10 || min == 0) {
-    min = '0' + min;
-  }
-  if (hr < 10 || hr == 0) {
-    hr = '0' + hr;
-  }
+    //add leading 0s if less than 10
+    if (sec < 10 || sec == 0) {
+      sec = '0' + sec;
+    }
+    if (min < 10 || min == 0) {
+      min = '0' + min;
+    }
+    if (hr < 10 || hr == 0) {
+      hr = '0' + hr;
+    }
+    //display the timer
+    timer.innerHTML = hr + ':' + min + ':' + sec;
 
-  timer.innerHTML = hr + ':' + min + ':' + sec;
-
-  setTimeout("timerCycle()", 1000);
+    //every second the timer will be called
+    setTimeout(() => {
+      timerCycle();
+    }, 1000);
   }
 }
 
 //when the start button is pressed, the timer will start by executing the timercycle function
 function startTimer() {
   if (stoptime == true) {
-        stoptime = false;
-        timerCycle();
-    }
+    stoptime = false;
+    timerCycle();
+  }
 }
 
 //when the stop button is pressed the timer will pause
@@ -315,18 +347,19 @@ function stopTimer() {
 
 //when the reset button is pressed the timer will go back to 0
 function resetTimer() {
-    timer.innerHTML = "00:00:00";
-    stoptime = true;
-    hr = 0;
-    sec = 0;
-    min = 0;
+  timer.innerHTML = "00:00:00";
+  stoptime = true;
+  hr = 0;
+  sec = 0;
+  min = 0;
 }
 
 
 //POMODORO TIMER
-
-const startButton = document.querySelector('#pomodoro-start')
-const stopButton = document.querySelector('#pomodoro-stop')
+//define the buttons
+const startButton = document.querySelector('#pomodoro-start');
+const pauseButton = document.querySelector('#pomodoro-pause');
+const stopButton = document.querySelector('#pomodoro-stop');
 
 let type = 'Work'
 let timeSpentInCurrentSession = 0
@@ -343,20 +376,25 @@ breakDurationInput.value = '5'
 let isClockStopped = true
 
 var ProgressBar = require('progressbar.js')
-var circle = new ProgressBar.Circle('#pomodoro-container');
+var circle = new ProgressBar.Circle('#pomodoro-clock');
 
 
 const progressBar = new ProgressBar.Circle('#pomodoro-timer', {
-  strokeWidth: 2,
+  strokeWidth: 5,
+  strokeColor: '#8390Fa',
   text: {
     value: '25:00',
   },
-  trailColor: '#f4f4f4',
+  trailColor: 'pink',
 })
 
 // START
 startButton.addEventListener('click', () => {
-  toggleClock()
+  toggleClock();
+})
+//PAUSE
+pauseButton.addEventListener('click', () => {
+  toggleClock();
 })
 // STOP
 stopButton.addEventListener('click', () => {
@@ -372,7 +410,6 @@ let currentTimeLeftInSession = 1500
 let breakSessionDuration = 300
 
 const toggleClock = (reset) => {
-  togglePlayPauseIcon(reset)
   if (reset) {
     stopClock()
   } else {
@@ -384,8 +421,6 @@ const toggleClock = (reset) => {
     if (isClockRunning === true) {
       // pause
       clearInterval(clockTimer)
-      // update icon to the play one
-      // set the vale of the button to start or pause
       isClockRunning = false
     } else {
       // start
@@ -396,8 +431,6 @@ const toggleClock = (reset) => {
       }, 1000)
       isClockRunning = true
     }
-    // new
-    showStopIcon()
   }
 }
 
@@ -438,28 +471,28 @@ const stepDown = () => {
     currentTimeLeftInSession--
     timeSpentInCurrentSession++
   } else if (currentTimeLeftInSession === 0) {
-  timeSpentInCurrentSession = 0;
-  // Timer is over -> if work switch to break, viceversa
-  if (type === 'Work') {
-    currentTimeLeftInSession = breakSessionDuration;
-    displaySessionLog('Work');
-    type = 'Break';
-    setUpdatedTimers();
-    // new
-    currentTaskLabel.value = 'Break';
-    currentTaskLabel.disabled = true;
-  } else {
-    currentTimeLeftInSession = workSessionDuration;
-    type = 'Work';
-    setUpdatedTimers();
-    // new
-    if (currentTaskLabel.value === 'Break') {
-      currentTaskLabel.value = workSessionLabel;
+    timeSpentInCurrentSession = 0;
+    // Timer is over -> if work switch to break, viceversa
+    if (type === 'Work') {
+      currentTimeLeftInSession = breakSessionDuration;
+      displaySessionLog('Work');
+      type = 'Break';
+      setUpdatedTimers();
+      // new
+      currentTaskLabel.value = 'Break';
+      currentTaskLabel.disabled = true;
+    } else {
+      currentTimeLeftInSession = workSessionDuration;
+      type = 'Work';
+      setUpdatedTimers();
+      // new
+      if (currentTaskLabel.value === 'Break') {
+        currentTaskLabel.value = workSessionLabel;
+      }
+      currentTaskLabel.disabled = false;
+      displaySessionLog('Break');
     }
-    currentTaskLabel.disabled = false;
-    displaySessionLog('Break');
   }
-}
   displayCurrentTimeLeftInSession()
 }
 
@@ -468,11 +501,11 @@ const displaySessionLog = (type) => {
   // append li to it
   const li = document.createElement('li')
   if (type === 'Work') {
-  sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : 'Work'
-  workSessionLabel = sessionLabel
-} else {
-  sessionLabel = 'Break'
-}
+    sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : 'Work'
+    workSessionLabel = sessionLabel
+  } else {
+    sessionLabel = 'Break'
+  }
   let elapsedTime = parseInt(timeSpentInCurrentSession / 60)
   elapsedTime = elapsedTime > 0 ? elapsedTime : '< 1'
   const text = document.createTextNode(`${sessionLabel} : ${elapsedTime} min`)
@@ -507,28 +540,6 @@ const setUpdatedTimers = () => {
   }
 }
 
-const togglePlayPauseIcon = (reset) => {
-  const playIcon = document.querySelector('#play-icon')
-  const pauseIcon = document.querySelector('#pause-icon')
-  if (reset) {
-    // when resetting -> always revert to play icon
-    if (playIcon.classList.contains('hidden')) {
-      playIcon.classList.remove('hidden')
-    }
-    if (!pauseIcon.classList.contains('hidden')) {
-      pauseIcon.classList.add('hidden')
-    }
-  } else {
-    playIcon.classList.toggle('hidden')
-    pauseIcon.classList.toggle('hidden')
-  }
-}
-
-const showStopIcon = () => {
-  const stopButton = document.querySelector('#pomodoro-stop')
-  stopButton.classList.remove('hidden')
-}
-
 const calculateSessionProgress = () => {
   // calculate the completion rate of this session
   const sessionDuration =
@@ -543,7 +554,7 @@ const calculateSessionProgress = () => {
 const searchButton = document.querySelector("#search-btn");
 
 searchButton.addEventListener('click', () => {
-  
+
 
   var nonexistent = document.getElementById('nope');
   var word = document.getElementById('word');
@@ -556,40 +567,40 @@ searchButton.addEventListener('click', () => {
   var request1 = new XMLHttpRequest();
   request1.open('GET', 'https://www.dictionaryapi.com/api/v3/references/thesaurus/json/' + wordToSearch + '?key=3ce6e0c2-e860-433c-a9ee-6bb91c895f31', true);
   request1.onload = function () {
-      var data = JSON.parse(this.response);
-      if (request1.status >= 200 && request1.status < 400) {
-        if (data[0] == undefined || data[0].meta == undefined){
-          //create an error for if the search was unsuccessful
-          nonexistent.style.visibility = 'visible'
-          nonexistent.innerHTML = "<li>Sorry, we cannot find that word in the dictionary</li>";
-        }else{
-          //make the results visible
-          document.getElementById('searchResult').style.visibility = 'visible';
-
-          //remove the warning if the search is successful
-          nonexistent.innerHTML = "";
-
-          //print the word that is being displayed
-          word.innerHTML += data[0].meta.id;
-
-          //cycle through the definitions to display them on the page and seperate them with a space and comma
-          let definitions = data[0].shortdef;
-          for (var i = 0; i < definitions.length; i++) {
-            definition.innerHTML += definitions[i] + ", ";
-          }
-          
-          //cycle through the synonyms to display them on the page, and seperate them with a space and comma
-          let synonyms = data[0].meta.syns[0];
-          for (var i = 0; i < synonyms.length; i++) {
-            synonym.innerHTML += synonyms[i] + ", ";
-          }
-
-          //add a link for the dictionary page
-          moreInfo.innerHTML = "<a href='https://www.merriam-webster.com/thesaurus/" + wordToSearch + "'target='_blank'>More Information</a>";
-        }
+    var data = JSON.parse(this.response);
+    if (request1.status >= 200 && request1.status < 400) {
+      if (data[0] == undefined || data[0].meta == undefined) {
+        //create an error for if the search was unsuccessful
+        nonexistent.style.visibility = 'visible'
+        nonexistent.innerHTML = "<li>Sorry, we cannot find that word in the dictionary</li>";
       } else {
-          alert("There was an error accessing the dictionary, please try again.");
+        //make the results visible
+        document.getElementById('searchResult').style.visibility = 'visible';
+
+        //remove the warning if the search is successful
+        nonexistent.innerHTML = "";
+
+        //print the word that is being displayed
+        word.innerHTML += data[0].meta.id;
+
+        //cycle through the definitions to display them on the page and seperate them with a space and comma
+        let definitions = data[0].shortdef;
+        for (var i = 0; i < definitions.length; i++) {
+          definition.innerHTML += definitions[i] + ", ";
+        }
+
+        //cycle through the synonyms to display them on the page, and seperate them with a space and comma
+        let synonyms = data[0].meta.syns[0];
+        for (var i = 0; i < synonyms.length; i++) {
+          synonym.innerHTML += synonyms[i] + ", ";
+        }
+
+        //add a link for the dictionary page
+        moreInfo.innerHTML = "<a href='https://www.merriam-webster.com/thesaurus/" + wordToSearch + "'target='_blank'>More Information</a>";
       }
+    } else {
+      alert("There was an error accessing the dictionary, please try again.");
+    }
   }
   request1.send();
 });
@@ -603,7 +614,7 @@ var tips = document.getElementById('tips');
 var tips2 = document.getElementById('tips2');
 var tipList = ['Stay Hydrated!', 'Remember to take breaks', 'You\'re smart!', 'Take your time', 'Study Hard', 'Keep it up!', 'Good work!'];
 
-window.onload = function() {
-  tips.innerHTML = tipList[Math.floor(Math.random()*tipList.length)];
-  tips2.innerHTML = tipList[Math.floor(Math.random()*tipList.length)];
+window.onload = function () {
+  tips.innerHTML = tipList[Math.floor(Math.random() * tipList.length)];
+  tips2.innerHTML = tipList[Math.floor(Math.random() * tipList.length)];
 }

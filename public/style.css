@@ -107,11 +107,12 @@ h4 {
   margin-right: 20%;
   display: grid;
   grid-template-columns: 32% 32% 32%;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 2% 2%;
   grid-auto-flow: row;
   grid-template-areas:
-    "tasklist coveyQuad stopwatchMod"
+    "tasklist coveyQuad coveyQuad"
+    "tasklist stopwatchMod pomodoroMod"
     "tasklist dictionaryMod pomodoroMod";
   grid-area: scrollable;
   height: 600px;
@@ -240,6 +241,10 @@ h4 {
   visibility: hidden;
 }
 
+#min-button {
+  float: right;
+}
+
 /* The popup form - hidden by default */
 .form-popup, .reading-popup {
   display: none;
@@ -285,10 +290,6 @@ h4 {
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover, button:hover {
@@ -352,7 +353,7 @@ strong {
   border: none;
   outline: none;
   border-radius: 7px;
-  padding: 2px 5px;
+  padding: 5px;
   margin-left: 10px;
   font-size: 1.1rem;
   font-weight: 550;
@@ -432,11 +433,6 @@ button {
   box-sizing: border-box;
 }
 
-.pomodoro-container {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
 
 .progressbar-text {
   font-family: "Lobster", cursive;
@@ -453,36 +449,8 @@ button {
   font-size: 3rem;
 }
 
-.button-group {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  font-size: 1.25rem;
-}
-
 #pomodoro-sessions {
-
   height: 0px;
-}
-
-.pomodoro-clock-actions {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  background: #8390Fa;
-  color: pink;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 100%;
-  cursor: pointer;
-}
-
-.button i {
-  margin-top: 0.7rem;
 }
 
 li.stop {
@@ -498,6 +466,7 @@ li.stop {
 
 .hidden {
   display: none;
+  visibility: hidden;
 }
 
 
@@ -506,6 +475,7 @@ iframe {
   margin: auto;
 }
 
+/* covey quadrents */
 .UI {
   background-color: lightcoral;
 }

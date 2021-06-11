@@ -532,13 +532,17 @@ refreshBtn.addEventListener('click', ()=>{
     renderCovey();
 });
 function renderCovey() {
+    //define the different quadrents by id
+    var ui = document.getElementById('urgimp');
+    var ni = document.getElementById('notimp');
+    var un = document.getElementById('urgnot');
+    var nn = document.getElementById('notnot');
     //remove current covey so there aren't duplicates
-    /*
-  document.getElementById('urgimp').removeChild(document.getElementById('urgimp').lastElementChild);
-  document.getElementById('notimp').removeChild(document.getElementById('notimp').lastElementChild);
-  document.getElementById('urgnot').removeChild(document.getElementById('urgnot').lastElementChild);
-  document.getElementById('notnot').removeChild(document.getElementById('notnot').lastElementChild);
-*/ //cycle through the array to decide where to put the tasks
+    if (ui.hasChildNodes()) ui.innerHTML = '';
+    if (ni.hasChildNodes()) ni.innerHTML = '';
+    if (un.hasChildNodes()) un.innerHTML = '';
+    if (nn.hasChildNodes()) nn.innerHTML = '';
+    //cycle through the array to decide where to put the tasks
     todos.forEach(function(item) {
         //find difference between today and the due date
         var today = new Date();
@@ -548,22 +552,23 @@ function renderCovey() {
         var timeRemaining = Math.floor(Difference_In_Time / 86400000);
         //numerical value of weight
         var weight = item.weight.slice(0, -1);
+        var completion = item.completed;
         //if the time remaining is less than 14 days it counts as urgent
         //if the weight is higher than 30% it counts as important
         //find the overlap between urgent and important to find which quadrant to put the task in
-        if (timeRemaining <= 14 && weight >= 30) {
+        if (timeRemaining <= 14 && weight >= 30 && completion == false) {
             let cov = document.createElement("li");
             cov.innerHTML = "<p>" + item.name + "</p>";
             urgimp.appendChild(cov);
-        } else if (timeRemaining <= 14 && weight < 30) {
+        } else if (timeRemaining <= 14 && weight < 30 && completion == false) {
             let cov = document.createElement("li");
             cov.innerHTML = "<p>" + item.name + "</p>";
             urgnot.appendChild(cov);
-        } else if (timeRemaining > 14 && weight >= 30) {
+        } else if (timeRemaining > 14 && weight >= 30 && completion == false) {
             let cov = document.createElement("li");
             cov.innerHTML = "<p>" + item.name + "</p>";
             notimp.appendChild(cov);
-        } else if (timeRemaining > 14 && weight < 30) {
+        } else if (timeRemaining > 14 && weight < 30 && completion == false) {
             let cov = document.createElement("li");
             cov.innerHTML = "<p>" + item.name + "</p>";
             notnot.appendChild(cov);
@@ -572,13 +577,16 @@ function renderCovey() {
 }
 //STOPWATCH
 const timer = document.getElementById('stopwatch');
+//create the variables for the stopwatch to display
 var hr = 0;
 var min = 0;
 var sec = 0;
 var stoptime = true;
+//define the buttons on the stopwatch
 const startTime = document.querySelector('#starttimer');
 const stopTime = document.querySelector('#stoptimer');
 const resetTime = document.querySelector('#resettimer');
+//listen for when the buttons are pressed
 startTime.addEventListener('click', ()=>{
     startTimer();
 });
@@ -588,26 +596,36 @@ stopTime.addEventListener('click', ()=>{
 resetTime.addEventListener('click', ()=>{
     resetTimer();
 });
+//how the timer workds
 function timerCycle() {
     if (stoptime == false) {
+        //ensure the seconds, minutes and hours are intigers
         sec = parseInt(sec);
         min = parseInt(min);
         hr = parseInt(hr);
+        //add a second to the current second count
         sec = sec + 1;
+        //when there are 60 seconds, create a minute
         if (sec == 60) {
             min = min + 1;
             sec = 0;
         }
+        //when there are 60 minutes, create an hour
         if (min == 60) {
             hr = hr + 1;
             min = 0;
             sec = 0;
         }
+        //add leading 0s if less than 10
         if (sec < 10 || sec == 0) sec = '0' + sec;
         if (min < 10 || min == 0) min = '0' + min;
         if (hr < 10 || hr == 0) hr = '0' + hr;
+        //display the timer
         timer.innerHTML = hr + ':' + min + ':' + sec;
-        setTimeout("timerCycle()", 1000);
+        //every second the timer will be called
+        setTimeout(()=>{
+            timerCycle();
+        }, 1000);
     }
 }
 //when the start button is pressed, the timer will start by executing the timercycle function
@@ -630,7 +648,9 @@ function resetTimer() {
     min = 0;
 }
 //POMODORO TIMER
+//define the buttons
 const startButton = document.querySelector('#pomodoro-start');
+const pauseButton = document.querySelector('#pomodoro-pause');
 const stopButton = document.querySelector('#pomodoro-stop');
 let type = 'Work';
 let timeSpentInCurrentSession = 0;
@@ -643,16 +663,21 @@ workDurationInput.value = '25';
 breakDurationInput.value = '5';
 let isClockStopped = true;
 var ProgressBar = require('progressbar.js');
-var circle = new ProgressBar.Circle('#pomodoro-container');
+var circle = new ProgressBar.Circle('#pomodoro-clock');
 const progressBar = new ProgressBar.Circle('#pomodoro-timer', {
-    strokeWidth: 2,
+    strokeWidth: 5,
+    strokeColor: '#8390Fa',
     text: {
         value: '25:00'
     },
-    trailColor: '#f4f4f4'
+    trailColor: 'pink'
 });
 // START
 startButton.addEventListener('click', ()=>{
+    toggleClock();
+});
+//PAUSE
+pauseButton.addEventListener('click', ()=>{
     toggleClock();
 });
 // STOP
@@ -666,7 +691,6 @@ let currentTimeLeftInSession = 1500;
 // in seconds = 5 mins;
 let breakSessionDuration = 300;
 const toggleClock = (reset)=>{
-    togglePlayPauseIcon(reset);
     if (reset) stopClock();
     else {
         //console.log(isClockStopped)
@@ -677,8 +701,6 @@ const toggleClock = (reset)=>{
         if (isClockRunning === true) {
             // pause
             clearInterval(clockTimer);
-            // update icon to the play one
-            // set the vale of the button to start or pause
             isClockRunning = false;
         } else {
             // start
@@ -689,8 +711,6 @@ const toggleClock = (reset)=>{
             }, 1000);
             isClockRunning = true;
         }
-        // new
-        showStopIcon();
     }
 };
 const displayCurrentTimeLeftInSession = ()=>{
@@ -782,22 +802,6 @@ const setUpdatedTimers = ()=>{
         currentTimeLeftInSession = updatedBreakSessionDuration ? updatedBreakSessionDuration : breakSessionDuration;
         breakSessionDuration = currentTimeLeftInSession;
     }
-};
-const togglePlayPauseIcon = (reset)=>{
-    const playIcon = document.querySelector('#play-icon');
-    const pauseIcon = document.querySelector('#pause-icon');
-    if (reset) {
-        // when resetting -> always revert to play icon
-        if (playIcon.classList.contains('hidden')) playIcon.classList.remove('hidden');
-        if (!pauseIcon.classList.contains('hidden')) pauseIcon.classList.add('hidden');
-    } else {
-        playIcon.classList.toggle('hidden');
-        pauseIcon.classList.toggle('hidden');
-    }
-};
-const showStopIcon = ()=>{
-    const stopButton1 = document.querySelector('#pomodoro-stop');
-    stopButton1.classList.remove('hidden');
 };
 const calculateSessionProgress = ()=>{
     // calculate the completion rate of this session
