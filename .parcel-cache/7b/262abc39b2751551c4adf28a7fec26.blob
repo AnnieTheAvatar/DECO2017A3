@@ -5,15 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>StudBud</title>
-  <link href="reset.css" rel="stylesheet" type="text/css" />
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="/index.HASH_REF_3cb92f901837119f997bbf5a06a84ff7.css" rel="stylesheet" type="text/css">
+  <link href="/index.HASH_REF_d57365999a99eaccc14b2e6ffbe23066.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&family=Indie+Flower&display=swap"
-    rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet" />
-  <link rel="shortcut icon" type="image/png" href="favicon_io/favicon-32x32.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&family=Indie+Flower&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="/favicon-32x32.HASH_REF_0fafce05039b9319b38b92c88a245fb5.png">
 </head>
 
 <body>
@@ -46,7 +44,7 @@
               <!-- Date input -->
               <tr>
                 <td><label for="dueDate">Due Date: </label></td>
-                <td><input type="date" name="dueDate" id="dueDateInput" required></td>
+                <td><input type="date" name="dueDate" id="dueDateInput" required=""></td>
               </tr>
               <!-- Estimated time input -->
               <tr>
@@ -153,7 +151,7 @@
           <div id="pomodoro-timer"></div>
           <!-- user can input the task they're working on (default to work)-->
           <div>
-            <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+            <input type="text" id="pomodoro-clock-task" placeholder="Enter your task...">
           </div>
           <!-- buttons to play, pause and stop timer-->
           <div id="buttons">
@@ -171,11 +169,11 @@
           <div id="pomodoro-clock-actions">
             <div class="pomodoro-input">
               <label>Work Duration:</label>
-              <input name="input-work-duration" id="input-work-duration" type="number" />
+              <input name="input-work-duration" id="input-work-duration" type="number">
             </div>
             <div class="pomodoro-input">
               <label>Break Duration:</label>
-              <input name="input-break-duration" id="input-break-duration" type="number" />
+              <input name="input-break-duration" id="input-break-duration" type="number">
             </div>
           </div>
           <!-- displays information of previous sessions-->
@@ -188,20 +186,19 @@
       </div>
     </div>
   </div>
-  </div>
+  
   <!-- cute phrases to be displayed in the background that look like they're written on the notebook-->
   <div class="tips">
     <h4 id="tips"> </h4>
     <h4 id="tips2"> </h4>
   </div>
-  </div>
+  
   <!-- embedded spotify music player that will look like a phone-->
   <div class="music-phone">
-    <iframe title="music player" class="music" src="https://open.spotify.com/embed/playlist/2Fnfw3f8C3RpQ0JmGNvx58"
-      allowtransparency="true" allow="encrypted-media"></iframe>
+    <iframe title="music player" class="music" src="https://open.spotify.com/embed/playlist/2Fnfw3f8C3RpQ0JmGNvx58" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
-  <script src="progressbar.js"></script>
-  <script src="script.js"></script>
+  <script src="/index.HASH_REF_4ed8fbc456c3fdad29f9e01cb5f57f94.js"></script>
+  <script src="/index.HASH_REF_97912cc17f1f5bdf37964fbc8a5bc16d.js"></script>
 </body>
 
 </html>

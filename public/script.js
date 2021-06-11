@@ -361,10 +361,10 @@ const startButton = document.querySelector('#pomodoro-start');
 const pauseButton = document.querySelector('#pomodoro-pause');
 const stopButton = document.querySelector('#pomodoro-stop');
 
-let type = 'Work'
-let timeSpentInCurrentSession = 0
+let type = 'Work';
+let timeSpentInCurrentSession = 0;
 
-let currentTaskLabel = document.querySelector('#pomodoro-clock-task')
+let currentTaskLabel = document.querySelector('#pomodoro-clock-task');
 
 let updatedWorkSessionDuration
 let updatedBreakSessionDuration
@@ -381,7 +381,6 @@ var circle = new ProgressBar.Circle('#pomodoro-clock');
 
 const progressBar = new ProgressBar.Circle('#pomodoro-timer', {
   strokeWidth: 5,
-  strokeColor: '#8390Fa',
   text: {
     value: '25:00',
   },
@@ -544,7 +543,7 @@ const calculateSessionProgress = () => {
   // calculate the completion rate of this session
   const sessionDuration =
     type === 'Work' ? workSessionDuration : breakSessionDuration
-  return (timeSpentInCurrentSession / sessionDuration) * 10
+  return (timeSpentInCurrentSession / sessionDuration)
 }
 
 
